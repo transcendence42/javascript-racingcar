@@ -1,10 +1,11 @@
 import CarNameComponent from './CarNameComponent.js';
 const Game = ({ $app }) => {
     const carNameInputEvent = () => {
-        const carNamesInput = document.querySelector('input[type="text"]');
+        const carNamesInput = document.getElementById('car-name-input');
         if (carNamesInput) {
             CarNameComponent({ carNames: carNamesInput.value });
         }
+        console.log('hi');
     };
     const raceCountInputEvent = () => {
         // const raceCountInput: HTMLInputElement = document.querySelector(
@@ -19,8 +20,8 @@ const Game = ({ $app }) => {
     const render = () => { };
     const controller = () => {
         const gameButton = document.getElementsByTagName('button');
-        gameButton[0].addEventListener('click', () => carNameInputEvent());
-        gameButton[1].addEventListener('click', () => raceCountInputEvent());
+        gameButton[0].onclick = carNameInputEvent;
+        gameButton[1].onclick = raceCountInputEvent;
     };
     const init = () => {
         render();

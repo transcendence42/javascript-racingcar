@@ -19,7 +19,8 @@ const CarNameComponent = ({ carNames }: { carNames: string }): void => {
   const render = (JSX: string): void => {
     const sectionElement = document.getElementById('app');
     if (sectionElement) {
-      sectionElement.innerHTML += JSX;
+      sectionElement.insertAdjacentHTML('beforeend', JSX);
+      // sectionElement.innerHTML += JSX;
     }
     return ;
   };
