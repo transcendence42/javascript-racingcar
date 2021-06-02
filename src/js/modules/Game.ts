@@ -1,8 +1,11 @@
-import Race from './Race.js';
+import CarNameComponent from './CarNameComponent.js';
 
 const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
   const carNameInputEvent = () => {
-    Race()
+    const carNamesInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+    if (carNamesInput) {
+      CarNameComponent({carNames: carNamesInput.value})
+    }
   }
 
   const render = (): void => {};

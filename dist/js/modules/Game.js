@@ -1,7 +1,10 @@
-import Race from './Race.js';
+import CarNameComponent from './CarNameComponent.js';
 const Game = ({ $app }) => {
     const carNameInputEvent = () => {
-        Race();
+        const carNamesInput = document.querySelector('input[type="text"]');
+        if (carNamesInput) {
+            CarNameComponent({ carNames: carNamesInput.value });
+        }
     };
     const render = () => { };
     const controller = () => {
