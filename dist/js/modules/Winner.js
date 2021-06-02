@@ -8,7 +8,7 @@ const winnerSection = (winner) => {
                 </div>
             </section>`;
 };
-const Winner = ({ $app, cars }) => {
+const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);
         const maxDistance = Math.max(...totalDistances);
@@ -31,4 +31,4 @@ const Winner = ({ $app, cars }) => {
     };
     return init({ cars });
 };
-export default Winner;
+export default WinnerComponent;

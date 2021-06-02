@@ -1,6 +1,6 @@
 import { Car, getRandomSingleDigit } from './utils.js';
 
-const Race = ({ count }: { count: number }): Car[] => {
+const RaceComponent = ({ count }: { count: number }): Car[] => {
   const checkValidCount = (count: number): boolean => {
     return count - Math.floor(count) === 0 && count > 0;
   };
@@ -56,7 +56,7 @@ const Race = ({ count }: { count: number }): Car[] => {
   return init(count);
 };
 
-export default Race;
+export default RaceComponent;
 
 // <div class="forward-icon mt-2">⬇️️</div>
 // <div class="relative spinner-container">

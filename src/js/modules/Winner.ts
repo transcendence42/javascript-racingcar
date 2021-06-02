@@ -11,7 +11,7 @@ const winnerSection = (winner: string): string => {
             </section>`;
 };
 
-const Winner = ({ $app, cars }: { $app: HTMLDivElement | null, cars: Car[] }): void => {
+const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null, cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {
     const totalDistances = cars.map((car) => car.distance);
     const maxDistance = Math.max(...totalDistances);
@@ -38,4 +38,4 @@ const Winner = ({ $app, cars }: { $app: HTMLDivElement | null, cars: Car[] }): v
   return init({ cars });
 };
 
-export default Winner;
+export default WinnerComponent;

@@ -1,6 +1,6 @@
-import CarNameComponent from './CarNameComponent.js';
-import Race from './Race.js';
-import Winner from './Winner.js';
+import CarNameComponent from './CarName.js';
+import RaceComponent from './Race.js';
+import WinnerComponent from './Winner.js';
 
 const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
   const carNameInputEvent = (): void => {
@@ -17,8 +17,8 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
     ) as HTMLInputElement;
 
     if (raceCountInput) {
-      const result = Race({ count: Number(raceCountInput.value) });
-      Winner({ $app, cars: result });
+      const result = RaceComponent({ count: Number(raceCountInput.value) });
+      WinnerComponent({ $app, cars: result });
     }
   };
 
