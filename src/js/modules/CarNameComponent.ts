@@ -12,12 +12,12 @@ const carNameDiv = (carName: string): string => {
           </div>`;
 };
 
-const CarNameComponent = ({ carNames }: { carNames: string }): void => {
+const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null, carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
     carNameList.length === carNameList.filter(x => x.length <= 5 && x !== '').length;
 
   const render = (JSX: string): void => {
-    const sectionElement = document.getElementById('app');
+    const sectionElement = $app;
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }

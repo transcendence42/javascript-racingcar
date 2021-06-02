@@ -10,10 +10,10 @@ const carNameDiv = (carName) => {
             <div class="car-player">${carName}</div>
           </div>`;
 };
-const CarNameComponent = ({ carNames }) => {
+const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter(x => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
-        const sectionElement = document.getElementById('app');
+        const sectionElement = $app;
         if (sectionElement) {
             sectionElement.insertAdjacentHTML('beforeend', JSX);
         }

@@ -5,14 +5,14 @@ const Game = ({ $app }) => {
     const carNameInputEvent = () => {
         const carNamesInput = document.getElementById('car-name-input');
         if (carNamesInput) {
-            CarNameComponent({ carNames: carNamesInput.value });
+            CarNameComponent({ $app, carNames: carNamesInput.value });
         }
     };
     const raceCountInputEvent = () => {
         const raceCountInput = document.querySelector('input[type="number"]');
         if (raceCountInput) {
             const result = Race({ count: Number(raceCountInput.value) });
-            Winner({ cars: result });
+            Winner({ $app, cars: result });
         }
     };
     const render = () => { };

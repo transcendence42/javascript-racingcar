@@ -8,7 +8,7 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
       'car-name-input',
     ) as HTMLInputElement;
     if (carNamesInput) {
-      CarNameComponent({ carNames: carNamesInput.value });
+      CarNameComponent({ $app, carNames: carNamesInput.value });
     }
   };
   const raceCountInputEvent = () => {
@@ -18,7 +18,7 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
 
     if (raceCountInput) {
       const result = Race({ count: Number(raceCountInput.value) });
-      Winner({ cars: result });
+      Winner({ $app, cars: result });
     }
   };
 

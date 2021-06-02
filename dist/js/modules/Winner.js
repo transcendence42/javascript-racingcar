@@ -8,7 +8,7 @@ const winnerSection = (winner) => {
                 </div>
             </section>`;
 };
-const Winner = ({ cars }) => {
+const Winner = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);
         const maxDistance = Math.max(...totalDistances);
@@ -19,7 +19,7 @@ const Winner = ({ cars }) => {
             .map((winner) => winner.name);
     };
     const render = ({ result }) => {
-        const sectionElement = document.getElementById('app');
+        const sectionElement = $app;
         if (sectionElement) {
             sectionElement.insertAdjacentHTML('beforeend', result);
         }
