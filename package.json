@@ -9,10 +9,10 @@
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run": "./node_modules/.bin/cypress run",
     "tsc": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "server": "./node_modules/.bin/live-server ."
   },
   "devDependencies": {
-    "prettier": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "cypress": "^7.4.0",
@@ -20,6 +20,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.23.4",
-    "typescript": "^4.3.2"
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.2",
+    "live-server": "^1.2.1"
   }
 }
