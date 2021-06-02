@@ -14,13 +14,12 @@ const carNameDiv = (carName: string): string => {
 
 const CarNameComponent = ({ carNames }: { carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
-    carNameList.length === carNameList.filter(x => x.length <= 5).length;
+    carNameList.length === carNameList.filter(x => x.length <= 5 && x !== '').length;
 
   const render = (JSX: string): void => {
     const sectionElement = document.getElementById('app');
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
-      // sectionElement.innerHTML += JSX;
     }
     return ;
   };

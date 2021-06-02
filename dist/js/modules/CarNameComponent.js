@@ -11,12 +11,11 @@ const carNameDiv = (carName) => {
           </div>`;
 };
 const CarNameComponent = ({ carNames }) => {
-    const checkCarNames = (carNameList) => carNameList.length === carNameList.filter(x => x.length <= 5).length;
+    const checkCarNames = (carNameList) => carNameList.length === carNameList.filter(x => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
         const sectionElement = document.getElementById('app');
         if (sectionElement) {
             sectionElement.insertAdjacentHTML('beforeend', JSX);
-            // sectionElement.innerHTML += JSX;
         }
         return;
     };
