@@ -10,9 +10,15 @@ const Game = ({ $app }) => {
     };
     const raceCountInputEvent = () => {
         const raceCountInput = document.querySelector('input[type="number"]');
-        if (raceCountInput) {
-            const result = RaceComponent({ count: Number(raceCountInput.value) });
+        const carNamesInput = document.querySelector('input[type="text"]');
+        if (raceCountInput && carNamesInput.value !== '') {
+            const result = RaceComponent({
+                count: Number(raceCountInput.value),
+            });
             WinnerComponent({ $app, cars: result });
+        }
+        else {
+            alert('자동차 이름 먼저 입력해주세요!');
         }
     };
     const render = () => { };

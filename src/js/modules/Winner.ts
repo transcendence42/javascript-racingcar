@@ -5,26 +5,28 @@ import CarNameComponent from './CarName.js';
 import RaceComponent from './Race.js';
 
 const carNameInputEvent = (): void => {
-  const carNamesInput: HTMLInputElement = document.getElementById(
-    'car-name-input',
-  ) as HTMLInputElement;
+  const carNamesInput: HTMLInputElement = document.getElementById('car-name-input') as HTMLInputElement;
+
   if (carNamesInput) {
-    CarNameComponent({ $app: document.querySelector<HTMLDivElement>('#app'), carNames: carNamesInput.value });
+    CarNameComponent({
+      $app: document.querySelector<HTMLDivElement>('#app'),
+      carNames: carNamesInput.value,
+    });
   }
 };
 const raceCountInputEvent = () => {
-  const raceCountInput: HTMLInputElement = document.querySelector(
-    'input[type="number"]',
-  ) as HTMLInputElement;
+  const raceCountInput: HTMLInputElement = document.querySelector('input[type="number"]') as HTMLInputElement;
 
   if (raceCountInput) {
     const result = RaceComponent({ count: Number(raceCountInput.value) });
-    WinnerComponent({ $app: document.querySelector<HTMLDivElement>('#app'), cars: result });
+    WinnerComponent({
+      $app: document.querySelector<HTMLDivElement>('#app'),
+      cars: result,
+    });
   }
 };
 const inputController = (): void => {
-  const gameButton: HTMLCollectionOf<HTMLButtonElement> =
-    document.getElementsByTagName('button');
+  const gameButton: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName('button');
   gameButton[0].onclick = carNameInputEvent;
   gameButton[1].onclick = raceCountInputEvent;
 };
@@ -41,13 +43,7 @@ const winnerSection = (winner: string): string => {
             </section>`;
 };
 
-const WinnerComponent = ({
-  $app,
-  cars,
-}: {
-  $app: HTMLDivElement | null;
-  cars: Car[];
-}): void => {
+const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {
     const totalDistances = cars.map((car) => car.distance);
     const maxDistance = Math.max(...totalDistances);

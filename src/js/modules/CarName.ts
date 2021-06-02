@@ -12,22 +12,27 @@ const carNameDiv = (carName: string): string => {
           </div>`;
 };
 
-const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null, carNames: string }): void => {
+const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
-    carNameList.length === carNameList.filter(x => x.length <= 5 && x !== '').length;
+    carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
 
   const render = (JSX: string): void => {
     const sectionElement = $app;
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
-    return ;
+    return;
   };
 
   const init = (carNames: string): void => {
-    const carNameList: string[] = carNames.split(',').map(x=>x.trim());
+    const carNameList: string[] = carNames.split(',').map((x) => x.trim());
     if (checkCarNames(carNameList)) {
-      render(carNamesSection(carNameList.map(carName => carNameDiv(carName)).join('')));
+      render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
+    } else {
+      alert('유효하지 않은 입력입니다. 재입력 해주세요.');
+      const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
+      carNameInput.value = '';
+      carNameInput.focus();
     }
   };
 
@@ -35,8 +40,3 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null, car
 };
 
 export default CarNameComponent;
-
-// <div class="forward-icon mt-2">⬇️️</div>
-// <div class="relative spinner-container">
-// <span class="material spinner"></span>
-// </div>

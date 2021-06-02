@@ -34,6 +34,7 @@ const RaceComponent = ({ count }) => {
             alert(`유효하지 않은 입력입니다. 재입력 해주세요.`);
             const racingCountInput = document.getElementById('racing-count-input');
             racingCountInput.value = '';
+            racingCountInput.focus();
         }
         return render({ cars: assignCarsName(), count });
     };
