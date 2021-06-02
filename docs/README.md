@@ -1,5 +1,9 @@
 ## 기능 구현
 
+- [x] 자동차 이름 입력시 화면에 이름 렌더링
+ - [x] checkInput
+ - [x] render car names input
+
 ### 🎯step 1
 
 - [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.

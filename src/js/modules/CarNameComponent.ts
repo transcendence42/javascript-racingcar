@@ -21,6 +21,7 @@ const CarNameComponent = ({ carNames }: { carNames: string }): void => {
     if (sectionElement) {
       sectionElement.innerHTML += JSX;
     }
+    return ;
   };
 
   const init = (carNames: string): void => {

@@ -17,6 +17,7 @@ const CarNameComponent = ({ carNames }) => {
         if (sectionElement) {
             sectionElement.innerHTML += JSX;
         }
+        return;
     };
     const init = (carNames) => {
         const carNameList = carNames.split(',').map(x => x.trim());
