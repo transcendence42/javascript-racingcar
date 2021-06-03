@@ -5,6 +5,12 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
   const checkCarNames = (carNameList: string[]) =>
     carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
 
+  const carNameInputInit = () => {
+    const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
+    carNameInput.value = '';
+    carNameInput.focus();
+  };
+
   const render = (JSX: string): void => {
     const sectionElement = $app;
     if (sectionElement) {
@@ -19,9 +25,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
       render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
     } else {
       alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);
-      const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
-      carNameInput.value = '';
-      carNameInput.focus();
+      carNameInputInit();
     }
   };
 

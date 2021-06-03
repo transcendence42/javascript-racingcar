@@ -9,6 +9,7 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
     }
     return;
   };
+  
   const init = (): void => {
     render(startSection);
     inputController();
