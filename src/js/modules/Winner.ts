@@ -6,8 +6,10 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
   const findWinners = (cars: Car[]): string[] => {
     const totalDistances = cars.map((car) => car.distance);
     const maxDistance = Math.max(...totalDistances);
+    
     return cars
       .filter((car) => {
+
         return car.distance === maxDistance;
       })
       .map((winner) => winner.name);
@@ -18,6 +20,7 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', result);
     }
+
     return;
   };
 
@@ -29,6 +32,7 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
     }
     e.currentTarget?.removeEventListener('click', retryButtonEvent);
     inputController();
+
     return;
   };
 

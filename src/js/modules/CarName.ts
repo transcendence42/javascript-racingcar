@@ -11,6 +11,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
+    
     return;
   };
 

@@ -8,10 +8,13 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   let _cars: Car[];
 
   const checkValidCount = (count: number): boolean => {
+
     return count - Math.floor(count) === 0 && count > 0;
   };
+  
   const getInputCarsName = (): string[] => {
     const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
+
     return carNameInput.value.split(',').map((x) => x.trim());
   };
 
@@ -21,6 +24,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     inputCarNames.forEach((name) => {
       cars.push(new Car(name));
     });
+
     return cars;
   };
 
@@ -29,6 +33,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
       'car-player',
     ) as HTMLCollectionOf<Element>;
     let tryCount: number = count;
+
     while (tryCount > 0) {
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
@@ -55,6 +60,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     WinnerComponent({ $app, cars: _cars });
     await wait(DELAY.ALERT);
     alert(MESSAGE.CELEBRATE_WINNER);
+    
     return;
   };
 

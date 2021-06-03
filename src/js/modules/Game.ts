@@ -7,6 +7,7 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
+    
     return;
   };
   
