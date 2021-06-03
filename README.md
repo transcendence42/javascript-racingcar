@@ -16,6 +16,10 @@
   <img width="400" src="https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/7c76e809d82a4a3aa0fd78a86be25427">
 </p>
 
+### 배경 지식
+- [requestAnimationFrame()에 관한 설명](https://m.blog.naver.com/psj9102/221745767536)
+
+
 ### 🎯 step1
 - [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 - [ ] 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
