@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
+import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
@@ -48,15 +48,16 @@ const RaceComponent = ({ $app, count }) => {
         }
     });
     const init = (count) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(checkCarNameDataset());
         if (!checkCarNameDataset()) {
             alert(ERROR_MESSAGE.INVALID_INPUT_PROCEDURE);
             carNameInputInit();
+            initEnable();
             return;
         }
         if (!checkValidCount(count)) {
             alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
             racingCountInputInit();
+            countEnable();
             return;
         }
         _cars = assignCarsName();

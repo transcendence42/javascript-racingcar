@@ -1,5 +1,7 @@
+import { initEnable } from './@share/utils.js';
 import { inputController } from './@share/controller.js';
 import { winnerSection } from './@share/view.js';
+import { setCarNameDataset } from './@share/dom-dataset.js';
 const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);
@@ -26,6 +28,8 @@ const WinnerComponent = ({ $app, cars }) => {
         }
         (_a = e.currentTarget) === null || _a === void 0 ? void 0 : _a.removeEventListener('click', retryButtonEvent);
         inputController();
+        initEnable();
+        setCarNameDataset('');
         return;
     };
     const controller = () => {

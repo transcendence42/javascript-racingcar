@@ -1,4 +1,4 @@
-import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
+import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
@@ -53,12 +53,14 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     if (!checkCarNameDataset()) {
       alert(ERROR_MESSAGE.INVALID_INPUT_PROCEDURE);
       carNameInputInit();
+      initEnable();
 
       return;
     }
     if (!checkValidCount(count)) {
       alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
       racingCountInputInit();
+      countEnable();
 
       return;
     }

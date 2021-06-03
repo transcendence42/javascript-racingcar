@@ -2,6 +2,7 @@ import { carNamesSection, carNameDiv } from './@share/view.js';
 import { ERROR_MESSAGE } from './@share/constants.js';
 import { carNameInputInit } from './@share/init.js';
 import { setCarNameDataset } from './@share/dom-dataset.js';
+import { initEnable } from './@share/utils.js';
 const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
@@ -20,6 +21,7 @@ const CarNameComponent = ({ $app, carNames }) => {
         else {
             alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);
             carNameInputInit();
+            initEnable();
         }
     };
     init(carNames);

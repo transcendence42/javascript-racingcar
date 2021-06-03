@@ -1,6 +1,7 @@
-import { Car } from './@share/utils.js';
+import { Car, initEnable } from './@share/utils.js';
 import { inputController } from './@share/controller.js';
 import { winnerSection } from './@share/view.js';
+import { setCarNameDataset } from './@share/dom-dataset.js';
 
 const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {
@@ -9,7 +10,6 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
 
     return cars
       .filter((car) => {
-
         return car.distance === maxDistance;
       })
       .map((winner) => winner.name);
@@ -32,7 +32,8 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
     }
     e.currentTarget?.removeEventListener('click', retryButtonEvent);
     inputController();
-
+    initEnable();
+    setCarNameDataset('');
     return;
   };
 

@@ -2,6 +2,7 @@ import { carNamesSection, carNameDiv } from './@share/view.js';
 import { ERROR_MESSAGE } from './@share/constants.js';
 import { carNameInputInit } from './@share/init.js';
 import { setCarNameDataset } from './@share/dom-dataset.js';
+import { initEnable } from './@share/utils.js';
 
 const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
@@ -24,6 +25,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
     } else {
       alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);
       carNameInputInit();
+      initEnable();
     }
   };
 
