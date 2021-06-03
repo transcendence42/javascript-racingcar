@@ -10,10 +10,10 @@ const WinnerComponent = ({ $app, cars }) => {
         })
             .map((winner) => winner.name);
     };
-    const render = ({ result }) => {
+    const render = (JSX) => {
         const sectionElement = $app;
         if (sectionElement) {
-            sectionElement.insertAdjacentHTML('beforeend', result);
+            sectionElement.insertAdjacentHTML('beforeend', JSX);
         }
         return;
     };
@@ -35,8 +35,7 @@ const WinnerComponent = ({ $app, cars }) => {
         }
     };
     const init = ({ cars }) => {
-        const result = winnerSection(findWinners(cars).join(', '));
-        render({ result });
+        render(winnerSection(findWinners(cars).join(', ')));
         controller();
     };
     return init({ cars });
