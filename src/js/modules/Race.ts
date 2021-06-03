@@ -1,9 +1,10 @@
-import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
-import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
+
+import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
-import { removeSpinner } from './@share/spinner.js';
+import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { checkCarNameDataset } from './@share/dom-dataset.js';
+import { removeSpinner } from './@share/spinner.js';
 import { forwardIconDiv } from './@share/view.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {

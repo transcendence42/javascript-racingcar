@@ -1,7 +1,7 @@
-import { Car, initEnable } from './@share/utils.js';
-import { inputController } from './@share/controller.js';
-import { winnerSection } from './@share/view.js';
 import { setCarNameDataset } from './@share/dom-dataset.js';
+import { inputController } from './@share/controller.js';
+import { Car, initEnable } from './@share/utils.js';
+import { winnerSection } from './@share/view.js';
 
 const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {
