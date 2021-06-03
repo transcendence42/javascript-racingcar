@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
+import { racingCountInputInit } from './@share/init.js';
 const RaceComponent = ({ $app, count }) => {
     let _cars;
     const checkValidCount = (count) => {
@@ -53,9 +54,8 @@ const RaceComponent = ({ $app, count }) => {
     const init = (count) => __awaiter(void 0, void 0, void 0, function* () {
         if (!checkValidCount(count)) {
             alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
-            const racingCountInput = document.getElementById('racing-count-input');
-            racingCountInput.value = '';
-            racingCountInput.focus();
+            racingCountInputInit();
+            return;
         }
         _cars = assignCarsName();
         yield render({ count });

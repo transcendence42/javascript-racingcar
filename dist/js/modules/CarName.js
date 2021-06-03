@@ -1,12 +1,8 @@
 import { carNamesSection, carNameDiv } from './@share/view.js';
 import { ERROR_MESSAGE } from './@share/message.js';
+import { carNameInputInit } from './@share/init.js';
 const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
-    const carNameInputInit = () => {
-        const carNameInput = document.getElementById('car-name-input');
-        carNameInput.value = '';
-        carNameInput.focus();
-    };
     const render = (JSX) => {
         const sectionElement = $app;
         if (sectionElement) {

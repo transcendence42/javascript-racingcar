@@ -1,6 +1,7 @@
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
+import { racingCountInputInit } from './@share/init.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
@@ -51,9 +52,8 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   const init = async (count: number): Promise<void> => {
     if (!checkValidCount(count)) {
       alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
-      const racingCountInput = document.getElementById('racing-count-input') as HTMLInputElement;
-      racingCountInput.value = '';
-      racingCountInput.focus();
+      racingCountInputInit();
+      return;
     }
     _cars = assignCarsName();
     await render({ count });
