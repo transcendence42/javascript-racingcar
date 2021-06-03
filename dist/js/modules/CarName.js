@@ -8,11 +8,15 @@ const carNamesSection = (carNames) => {
 const carNameDiv = (carName) => {
     return `<div class="mr-2">
             <div class="car-player">${carName}</div>
+            <div class="d-flex justify-center mt-3">
+              <div class="relative spinner-container">
+                <span class="material spinner"></span>
+              </div>
+            </div>
           </div>`;
 };
-const CarNameComponent = ({ $app, carNames, }) => {
-    const checkCarNames = (carNameList) => carNameList.length ===
-        carNameList.filter((x) => x.length <= 5 && x !== '').length;
+const CarNameComponent = ({ $app, carNames }) => {
+    const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
         const sectionElement = $app;
         if (sectionElement) {
@@ -35,7 +39,3 @@ const CarNameComponent = ({ $app, carNames, }) => {
     init(carNames);
 };
 export default CarNameComponent;
-// <div class="forward-icon mt-2">⬇️️</div>
-// <div class="relative spinner-container">
-// <span class="material spinner"></span>
-// </div>

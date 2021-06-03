@@ -1,11 +1,5 @@
 import { Car, getRandomSingleDigit } from './utils.js';
 
-const spinnerDiv = () => {
-  return `<div class="relative spinner-container">
-            <span class="material spinner"></span>
-          </div>`;
-};
-
 const RaceComponent = ({ count }: { count: number }): Car[] => {
   const checkValidCount = (count: number): boolean => {
     return count - Math.floor(count) === 0 && count > 0;
@@ -24,6 +18,12 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
     return cars;
   };
 
+  const removeSpinner = (carPlayer: Element): void => {
+    if (carPlayer.parentNode?.lastElementChild?.className === 'd-flex justify-center mt-3') {
+      carPlayer.parentNode?.lastElementChild?.remove();
+    }
+  };
+
   const render = ({ cars, count }: { cars: Car[]; count: number }): Car[] => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
       'car-player',
@@ -34,6 +34,7 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
           cars[i].move();
+          removeSpinner(carPlayer[i]);
           carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
         }
       }
