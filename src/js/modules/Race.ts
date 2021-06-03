@@ -10,19 +10,19 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
   const checkValidCount = (count: number): boolean => {
     return count - Math.floor(count) === 0 && count > 0;
   };
-  function getInputCarsName(): string[] {
+  const getInputCarsName = (): string[] => {
     const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
     return carNameInput.value.split(',').map((x) => x.trim());
-  }
+  };
 
-  function assignCarsName(): Car[] {
+  const assignCarsName = (): Car[] => {
     const cars: Car[] = [];
     const inputCarNames = getInputCarsName();
     inputCarNames.forEach((name) => {
       cars.push(new Car(name));
     });
     return cars;
-  }
+  };
 
   const render = ({ cars, count }: { cars: Car[]; count: number }): Car[] => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
