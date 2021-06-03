@@ -58,6 +58,8 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     _cars = assignCarsName();
     await render({ count });
     WinnerComponent({ $app, cars: _cars });
+    await wait(2000);
+    alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆')
     return;
   };
 

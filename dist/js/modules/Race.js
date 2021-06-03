@@ -60,6 +60,8 @@ const RaceComponent = ({ $app, count }) => {
         _cars = assignCarsName();
         yield render({ count });
         WinnerComponent({ $app, cars: _cars });
+        yield wait(2000);
+        alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆');
         return;
     });
     init(count);
