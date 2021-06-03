@@ -7,11 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Car, getRandomSingleDigit, wait } from './utils.js';
+import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 const RaceComponent = ({ $app, count }) => {
     let _cars;
-    let _startTime = 0;
     const checkValidCount = (count) => {
         return count - Math.floor(count) === 0 && count > 0;
     };

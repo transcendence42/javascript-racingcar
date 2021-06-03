@@ -1,4 +1,4 @@
-import { Car } from './utils.js';
+import { Car } from './@share/utils.js';
 
 /* React Component 구조였으면 props로 함수를 넘겼을 것이다. */
 import CarNameComponent from './CarName.js';

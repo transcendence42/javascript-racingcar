@@ -1,6 +1,5 @@
 import CarNameComponent from './CarName.js';
 import RaceComponent from './Race.js';
-import { Car } from './utils.js';
 
 const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
   const carNameInputEvent = (): void => {

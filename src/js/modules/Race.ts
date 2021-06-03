@@ -1,9 +1,8 @@
-import { Car, getRandomSingleDigit, wait } from './utils.js';
+import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
-  let _startTime: number = 0;
 
   const checkValidCount = (count: number): boolean => {
     return count - Math.floor(count) === 0 && count > 0;
@@ -59,7 +58,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     await render({ count });
     WinnerComponent({ $app, cars: _cars });
     await wait(2000);
-    alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆')
+    alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆');
     return;
   };
 
