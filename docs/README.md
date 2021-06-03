@@ -23,8 +23,9 @@
 - [x] spinner
   - [x] car-name 버튼 누를 때 spinner 렌더링 하기
   - [x] 해당 자동차 경주 시작할 때 삭제하기
-- [ ] 자동차 경주 게임의 턴이 진행 될 때마다 1초의 텀(progressive 재생)을 두고 진행한다.
-  - [ ] 애니메이션 구현을 위해 setInterval, setTimeout, requestAnimationFrame 을 활용한다.
+- [x] 자동차 경주 게임의 턴이 진행 될 때마다 1초의 텀(progressive 재생)을 두고 진행한다.
+  - [x] 애니메이션 구현을 위해 setInterval, setTimeout, requestAnimationFrame 을 활용한다.
+  - [ ] spinner 마지막 레이스가 완료 됐을 때 없애기.
 - [ ] 정상적으로 게임의 턴이 다 동작된 후에는 결과를 보여주고, 2초 후에 축하의 alert 메세지를 띄운다.
 - [ ] 위 기능들이 정상적으로 동작하는지 Cypress를 이용해 테스트한다.
 

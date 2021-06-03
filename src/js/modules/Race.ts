@@ -1,7 +1,7 @@
-import { Car, getRandomSingleDigit } from './utils.js';
+import { Car, getRandomSingleDigit, wait } from './utils.js';
 import WinnerComponent from './Winner.js';
 
-const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null, count: number }): void => {
+const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
   let _startTime: number = 0;
 
@@ -28,30 +28,6 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null, count: nu
     }
   };
 
-  // const racingAnimationFrame = (): void => {
-  //   const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
-  //     'car-player',
-  //   ) as HTMLCollectionOf<Element>;
-
-  //   _startTime += 1;
-  //   if (_startTime < 100) {
-  //     requestAnimationFrame(racingAnimationFrame);
-  //   } else {
-  //     for (let i = 0; i < carPlayer.length; i += 1) {
-  //       if (getRandomSingleDigit(0, 9) >= 4) {
-  //         _cars[i].move();
-  //         removeSpinner(carPlayer[i]);
-  //         carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
-  //       }
-  //     }
-  //     _startTime = 0;
-  //   }
-  // };
-
-  const wait = async (delay: number): Promise<number> => {
-    return new Promise<number>((resolve) => setTimeout(resolve, delay));
-  };
-
   const render = async ({ count }: { count: number }): Promise<void> => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
       'car-player',
@@ -61,8 +37,10 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null, count: nu
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
           _cars[i].move();
-          removeSpinner(carPlayer[i]);
           carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
+        }
+        if (tryCount <= 1) {
+          removeSpinner(carPlayer[i]);
         }
       }
       tryCount -= 1;
@@ -80,7 +58,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null, count: nu
     _cars = assignCarsName();
     await render({ count });
     WinnerComponent({ $app, cars: _cars });
-    return ;
+    return;
   };
 
   init(count);

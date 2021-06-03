@@ -16,4 +16,8 @@ const getRandomSingleDigit = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max + 1 - min)) + min;
 };
 
-export { Car, getRandomSingleDigit };
+const wait = async (delay: number): Promise<number> => {
+  return new Promise<number>((resolve) => setTimeout(resolve, delay));
+};
+
+export { Car, getRandomSingleDigit, wait };
