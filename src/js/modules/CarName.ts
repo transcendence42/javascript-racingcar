@@ -1,21 +1,5 @@
-const carNamesSection = (carNames: string): string => {
-  return `<section class="d-flex justify-center mt-5">
-            <div class="mt-4 d-flex">
-              ${carNames}
-            </div>
-          </section>`;
-};
-
-const carNameDiv = (carName: string): string => {
-  return `<div class="mr-2">
-            <div class="car-player">${carName}</div>
-            <div class="d-flex justify-center mt-3">
-              <div class="relative spinner-container">
-                <span class="material spinner"></span>
-              </div>
-            </div>
-          </div>`;
-};
+import { carNamesSection, carNameDiv } from './@share/view.js';
+import { ERROR_MESSAGE } from './@share/message.js';
 
 const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
@@ -34,7 +18,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
     if (checkCarNames(carNameList)) {
       render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
     } else {
-      alert('유효하지 않은 입력입니다. 재입력 해주세요.');
+      alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);
       const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
       carNameInput.value = '';
       carNameInput.focus();

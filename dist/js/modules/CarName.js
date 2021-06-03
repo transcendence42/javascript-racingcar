@@ -1,20 +1,4 @@
-const carNamesSection = (carNames) => {
-    return `<section class="d-flex justify-center mt-5">
-            <div class="mt-4 d-flex">
-              ${carNames}
-            </div>
-          </section>`;
-};
-const carNameDiv = (carName) => {
-    return `<div class="mr-2">
-            <div class="car-player">${carName}</div>
-            <div class="d-flex justify-center mt-3">
-              <div class="relative spinner-container">
-                <span class="material spinner"></span>
-              </div>
-            </div>
-          </div>`;
-};
+import { carNamesSection, carNameDiv } from './@share/view.js';
 const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
     const render = (JSX) => {

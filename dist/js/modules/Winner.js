@@ -1,41 +1,5 @@
-/* React Component 구조였으면 props로 함수를 넘겼을 것이다. */
-import CarNameComponent from './CarName.js';
-import RaceComponent from './Race.js';
-const carNameInputEvent = () => {
-    const carNamesInput = document.getElementById('car-name-input');
-    if (carNamesInput) {
-        CarNameComponent({ $app: document.querySelector('#app'), carNames: carNamesInput.value });
-    }
-};
-const raceCountInputEvent = () => {
-    const raceCountInput = document.querySelector('input[type="number"]');
-    const carNamesInput = document.querySelector('input[type="text"]');
-    if (raceCountInput && carNamesInput.value !== '') {
-        RaceComponent({
-            $app: document.querySelector('#app'),
-            count: Number(raceCountInput.value),
-        });
-    }
-    else {
-        alert('자동차 이름 먼저 입력해주세요!');
-    }
-};
-const inputController = () => {
-    const gameButton = document.getElementsByTagName('button');
-    gameButton[0].onclick = carNameInputEvent;
-    gameButton[1].onclick = raceCountInputEvent;
-};
-/*****************************************************/
-const winnerSection = (winner) => {
-    return `<section class="d-flex justify-center mt-5">
-                <div>
-                  <h2>🏆 최종 우승자: ${winner} 🏆</h2>
-                  <div class="d-flex justify-center">
-                    <button type="button" class="btn btn-cyan">다시 시작하기</button>
-                  </div>
-                </div>
-            </section>`;
-};
+import { inputController } from './@share/controller.js';
+import { winnerSection } from './@share/view.js';
 const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);

@@ -1,45 +1,6 @@
 import { Car } from './@share/utils.js';
-
-/* React Component 구조였으면 props로 함수를 넘겼을 것이다. */
-import CarNameComponent from './CarName.js';
-import RaceComponent from './Race.js';
-
-const carNameInputEvent = (): void => {
-  const carNamesInput: HTMLInputElement = document.getElementById('car-name-input') as HTMLInputElement;
-  if (carNamesInput) {
-    CarNameComponent({ $app: document.querySelector<HTMLDivElement>('#app'), carNames: carNamesInput.value });
-  }
-};
-const raceCountInputEvent = () => {
-  const raceCountInput: HTMLInputElement = document.querySelector('input[type="number"]') as HTMLInputElement;
-  const carNamesInput: HTMLInputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
-
-  if (raceCountInput && carNamesInput.value !== '') {
-    RaceComponent({
-      $app: document.querySelector<HTMLDivElement>('#app'),
-      count: Number(raceCountInput.value),
-    });
-  } else {
-    alert('자동차 이름 먼저 입력해주세요!');
-  }
-};
-const inputController = (): void => {
-  const gameButton: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName('button');
-  gameButton[0].onclick = carNameInputEvent;
-  gameButton[1].onclick = raceCountInputEvent;
-};
-/*****************************************************/
-
-const winnerSection = (winner: string): string => {
-  return `<section class="d-flex justify-center mt-5">
-                <div>
-                  <h2>🏆 최종 우승자: ${winner} 🏆</h2>
-                  <div class="d-flex justify-center">
-                    <button type="button" class="btn btn-cyan">다시 시작하기</button>
-                  </div>
-                </div>
-            </section>`;
-};
+import { inputController } from './@share/controller.js';
+import { winnerSection } from './@share/view.js';
 
 const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {

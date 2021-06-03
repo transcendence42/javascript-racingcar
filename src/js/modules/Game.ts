@@ -1,5 +1,6 @@
 import CarNameComponent from './CarName.js';
 import RaceComponent from './Race.js';
+import { ERROR_MESSAGE } from './@share/message.js';
 
 const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
   const carNameInputEvent = (): void => {
@@ -18,7 +19,7 @@ const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
         count: Number(raceCountInput.value),
       });
     } else {
-      alert('자동차 이름 먼저 입력해주세요!');
+      alert(ERROR_MESSAGE.INVALID_INPUT_PROCEDURE);
     }
   };
 

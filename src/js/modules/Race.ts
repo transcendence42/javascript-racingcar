@@ -1,5 +1,6 @@
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
+import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
@@ -49,7 +50,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
 
   const init = async (count: number): Promise<void> => {
     if (!checkValidCount(count)) {
-      alert(`유효하지 않은 입력입니다. 재입력 해주세요.`);
+      alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
       const racingCountInput = document.getElementById('racing-count-input') as HTMLInputElement;
       racingCountInput.value = '';
       racingCountInput.focus();
@@ -58,7 +59,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     await render({ count });
     WinnerComponent({ $app, cars: _cars });
     await wait(2000);
-    alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆');
+    alert(MESSAGE.CELEBRATE_WINNER);
     return;
   };
 
