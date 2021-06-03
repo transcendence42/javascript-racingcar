@@ -1,6 +1,6 @@
 import CarNameComponent from '../CarName.js';
 import RaceComponent from '../Race.js';
-import { ERROR_MESSAGE } from './message.js';
+import { ERROR_MESSAGE } from './constants.js';
 import { carNameInputInit } from './init.js';
 const carNameInputEvent = () => {
     const carNamesInput = document.getElementById('car-name-input');

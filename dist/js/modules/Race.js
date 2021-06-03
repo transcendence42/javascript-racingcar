@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
-import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
+import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { racingCountInputInit } from './@share/init.js';
+import { removeSpinner } from './@share/spinner.js';
 const RaceComponent = ({ $app, count }) => {
     let _cars;
     const checkValidCount = (count) => {
@@ -28,12 +29,6 @@ const RaceComponent = ({ $app, count }) => {
         });
         return cars;
     };
-    const removeSpinner = (carPlayer) => {
-        var _a, _b, _c, _d;
-        if (((_b = (_a = carPlayer.parentNode) === null || _a === void 0 ? void 0 : _a.lastElementChild) === null || _b === void 0 ? void 0 : _b.className) === 'd-flex justify-center mt-3') {
-            (_d = (_c = carPlayer.parentNode) === null || _c === void 0 ? void 0 : _c.lastElementChild) === null || _d === void 0 ? void 0 : _d.remove();
-        }
-    };
     const render = ({ count }) => __awaiter(void 0, void 0, void 0, function* () {
         const carPlayer = document.getElementsByClassName('car-player');
         let tryCount = count;
@@ -48,7 +43,7 @@ const RaceComponent = ({ $app, count }) => {
                 }
             }
             tryCount -= 1;
-            yield wait(1000);
+            yield wait(DELAY.RACE);
         }
     });
     const init = (count) => __awaiter(void 0, void 0, void 0, function* () {
@@ -60,7 +55,7 @@ const RaceComponent = ({ $app, count }) => {
         _cars = assignCarsName();
         yield render({ count });
         WinnerComponent({ $app, cars: _cars });
-        yield wait(2000);
+        yield wait(DELAY.ALERT);
         alert(MESSAGE.CELEBRATE_WINNER);
         return;
     });

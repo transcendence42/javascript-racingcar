@@ -1,7 +1,8 @@
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
-import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
+import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { racingCountInputInit } from './@share/init.js';
+import { removeSpinner } from './@share/spinner.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
@@ -23,12 +24,6 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     return cars;
   };
 
-  const removeSpinner = (carPlayer: Element): void => {
-    if (carPlayer.parentNode?.lastElementChild?.className === 'd-flex justify-center mt-3') {
-      carPlayer.parentNode?.lastElementChild?.remove();
-    }
-  };
-
   const render = async ({ count }: { count: number }): Promise<void> => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
       'car-player',
@@ -45,7 +40,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
         }
       }
       tryCount -= 1;
-      await wait(1000);
+      await wait(DELAY.RACE);
     }
   };
 
@@ -58,7 +53,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     _cars = assignCarsName();
     await render({ count });
     WinnerComponent({ $app, cars: _cars });
-    await wait(2000);
+    await wait(DELAY.ALERT);
     alert(MESSAGE.CELEBRATE_WINNER);
     return;
   };

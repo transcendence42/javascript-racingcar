@@ -1,5 +1,5 @@
 import { carNamesSection, carNameDiv } from './@share/view.js';
-import { ERROR_MESSAGE } from './@share/message.js';
+import { ERROR_MESSAGE } from './@share/constants.js';
 import { carNameInputInit } from './@share/init.js';
 
 const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; carNames: string }): void => {
