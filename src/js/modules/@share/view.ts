@@ -1,5 +1,4 @@
-const startSection = 
-`<section class="d-flex justify-center mt-5">
+const startSection = `<section class="d-flex justify-center mt-5">
     <form>
       <fieldset>
         <h1 class="text-center">🏎️ 자동차 경주 게임</h1>
@@ -62,4 +61,6 @@ const winnerSection = (winner: string): string => {
               </section>`;
 };
 
-export { startSection, carNamesSection, carNameDiv, winnerSection };
+const forwardIconDiv = `<div class="forward-icon mt-2">⬇️️</div>`;
+
+export { startSection, carNamesSection, carNameDiv, winnerSection, forwardIconDiv };

@@ -4,6 +4,7 @@ import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
 import { removeSpinner } from './@share/spinner.js';
 import { checkCarNameDataset } from './@share/dom-dataset.js';
+import { forwardIconDiv } from './@share/view.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
@@ -38,7 +39,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
           _cars[i].move();
-          carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
+          carPlayer[i].insertAdjacentHTML('afterend', forwardIconDiv);
         }
         if (tryCount <= 1) {
           removeSpinner(carPlayer[i]);
