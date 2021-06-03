@@ -1,7 +1,7 @@
-import { initEnable } from './@share/utils.js';
-import { inputController } from './@share/controller.js';
-import { winnerSection } from './@share/view.js';
 import { setCarNameDataset } from './@share/dom-dataset.js';
+import { inputController } from './@share/controller.js';
+import { initEnable } from './@share/utils.js';
+import { winnerSection } from './@share/view.js';
 const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);

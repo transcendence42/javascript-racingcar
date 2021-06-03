@@ -7,12 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
-import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
+import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
-import { removeSpinner } from './@share/spinner.js';
+import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { checkCarNameDataset } from './@share/dom-dataset.js';
+import { removeSpinner } from './@share/spinner.js';
+import { forwardIconDiv } from './@share/view.js';
 const RaceComponent = ({ $app, count }) => {
     let _cars;
     const checkValidCount = (count) => {
@@ -37,7 +38,7 @@ const RaceComponent = ({ $app, count }) => {
             for (let i = 0; i < carPlayer.length; i += 1) {
                 if (getRandomSingleDigit(0, 9) >= 4) {
                     _cars[i].move();
-                    carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
+                    carPlayer[i].insertAdjacentHTML('afterend', forwardIconDiv);
                 }
                 if (tryCount <= 1) {
                     removeSpinner(carPlayer[i]);
