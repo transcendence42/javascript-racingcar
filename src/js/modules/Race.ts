@@ -1,6 +1,9 @@
 import { Car, getRandomSingleDigit } from './utils.js';
 
 const RaceComponent = ({ count }: { count: number }): Car[] => {
+  let _cars: Car[];
+  let _startTime: number = 0;
+
   const checkValidCount = (count: number): boolean => {
     return count - Math.floor(count) === 0 && count > 0;
   };
@@ -24,23 +27,32 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
     }
   };
 
-  const render = ({ cars, count }: { cars: Car[]; count: number }): Car[] => {
+  const racingAnimationFrame = (): void => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
       'car-player',
     ) as HTMLCollectionOf<Element>;
-    let tryCount: number = count;
 
-    while (tryCount > 0) {
+    _startTime += 1;
+    if (_startTime < 100) {
+      requestAnimationFrame(racingAnimationFrame);
+    } else {
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
-          cars[i].move();
+          _cars[i].move();
           removeSpinner(carPlayer[i]);
           carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
         }
       }
+      _startTime = 0;
+    }
+  };
+
+  const render = ({ count }: { count: number }): void => {
+    let tryCount: number = count;
+    while (tryCount > 0) {
+      requestAnimationFrame(racingAnimationFrame);
       tryCount -= 1;
     }
-    return cars;
   };
 
   const init = (count: number): Car[] => {
@@ -50,7 +62,9 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
       racingCountInput.value = '';
       racingCountInput.focus();
     }
-    return render({ cars: assignCarsName(), count });
+    _cars = assignCarsName();
+    render({ count });
+    return _cars;
   };
 
   return init(count);

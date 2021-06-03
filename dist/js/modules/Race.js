@@ -1,5 +1,7 @@
 import { Car, getRandomSingleDigit } from './utils.js';
 const RaceComponent = ({ count }) => {
+    let _cars;
+    let _startTime = 0;
     const checkValidCount = (count) => {
         return count - Math.floor(count) === 0 && count > 0;
     };
@@ -21,23 +23,29 @@ const RaceComponent = ({ count }) => {
             (_d = (_c = carPlayer.parentNode) === null || _c === void 0 ? void 0 : _c.lastElementChild) === null || _d === void 0 ? void 0 : _d.remove();
         }
     };
-    const render = ({ cars, count }) => {
+    const racingAnimationFrame = () => {
         const carPlayer = document.getElementsByClassName('car-player');
-        let tryCount = count;
-        while (tryCount > 0) {
+        _startTime += 1;
+        if (_startTime < 100) {
+            requestAnimationFrame(racingAnimationFrame);
+        }
+        else {
             for (let i = 0; i < carPlayer.length; i += 1) {
                 if (getRandomSingleDigit(0, 9) >= 4) {
-                    cars[i].move();
+                    _cars[i].move();
                     removeSpinner(carPlayer[i]);
-                    // if (carPlayer[i].parentNode?.lastElementChild?.className === 'd-flex justify-center mt-3') {
-                    //   carPlayer[i].parentNode?.lastElementChild?.remove()
-                    // }
                     carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
                 }
             }
+            _startTime = 0;
+        }
+    };
+    const render = ({ count }) => {
+        let tryCount = count;
+        while (tryCount > 0) {
+            requestAnimationFrame(racingAnimationFrame);
             tryCount -= 1;
         }
-        return cars;
     };
     const init = (count) => {
         if (!checkValidCount(count)) {
@@ -46,7 +54,9 @@ const RaceComponent = ({ count }) => {
             racingCountInput.value = '';
             racingCountInput.focus();
         }
-        return render({ cars: assignCarsName(), count });
+        _cars = assignCarsName();
+        render({ count });
+        return _cars;
     };
     return init(count);
 };
