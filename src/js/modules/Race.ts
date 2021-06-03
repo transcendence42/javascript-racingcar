@@ -1,6 +1,7 @@
 import { Car, getRandomSingleDigit } from './utils.js';
+import WinnerComponent from './Winner.js';
 
-const RaceComponent = ({ count }: { count: number }): Car[] => {
+const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null, count: number }): void => {
   let _cars: Car[];
   let _startTime: number = 0;
 
@@ -27,15 +28,36 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
     }
   };
 
-  const racingAnimationFrame = (): void => {
+  // const racingAnimationFrame = (): void => {
+  //   const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
+  //     'car-player',
+  //   ) as HTMLCollectionOf<Element>;
+
+  //   _startTime += 1;
+  //   if (_startTime < 100) {
+  //     requestAnimationFrame(racingAnimationFrame);
+  //   } else {
+  //     for (let i = 0; i < carPlayer.length; i += 1) {
+  //       if (getRandomSingleDigit(0, 9) >= 4) {
+  //         _cars[i].move();
+  //         removeSpinner(carPlayer[i]);
+  //         carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
+  //       }
+  //     }
+  //     _startTime = 0;
+  //   }
+  // };
+
+  const wait = async (delay: number): Promise<number> => {
+    return new Promise<number>((resolve) => setTimeout(resolve, delay));
+  };
+
+  const render = async ({ count }: { count: number }): Promise<void> => {
     const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
       'car-player',
     ) as HTMLCollectionOf<Element>;
-
-    _startTime += 1;
-    if (_startTime < 100) {
-      requestAnimationFrame(racingAnimationFrame);
-    } else {
+    let tryCount: number = count;
+    while (tryCount > 0) {
       for (let i = 0; i < carPlayer.length; i += 1) {
         if (getRandomSingleDigit(0, 9) >= 4) {
           _cars[i].move();
@@ -43,19 +65,12 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
           carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
         }
       }
-      _startTime = 0;
-    }
-  };
-
-  const render = ({ count }: { count: number }): void => {
-    let tryCount: number = count;
-    while (tryCount > 0) {
-      requestAnimationFrame(racingAnimationFrame);
       tryCount -= 1;
+      await wait(1000);
     }
   };
 
-  const init = (count: number): Car[] => {
+  const init = async (count: number): Promise<void> => {
     if (!checkValidCount(count)) {
       alert(`유효하지 않은 입력입니다. 재입력 해주세요.`);
       const racingCountInput = document.getElementById('racing-count-input') as HTMLInputElement;
@@ -63,11 +78,12 @@ const RaceComponent = ({ count }: { count: number }): Car[] => {
       racingCountInput.focus();
     }
     _cars = assignCarsName();
-    render({ count });
-    return _cars;
+    await render({ count });
+    WinnerComponent({ $app, cars: _cars });
+    return ;
   };
 
-  return init(count);
+  init(count);
 };
 
 export default RaceComponent;

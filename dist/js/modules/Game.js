@@ -1,6 +1,5 @@
 import CarNameComponent from './CarName.js';
 import RaceComponent from './Race.js';
-import WinnerComponent from './Winner.js';
 const Game = ({ $app }) => {
     const carNameInputEvent = () => {
         const carNamesInput = document.getElementById('car-name-input');
@@ -12,10 +11,10 @@ const Game = ({ $app }) => {
         const raceCountInput = document.querySelector('input[type="number"]');
         const carNamesInput = document.querySelector('input[type="text"]');
         if (raceCountInput && carNamesInput.value !== '') {
-            const result = RaceComponent({
+            RaceComponent({
+                $app,
                 count: Number(raceCountInput.value),
             });
-            WinnerComponent({ $app, cars: result });
         }
         else {
             alert('자동차 이름 먼저 입력해주세요!');

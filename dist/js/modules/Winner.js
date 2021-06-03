@@ -4,20 +4,20 @@ import RaceComponent from './Race.js';
 const carNameInputEvent = () => {
     const carNamesInput = document.getElementById('car-name-input');
     if (carNamesInput) {
-        CarNameComponent({
-            $app: document.querySelector('#app'),
-            carNames: carNamesInput.value,
-        });
+        CarNameComponent({ $app: document.querySelector('#app'), carNames: carNamesInput.value });
     }
 };
 const raceCountInputEvent = () => {
     const raceCountInput = document.querySelector('input[type="number"]');
-    if (raceCountInput) {
-        const result = RaceComponent({ count: Number(raceCountInput.value) });
-        WinnerComponent({
+    const carNamesInput = document.querySelector('input[type="text"]');
+    if (raceCountInput && carNamesInput.value !== '') {
+        RaceComponent({
             $app: document.querySelector('#app'),
-            cars: result,
+            count: Number(raceCountInput.value),
         });
+    }
+    else {
+        alert('자동차 이름 먼저 입력해주세요!');
     }
 };
 const inputController = () => {

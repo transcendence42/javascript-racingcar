@@ -1,5 +1,15 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { Car, getRandomSingleDigit } from './utils.js';
-const RaceComponent = ({ count }) => {
+import WinnerComponent from './Winner.js';
+const RaceComponent = ({ $app, count }) => {
     let _cars;
     let _startTime = 0;
     const checkValidCount = (count) => {
@@ -23,13 +33,31 @@ const RaceComponent = ({ count }) => {
             (_d = (_c = carPlayer.parentNode) === null || _c === void 0 ? void 0 : _c.lastElementChild) === null || _d === void 0 ? void 0 : _d.remove();
         }
     };
-    const racingAnimationFrame = () => {
+    // const racingAnimationFrame = (): void => {
+    //   const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
+    //     'car-player',
+    //   ) as HTMLCollectionOf<Element>;
+    //   _startTime += 1;
+    //   if (_startTime < 100) {
+    //     requestAnimationFrame(racingAnimationFrame);
+    //   } else {
+    //     for (let i = 0; i < carPlayer.length; i += 1) {
+    //       if (getRandomSingleDigit(0, 9) >= 4) {
+    //         _cars[i].move();
+    //         removeSpinner(carPlayer[i]);
+    //         carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
+    //       }
+    //     }
+    //     _startTime = 0;
+    //   }
+    // };
+    const wait = (delay) => __awaiter(void 0, void 0, void 0, function* () {
+        return new Promise((resolve) => setTimeout(resolve, delay));
+    });
+    const render = ({ count }) => __awaiter(void 0, void 0, void 0, function* () {
         const carPlayer = document.getElementsByClassName('car-player');
-        _startTime += 1;
-        if (_startTime < 100) {
-            requestAnimationFrame(racingAnimationFrame);
-        }
-        else {
+        let tryCount = count;
+        while (tryCount > 0) {
             for (let i = 0; i < carPlayer.length; i += 1) {
                 if (getRandomSingleDigit(0, 9) >= 4) {
                     _cars[i].move();
@@ -37,17 +65,11 @@ const RaceComponent = ({ count }) => {
                     carPlayer[i].insertAdjacentHTML('afterend', '<div class="forward-icon mt-2">⬇️️</div>');
                 }
             }
-            _startTime = 0;
-        }
-    };
-    const render = ({ count }) => {
-        let tryCount = count;
-        while (tryCount > 0) {
-            requestAnimationFrame(racingAnimationFrame);
             tryCount -= 1;
+            yield wait(1000);
         }
-    };
-    const init = (count) => {
+    });
+    const init = (count) => __awaiter(void 0, void 0, void 0, function* () {
         if (!checkValidCount(count)) {
             alert(`유효하지 않은 입력입니다. 재입력 해주세요.`);
             const racingCountInput = document.getElementById('racing-count-input');
@@ -55,9 +77,10 @@ const RaceComponent = ({ count }) => {
             racingCountInput.focus();
         }
         _cars = assignCarsName();
-        render({ count });
-        return _cars;
-    };
-    return init(count);
+        yield render({ count });
+        WinnerComponent({ $app, cars: _cars });
+        return;
+    });
+    init(count);
 };
 export default RaceComponent;
