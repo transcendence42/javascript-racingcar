@@ -1,6 +1,7 @@
 import { carNamesSection, carNameDiv } from './@share/view.js';
 import { ERROR_MESSAGE } from './@share/constants.js';
 import { carNameInputInit } from './@share/init.js';
+import { setCarNameDataset } from './@share/dom-dataset.js';
 
 const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; carNames: string }): void => {
   const checkCarNames = (carNameList: string[]) =>
@@ -11,13 +12,14 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
-    
+
     return;
   };
 
   const init = (carNames: string): void => {
     const carNameList: string[] = carNames.split(',').map((x) => x.trim());
     if (checkCarNames(carNameList)) {
+      setCarNameDataset('click');
       render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
     } else {
       alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);

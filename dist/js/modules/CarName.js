@@ -1,6 +1,7 @@
 import { carNamesSection, carNameDiv } from './@share/view.js';
 import { ERROR_MESSAGE } from './@share/constants.js';
 import { carNameInputInit } from './@share/init.js';
+import { setCarNameDataset } from './@share/dom-dataset.js';
 const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
@@ -13,6 +14,7 @@ const CarNameComponent = ({ $app, carNames }) => {
     const init = (carNames) => {
         const carNameList = carNames.split(',').map((x) => x.trim());
         if (checkCarNames(carNameList)) {
+            setCarNameDataset('click');
             render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
         }
         else {

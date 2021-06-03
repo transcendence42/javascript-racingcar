@@ -1,17 +1,17 @@
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
 import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
-import { racingCountInputInit } from './@share/init.js';
+import { racingCountInputInit, carNameInputInit } from './@share/init.js';
 import { removeSpinner } from './@share/spinner.js';
+import { checkCarNameDataset } from './@share/dom-dataset.js';
 
 const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: number }): void => {
   let _cars: Car[];
 
   const checkValidCount = (count: number): boolean => {
-
     return count - Math.floor(count) === 0 && count > 0;
   };
-  
+
   const getInputCarsName = (): string[] => {
     const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
 
@@ -50,9 +50,16 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   };
 
   const init = async (count: number): Promise<void> => {
+    if (!checkCarNameDataset()) {
+      alert(ERROR_MESSAGE.INVALID_INPUT_PROCEDURE);
+      carNameInputInit();
+
+      return;
+    }
     if (!checkValidCount(count)) {
       alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
       racingCountInputInit();
+
       return;
     }
     _cars = assignCarsName();
@@ -60,7 +67,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
     WinnerComponent({ $app, cars: _cars });
     await wait(DELAY.ALERT);
     alert(MESSAGE.CELEBRATE_WINNER);
-    
+
     return;
   };
 
