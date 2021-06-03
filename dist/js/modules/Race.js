@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Car, getRandomSingleDigit, wait } from './@share/utils.js';
 import WinnerComponent from './Winner.js';
+import { ERROR_MESSAGE, MESSAGE } from './@share/message.js';
 const RaceComponent = ({ $app, count }) => {
     let _cars;
     const checkValidCount = (count) => {
@@ -51,7 +52,7 @@ const RaceComponent = ({ $app, count }) => {
     });
     const init = (count) => __awaiter(void 0, void 0, void 0, function* () {
         if (!checkValidCount(count)) {
-            alert(`유효하지 않은 입력입니다. 재입력 해주세요.`);
+            alert(ERROR_MESSAGE.INVALID_COUNT_INPUT);
             const racingCountInput = document.getElementById('racing-count-input');
             racingCountInput.value = '';
             racingCountInput.focus();
@@ -60,7 +61,7 @@ const RaceComponent = ({ $app, count }) => {
         yield render({ count });
         WinnerComponent({ $app, cars: _cars });
         yield wait(2000);
-        alert('🏆 축하합니다 ㅎㅎ 최종 우승자: EAST, WEST, SOUTH, NORTH 🏆');
+        alert(MESSAGE.CELEBRATE_WINNER);
         return;
     });
     init(count);

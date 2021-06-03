@@ -1,4 +1,5 @@
 import { carNamesSection, carNameDiv } from './@share/view.js';
+import { ERROR_MESSAGE } from './@share/message.js';
 const CarNameComponent = ({ $app, carNames }) => {
     const checkCarNames = (carNameList) => carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
     const render = (JSX) => {
@@ -14,7 +15,7 @@ const CarNameComponent = ({ $app, carNames }) => {
             render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));
         }
         else {
-            alert('유효하지 않은 입력입니다. 재입력 해주세요.');
+            alert(ERROR_MESSAGE.INVALID_CAR_NAME_INPUT);
             const carNameInput = document.getElementById('car-name-input');
             carNameInput.value = '';
             carNameInput.focus();
