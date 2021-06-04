@@ -5,7 +5,7 @@ import {
   checkNumberValidation
 } from "../model/validation.js";
 import { makeCarPlayerTemplate, makeArrowTemplate } from "./templates.js";
-import { sleep } from "../utils.js";
+import { ftSleep } from "../utils.js";
 
 export function renderRepetitionInput() {
   if (checkNamesValidation($("#names input").value)) {
@@ -31,16 +31,25 @@ function renderCarPlayerSections(inputString: string): Car[] {
 }
 
 async function renderEachRound(num: number, cars: Car[]) {
-  await sleep(1000);
+  await ftSleep(1000);
   cars.map(car => {
     console.log(car.name);
     if (car.runDice()) {
+      car.score += 1;
       $(`#player-${car.name}`).insertAdjacentHTML(
         "afterend",
         makeArrowTemplate()
       );
     }
   });
+}
+
+function deleteSpiners() {
+  let spinner: HTMLElement | null = $(".spinner-container").parentElement;
+  while (spinner) {
+    spinner.remove();
+    spinner = $(".spinner-container").parentElement;
+  }
 }
 
 async function renderRounds(cars: Car[], num: number) {
@@ -50,6 +59,7 @@ async function renderRounds(cars: Car[], num: number) {
     await renderEachRound(num, cars);
     dupNum--;
   }
+  deleteSpiners();
 }
 
 export function renderScore() {

@@ -19,6 +19,9 @@ export default function $(selector) {
         get value() {
             return element.value;
         },
+        get parentElement() {
+            return element.parentElement;
+        },
         set innerHTML(newInnerHTML) {
             element.innerHTML = newInnerHTML;
         },

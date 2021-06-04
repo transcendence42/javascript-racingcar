@@ -23,6 +23,9 @@ export default function $(selector: string) {
     get value(): string {
       return (<HTMLInputElement>element).value;
     },
+    get parentElement(): HTMLElement | null{
+      return element.parentElement; 
+    },
     set innerHTML(newInnerHTML: string) {
       element.innerHTML = newInnerHTML;
     },

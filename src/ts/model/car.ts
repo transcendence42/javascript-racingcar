@@ -26,4 +26,8 @@ export class Car {
   get name(): string {
     return this._name;
   }
+
+  set score(num: number) {
+    this._score = num;
+  }
 }

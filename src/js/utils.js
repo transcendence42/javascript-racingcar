@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export function sleep(ms) {
+export function ftSleep(ms) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((r) => setTimeout(r, ms));
     });

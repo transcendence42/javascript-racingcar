@@ -11,7 +11,7 @@ import $ from "../selector.js";
 import { makeCars } from "../model/car.js";
 import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
 import { makeCarPlayerTemplate, makeArrowTemplate } from "./templates.js";
-import { sleep } from "../utils.js";
+import { ftSleep } from "../utils.js";
 export function renderRepetitionInput() {
     if (checkNamesValidation($("#names input").value)) {
         $("#names input").setAttribute("readonly", "");
@@ -33,25 +33,31 @@ function renderCarPlayerSections(inputString) {
 }
 function renderEachRound(num, cars) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield sleep(1000);
+        yield ftSleep(1000);
         cars.map(car => {
             console.log(car.name);
             if (car.runDice()) {
+                car.score += 1;
                 $(`#player-${car.name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
             }
         });
     });
 }
+function deleteSpiners() {
+    let spinner = $(".spinner-container").parentElement;
+    while (spinner) {
+        spinner.remove();
+        spinner = $(".spinner-container").parentElement;
+    }
+}
 function renderRounds(cars, num) {
     return __awaiter(this, void 0, void 0, function* () {
-        let nu = num;
-        console.log(num);
-        while (nu > 0) {
+        let dupNum = num;
+        while (dupNum > 0) {
             yield renderEachRound(num, cars);
-            nu--;
-            console.log('minus num', nu);
+            dupNum--;
         }
-        console.log('finish rounds');
+        yield deleteSpiners();
     });
 }
 export function renderScore() {
