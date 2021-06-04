@@ -1,4 +1,4 @@
-export default class Car {
+class Car {
   name: string;
   position: number;
 
@@ -11,3 +11,5 @@ export default class Car {
     this.position += 1;
   }
 }
+
+export { Car };
