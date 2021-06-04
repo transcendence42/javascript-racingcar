@@ -13,10 +13,11 @@ class Game {
     this.maxPosition = 0;
   }
 
-  playGame = (): void => {
+  play = (): void => {
     this.cars.forEach((car) => {
       if (Math.floor(Math.random() * 9) + 1 >= 4) {
         car.moveForward();
+        this.updateMaxPosition();
       }
     });
   };
@@ -40,28 +41,3 @@ class Game {
 }
 
 export { Game };
-
-export function getCarNames() {
-  const carNameInput = document.getElementById('car-names-input').value;
-  const carNameArray = carNameInput.split(',');
-
-  const carNameValid = checkCarNames(carNameInput, carNameArray);
-  if (carNameValid !== ERROR_INPUT.NONE) {
-    alert(carNameValid);
-    resetCarNamesInput();
-    return;
-  }
-  createCarObject(carNameArray);
-}
-
-export function getCount() {
-  racingCount = document.getElementById('racing-count-input').value;
-
-  const racingCountValid = checkRacingCount();
-  if (racingCountValid !== ERROR_INPUT.NONE) {
-    alert(racingCountValid);
-    resetRacingCountInput();
-    return;
-  }
-  startRacing(carObjectArray, racingCount);
-}
