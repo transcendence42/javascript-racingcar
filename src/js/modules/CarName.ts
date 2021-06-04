@@ -10,6 +10,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
 
   const render = (JSX: string): void => {
     const sectionElement: HTMLDivElement | null = $app;
+
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
@@ -19,6 +20,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
 
   const init = (carNames: string): void => {
     const carNameList: string[] = carNames.split(',').map((x) => x.trim());
+
     if (checkCarNames(carNameList)) {
       setCarNameDataset('click');
       render(carNamesSection(carNameList.map((carName) => carNameDiv(carName)).join('')));

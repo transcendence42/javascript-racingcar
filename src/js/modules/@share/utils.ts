@@ -33,12 +33,14 @@ const enable = (element: HTMLButtonElement | HTMLInputElement) => {
 
 const carNameEnable = () => {
   const carNamesInput: HTMLInputElement = $('#car-name-input') as HTMLInputElement;
+
   enable(carNamesInput);
   enable(<HTMLButtonElement>carNamesInput.parentElement?.children[1]);
 };
 
 const countEnable = () => {
   const raceCountInput: HTMLInputElement = $('input[type="number"]') as HTMLInputElement;
+
   enable(raceCountInput);
   enable(<HTMLButtonElement>raceCountInput.parentElement?.children[1]);
 };
@@ -46,6 +48,7 @@ const countEnable = () => {
 const initEnable = () => {
   const carNamesInput: HTMLInputElement = $('#car-name-input') as HTMLInputElement;
   const raceCountInput: HTMLInputElement = $('input[type="number"]') as HTMLInputElement;
+  
   enable(carNamesInput);
   enable(<HTMLButtonElement>carNamesInput.parentElement?.children[1]);
   enable(raceCountInput);

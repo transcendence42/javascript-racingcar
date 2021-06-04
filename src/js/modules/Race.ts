@@ -11,6 +11,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   let _cars: Car[];
 
   const checkValidCount = (count: number): boolean => {
+
     return count - Math.floor(count) === 0 && count > 0;
   };
 
@@ -23,6 +24,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   const assignCarsName = (): Car[] => {
     const cars: Car[] = [];
     const inputCarNames = getInputCarsName();
+    
     inputCarNames.forEach((name) => {
       cars.push(new Car(name));
     });

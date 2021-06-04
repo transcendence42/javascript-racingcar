@@ -4,6 +4,7 @@ import { startSection } from './@share/view.js';
 const Game = ({ $app }: { $app: HTMLDivElement | null }): void => {
   const render = (JSX: string): void => {
     const sectionElement: HTMLDivElement | null = $app;
+    
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }

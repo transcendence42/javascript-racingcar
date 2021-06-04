@@ -6,11 +6,7 @@ const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
         const totalDistances = cars.map((car) => car.distance);
         const maxDistance = Math.max(...totalDistances);
-        return cars
-            .filter((car) => {
-            return car.distance === maxDistance;
-        })
-            .map((winner) => winner.name);
+        return cars.filter((car) => car.distance === maxDistance).map((winner) => winner.name);
     };
     const render = (JSX) => {
         const sectionElement = $app;
