@@ -14,6 +14,7 @@ const carNameInputEvent = (): void => {
     CarNameComponent({ $app: document.querySelector<HTMLDivElement>('#app'), carNames: carNamesInput.value });
   }
 };
+
 const raceCountInputEvent = () => {
   const raceCountInput: HTMLInputElement = document.querySelector('input[type="number"]') as HTMLInputElement;
   const carNamesInput: HTMLInputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
@@ -31,6 +32,7 @@ const raceCountInputEvent = () => {
     initEnable();
   }
 };
+
 const inputController = (): void => {
   const gameButton: HTMLCollectionOf<HTMLButtonElement> = document.getElementsByTagName('button');
   gameButton[0].onclick = carNameInputEvent;
