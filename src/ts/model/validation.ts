@@ -8,7 +8,6 @@ export function checkNamesValidation(inputString: string): boolean {
 }
 
 export function checkNumberValidation(inputNumber: string): boolean {
-  console.log(Number(inputNumber));
   if (Number.isNaN(Number(inputNumber)) || Number(inputNumber) <= 0) {
     return false;
   }

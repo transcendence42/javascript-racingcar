@@ -18,7 +18,7 @@
 
 ### 배경 지식
 - [requestAnimationFrame()에 관한 설명](https://m.blog.naver.com/psj9102/221745767536)
-- [async & await]()
+- [async & await](https://joshua1988.github.io/web-development/javascript/js-async-await/)
   - [자바스크립트의 비동기 처리와 콜백함수](https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/)
   - [Promise](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)
 > ```

@@ -44,24 +44,21 @@ async function renderEachRound(num: number, cars: Car[]) {
 }
 
 async function renderRounds(cars: Car[], num: number) {
-  let nu = 5;
+  let dupNum =  num;
 
-  while (nu > 0){
+  while (dupNum > 0){
     await renderEachRound(num, cars);
-    nu--;
-    console.log('minus num', nu);
+    dupNum--;
   }
-  console.log('finish rounds');
 }
 
 export function renderScore() {
-  const inputString: string = $("#names input").value;
   if (!checkNumberValidation($("#repetition input").value)) {
     $("#repetition input").value = "";
     alert("시도 횟수를 올바르게 입력해 주세요.");
   } else {
-    let cars: Car[] = renderCarPlayerSections(inputString);
-    renderRounds(cars, Number(inputString));
+    let cars: Car[] = renderCarPlayerSections($("#names input").value);
+    renderRounds(cars, parseInt($("#repetition input").value));
   }
 }
 

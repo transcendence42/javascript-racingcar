@@ -1,35 +1,67 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import $ from "../selector.js";
 import { makeCars } from "../model/car.js";
 import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
-import { makeCarPlayerTemplate } from "./templates.js";
+import { makeCarPlayerTemplate, makeArrowTemplate } from "./templates.js";
+import { sleep } from "../utils.js";
 export function renderRepetitionInput() {
     if (checkNamesValidation($("#names input").value)) {
-        $("#names input").setAttribute('readonly', '');
+        $("#names input").setAttribute("readonly", "");
         $("#repetition").show();
     }
     else {
-        $("#names input").value = '';
-        alert('이름을 올바르게 입력해 주세요.');
+        $("#names input").value = "";
+        alert("이름을 올바르게 입력해 주세요.");
     }
 }
 function renderCarPlayerSections(inputString) {
-    let cars = makeCars(inputString.split(','));
+    let cars = makeCars(inputString.split(",").map(x => x.trim()));
     $("#result").show();
     $("#result div").innerHTML = "";
     cars.forEach(car => {
         $("#result div").insertAdjacentHTML("beforeend", makeCarPlayerTemplate(car.name));
     });
+    return cars;
 }
-function clearInputs() {
+function renderEachRound(num, cars) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield sleep(1000);
+        cars.map(car => {
+            console.log(car.name);
+            if (car.runDice()) {
+                $(`#player-${car.name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
+            }
+        });
+    });
+}
+function renderRounds(cars, num) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let nu = num;
+        console.log(num);
+        while (nu > 0) {
+            yield renderEachRound(num, cars);
+            nu--;
+            console.log('minus num', nu);
+        }
+        console.log('finish rounds');
+    });
 }
 export function renderScore() {
-    const inputString = $("#names input").value;
     if (!checkNumberValidation($("#repetition input").value)) {
-        $("#repetition input").value = '';
-        alert('시도 횟수를 올바르게 입력해 주세요.');
+        $("#repetition input").value = "";
+        alert("시도 횟수를 올바르게 입력해 주세요.");
     }
     else {
-        renderCarPlayerSections(inputString);
+        let cars = renderCarPlayerSections($("#names input").value);
+        renderRounds(cars, parseInt($("#repetition input").value));
     }
 }
 export function renderChampion() { }
