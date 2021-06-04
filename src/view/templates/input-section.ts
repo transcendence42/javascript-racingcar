@@ -1,6 +1,6 @@
 const inputSection = (): string => {
   return `
-  <section class="d-flex justify-center mt-5">
+  <section id="input-section" class="d-flex justify-center mt-5">
     <form>
       <fieldset>
         <h1 class="text-center">🏎️ 자동차 경주 게임</h1>

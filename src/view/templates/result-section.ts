@@ -1,6 +1,6 @@
 const resultSection = (winners: string): string => {
   return `
-  <section class="d-flex justify-center mt-5">
+  <section id="result-section" class="d-flex justify-center mt-5">
     <div>
       <h2>🏆 최종 우승자: ${winners} 🏆</h2>
       <div class="d-flex justify-center">
