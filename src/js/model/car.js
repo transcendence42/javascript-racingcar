@@ -5,6 +5,10 @@ export function makeCars(names) {
     });
     return cars;
 }
+export function getChampions(cars) {
+    const maxValue = Math.max.apply(null, cars.map(x => x.score));
+    return cars.filter((x) => x.score === maxValue).map(x => x.name);
+}
 export class Car {
     constructor(name) {
         this._name = name;

@@ -3,6 +3,7 @@
 export default function $(selector) {
     const element = document.querySelector(selector);
     return {
+        element,
         show() {
             element.style.display = "block";
         },

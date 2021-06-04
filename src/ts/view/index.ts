@@ -1,10 +1,10 @@
 import $ from "../selector.js";
-import { Car, makeCars } from "../model/car.js";
+import { Car, makeCars, getChampions } from "../model/car.js";
 import {
   checkNamesValidation,
   checkNumberValidation
 } from "../model/validation.js";
-import { makeCarPlayerTemplate, makeArrowTemplate } from "./templates.js";
+import { makeCarPlayerTemplate, makeArrowTemplate, makeChampionText } from "./templates.js";
 import { ftSleep } from "../utils.js";
 
 export function renderRepetitionInput() {
@@ -33,7 +33,6 @@ function renderCarPlayerSections(inputString: string): Car[] {
 async function renderEachRound(num: number, cars: Car[]) {
   await ftSleep(1000);
   cars.map(car => {
-    console.log(car.name);
     if (car.runDice()) {
       car.score += 1;
       $(`#player-${car.name}`).insertAdjacentHTML(
@@ -45,11 +44,17 @@ async function renderEachRound(num: number, cars: Car[]) {
 }
 
 function deleteSpiners() {
-  let spinner: HTMLElement | null = $(".spinner-container").parentElement;
+  let spinner: HTMLElement | null = $(".spinner-container").element;
   while (spinner) {
-    spinner.remove();
-    spinner = $(".spinner-container").parentElement;
+    spinner.parentElement?.remove();
+    spinner = $(".spinner-container").element;
   }
+}
+
+function renderChampion(cars: Car[]) {
+  console.log("hhaahahaha");
+  $("h2").innerHTML = makeChampionText(getChampions(cars));
+  $("#champion").show();
 }
 
 async function renderRounds(cars: Car[], num: number) {
@@ -60,6 +65,7 @@ async function renderRounds(cars: Car[], num: number) {
     dupNum--;
   }
   deleteSpiners();
+  renderChampion(cars);
 }
 
 export function renderScore() {
@@ -71,8 +77,6 @@ export function renderScore() {
     renderRounds(cars, parseInt($("#repetition input").value));
   }
 }
-
-export function renderChampion() {}
 
 function hideElements() {
   $("#repetition").setAttribute("style", "display: none;");

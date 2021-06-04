@@ -8,9 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import $ from "../selector.js";
-import { makeCars } from "../model/car.js";
+import { makeCars, getChampions } from "../model/car.js";
 import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
-import { makeCarPlayerTemplate, makeArrowTemplate } from "./templates.js";
+import { makeCarPlayerTemplate, makeArrowTemplate, makeChampionText } from "./templates.js";
 import { ftSleep } from "../utils.js";
 export function renderRepetitionInput() {
     if (checkNamesValidation($("#names input").value)) {
@@ -35,7 +35,6 @@ function renderEachRound(num, cars) {
     return __awaiter(this, void 0, void 0, function* () {
         yield ftSleep(1000);
         cars.map(car => {
-            console.log(car.name);
             if (car.runDice()) {
                 car.score += 1;
                 $(`#player-${car.name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
@@ -44,11 +43,17 @@ function renderEachRound(num, cars) {
     });
 }
 function deleteSpiners() {
-    let spinner = $(".spinner-container").parentElement;
+    var _a;
+    let spinner = $(".spinner-container").element;
     while (spinner) {
-        spinner.remove();
-        spinner = $(".spinner-container").parentElement;
+        (_a = spinner.parentElement) === null || _a === void 0 ? void 0 : _a.remove();
+        spinner = $(".spinner-container").element;
     }
+}
+function renderChampion(cars) {
+    console.log("hhaahahaha");
+    $("h2").innerHTML = makeChampionText(getChampions(cars));
+    $("#champion").show();
 }
 function renderRounds(cars, num) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -57,7 +62,8 @@ function renderRounds(cars, num) {
             yield renderEachRound(num, cars);
             dupNum--;
         }
-        yield deleteSpiners();
+        deleteSpiners();
+        renderChampion(cars);
     });
 }
 export function renderScore() {
@@ -70,7 +76,6 @@ export function renderScore() {
         renderRounds(cars, parseInt($("#repetition input").value));
     }
 }
-export function renderChampion() { }
 function hideElements() {
     $("#repetition").setAttribute("style", "display: none;");
     $("#result").setAttribute("style", "display: none;");

@@ -7,6 +7,7 @@ export default function $(selector: string) {
   const element = document.querySelector(selector) as HTMLElement;
 
   return {
+    element,
     show(): void {
       element.style.display = "block";
     },
