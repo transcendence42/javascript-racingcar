@@ -1,13 +1,28 @@
 import $ from "../selector.js";
+import { makeCars } from "../model/car.js";
 export function renderRepetitionInput() {
     $("#repetition").show();
 }
-export function renderScore() { }
+export function renderScore() {
+    //여기서부터!
+    const input = document.querySelector("#names input");
+    let cars = makeCars(input.value.split(','));
+    $("#result").show();
+    $("#result div").innerHTML = "";
+    cars.forEach(car => {
+        $("#result div").insertAdjacentHTML("beforeend", `<div class="mr-2">
+        <div class="car-player">${car.name}</div>
+        <div class="d-flex justify-center mt-3">
+          <div class="relative spinner-container">
+            <span class="material spinner"></span>
+          </div>
+        </div>
+      </div>`);
+    });
+}
 export function renderChampion() { }
 function hideElements() {
-    console.log($("#repetition"));
     $("#repetition").setAttribute("style", "display: none;");
-    console.log($("#result"));
     $("#result").setAttribute("style", "display: none;");
     $("#champion").setAttribute("style", "display: none;");
 }

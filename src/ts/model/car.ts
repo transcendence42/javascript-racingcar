@@ -1,4 +1,12 @@
-class Car {
+export function makeCars(names: string[]) : Car[] {
+  let cars : Car[] = [];
+  names.forEach((name) => {
+    cars.push(new Car(name));
+  })
+  return cars;
+}
+
+export class Car {
   private _name: string;
   private _score: number;
 
@@ -17,16 +25,5 @@ class Car {
 
   get name(): string {
     return this._name;
-  }
-}
-
-export default class Cars {
-  private _cars: Car[];
-
-  constructor(names: string[]) {
-    this._cars = [];
-    names.forEach(item => {
-      this._cars.push(new Car(item));
-    });
   }
 }

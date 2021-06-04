@@ -12,6 +12,9 @@ export default function $(selector) {
         get innerHTML() {
             return element.innerHTML;
         },
+        get innerText() {
+            return element.innerText;
+        },
         set innerHTML(newInnerHTML) {
             element.innerHTML = newInnerHTML;
         },
@@ -20,6 +23,9 @@ export default function $(selector) {
         },
         setAttribute(key, value) {
             element.setAttribute(key, value);
+        },
+        insertAdjacentHTML(position, html) {
+            element.insertAdjacentHTML(position, html);
         }
     };
 }
