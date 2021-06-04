@@ -1,5 +1,5 @@
 import { checkCarName } from './validtor.js';
-import { clearInput, preventInputValue, preventButtonClick } from './utils.js';
+import { clearInput, disableInputValue, disableButtonClick } from './utils.js';
 import { Car } from '../model/index.js';
 import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv } from '../view/renderer.js';
 import { playGame } from './player.js';
@@ -20,8 +20,8 @@ const getCarNames = (): void => {
   if (checkCarName(carNameArray)) {
     const carNameSubmitButton: HTMLButtonElement = document.getElementById('car-names-submit') as HTMLButtonElement;
 
-    preventInputValue(carNameInput);
-    preventButtonClick(carNameSubmitButton);
+    disableInputValue(carNameInput);
+    disableButtonClick(carNameSubmitButton);
     return;
   }
   clearInput(carNameInput);
@@ -37,8 +37,8 @@ const getTryCount = (): void => {
     const carNameArray: Array<string> = carNameInput?.value.split(',');
     const cars: Array<Car> = createCarsObject(carNameArray);
 
-    preventInputValue(tryCountInput);
-    preventButtonClick(tryCountSubmitButton);
+    disableInputValue(tryCountInput);
+    disableButtonClick(tryCountSubmitButton);
     renderProgressSection();
     renderCarNameDiv(carNameArray);
     renderSpinnerDiv(carNameArray)
