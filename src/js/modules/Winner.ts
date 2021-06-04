@@ -1,12 +1,12 @@
 import { setCarNameDataset } from './@share/dom-dataset.js';
 import { inputController } from './@share/controller.js';
-import { Car, initEnable } from './@share/utils.js';
+import { $$, Car, initEnable } from './@share/utils.js';
 import { winnerSection } from './@share/view.js';
 
 const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Car[] }): void => {
   const findWinners = (cars: Car[]): string[] => {
-    const totalDistances = cars.map((car) => car.distance);
-    const maxDistance = Math.max(...totalDistances);
+    const totalDistances: number[] = cars.map((car) => car.distance);
+    const maxDistance: number = Math.max(...totalDistances);
 
     return cars
       .filter((car) => {
@@ -16,7 +16,7 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
   };
 
   const render = (JSX: string): void => {
-    const sectionElement = $app;
+    const sectionElement: HTMLDivElement | null = $app;
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }
@@ -38,7 +38,7 @@ const WinnerComponent = ({ $app, cars }: { $app: HTMLDivElement | null; cars: Ca
   };
 
   const controller = (): void => {
-    const retryButton = document.getElementsByTagName('button')[2];
+    const retryButton: HTMLButtonElement = $$('button')[2] as HTMLButtonElement;
     if (retryButton) {
       retryButton.onclick = retryButtonEvent;
     }

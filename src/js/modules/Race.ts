@@ -1,6 +1,6 @@
 import WinnerComponent from './Winner.js';
 
-import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
+import { $, $$, Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
 import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { checkCarNameDataset } from './@share/dom-dataset.js';
@@ -15,7 +15,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   };
 
   const getInputCarsName = (): string[] => {
-    const carNameInput = document.getElementById('car-name-input') as HTMLInputElement;
+    const carNameInput: HTMLInputElement = $('#car-name-input') as HTMLInputElement;
 
     return carNameInput.value.split(',').map((x) => x.trim());
   };
@@ -31,9 +31,7 @@ const RaceComponent = ({ $app, count }: { $app: HTMLDivElement | null; count: nu
   };
 
   const render = async ({ count }: { count: number }): Promise<void> => {
-    const carPlayer: HTMLCollectionOf<Element> = document.getElementsByClassName(
-      'car-player',
-    ) as HTMLCollectionOf<Element>;
+    const carPlayer: NodeListOf<HTMLDivElement> = $$('.car-player') as NodeListOf<HTMLDivElement>;
     let tryCount: number = count;
 
     while (tryCount > 0) {

@@ -1,6 +1,6 @@
 import { setCarNameDataset } from './@share/dom-dataset.js';
 import { inputController } from './@share/controller.js';
-import { initEnable } from './@share/utils.js';
+import { $$, initEnable } from './@share/utils.js';
 import { winnerSection } from './@share/view.js';
 const WinnerComponent = ({ $app, cars }) => {
     const findWinners = (cars) => {
@@ -33,7 +33,7 @@ const WinnerComponent = ({ $app, cars }) => {
         return;
     };
     const controller = () => {
-        const retryButton = document.getElementsByTagName('button')[2];
+        const retryButton = $$('button')[2];
         if (retryButton) {
             retryButton.onclick = retryButtonEvent;
         }

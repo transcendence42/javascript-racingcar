@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import WinnerComponent from './Winner.js';
-import { Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
+import { $, $$, Car, getRandomSingleDigit, wait, initEnable, countEnable } from './@share/utils.js';
 import { racingCountInputInit, carNameInputInit } from './@share/init.js';
 import { ERROR_MESSAGE, MESSAGE, DELAY } from './@share/constants.js';
 import { checkCarNameDataset } from './@share/dom-dataset.js';
@@ -20,7 +20,7 @@ const RaceComponent = ({ $app, count }) => {
         return count - Math.floor(count) === 0 && count > 0;
     };
     const getInputCarsName = () => {
-        const carNameInput = document.getElementById('car-name-input');
+        const carNameInput = $('#car-name-input');
         return carNameInput.value.split(',').map((x) => x.trim());
     };
     const assignCarsName = () => {
@@ -32,7 +32,7 @@ const RaceComponent = ({ $app, count }) => {
         return cars;
     };
     const render = ({ count }) => __awaiter(void 0, void 0, void 0, function* () {
-        const carPlayer = document.getElementsByClassName('car-player');
+        const carPlayer = $$('.car-player');
         let tryCount = count;
         while (tryCount > 0) {
             for (let i = 0; i < carPlayer.length; i += 1) {

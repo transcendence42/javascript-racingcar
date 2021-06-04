@@ -9,7 +9,7 @@ const CarNameComponent = ({ $app, carNames }: { $app: HTMLDivElement | null; car
     carNameList.length === carNameList.filter((x) => x.length <= 5 && x !== '').length;
 
   const render = (JSX: string): void => {
-    const sectionElement = $app;
+    const sectionElement: HTMLDivElement | null = $app;
     if (sectionElement) {
       sectionElement.insertAdjacentHTML('beforeend', JSX);
     }

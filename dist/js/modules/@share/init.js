@@ -1,10 +1,11 @@
+import { $ } from './utils.js';
 const carNameInputInit = () => {
-    const carNameInput = document.getElementById('car-name-input');
+    const carNameInput = $('#car-name-input');
     carNameInput.value = '';
     carNameInput.focus();
 };
 const racingCountInputInit = () => {
-    const racingCountInput = document.getElementById('racing-count-input');
+    const racingCountInput = $('#racing-count-input');
     racingCountInput.value = '';
     racingCountInput.focus();
 };

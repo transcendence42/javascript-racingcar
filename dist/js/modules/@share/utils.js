@@ -22,6 +22,8 @@ const getRandomSingleDigit = (min, max) => {
 const wait = (delay) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((resolve) => setTimeout(resolve, delay));
 });
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 const disable = (element) => {
     element.disabled = true;
 };
@@ -30,23 +32,23 @@ const enable = (element) => {
 };
 const carNameEnable = () => {
     var _a;
-    const carNamesInput = document.getElementById('car-name-input');
+    const carNamesInput = $('#car-name-input');
     enable(carNamesInput);
     enable((_a = carNamesInput.parentElement) === null || _a === void 0 ? void 0 : _a.children[1]);
 };
 const countEnable = () => {
     var _a;
-    const raceCountInput = document.querySelector('input[type="number"]');
+    const raceCountInput = $('input[type="number"]');
     enable(raceCountInput);
     enable((_a = raceCountInput.parentElement) === null || _a === void 0 ? void 0 : _a.children[1]);
 };
 const initEnable = () => {
     var _a, _b;
-    const carNamesInput = document.getElementById('car-name-input');
-    const raceCountInput = document.querySelector('input[type="number"]');
+    const carNamesInput = $('#car-name-input');
+    const raceCountInput = $('input[type="number"]');
     enable(carNamesInput);
     enable((_a = carNamesInput.parentElement) === null || _a === void 0 ? void 0 : _a.children[1]);
     enable(raceCountInput);
     enable((_b = raceCountInput.parentElement) === null || _b === void 0 ? void 0 : _b.children[1]);
 };
-export { Car, getRandomSingleDigit, wait, disable, initEnable, carNameEnable, countEnable };
+export { Car, getRandomSingleDigit, wait, $, $$, disable, initEnable, carNameEnable, countEnable };
