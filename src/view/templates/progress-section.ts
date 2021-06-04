@@ -7,10 +7,20 @@ const progressSection = (): string => {
   `;
 }
 
-const carNameDiv = (name: string): string => {
+const carNameDiv = (carName: string): string => {
   return `
   <div class="mr-2">
-    <div class="car-player">${name}</div>
+    <div class="car-player">${carName}</div>
+  </div>
+  `
+}
+
+const spinnerDiv = (): string => {
+  return `
+  <div class="d-flex justify-center mt-3">
+    <div class="relative spinner-container">
+      <span class="material spinner"></span>
+    </div>
   </div>
   `
 }
@@ -21,12 +31,4 @@ const arrowDiv = (): string => {
   `
 }
 
-const spinnerDiv = (): string => {
-  return `
-  <div class="relative spinner-container">
-    <span class="material spinner"></span>
-  </div>
-  `
-}
-
-export { progressSection, carNameDiv, arrowDiv, spinnerDiv };
+export { progressSection, carNameDiv, spinnerDiv, arrowDiv };
