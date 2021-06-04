@@ -1,24 +1,36 @@
 import $ from "../selector.js";
 import { makeCars } from "../model/car.js";
+import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
+import { makeCarPlayerTemplate } from "./templates.js";
 export function renderRepetitionInput() {
-    $("#repetition").show();
+    if (checkNamesValidation($("#names input").value)) {
+        $("#names input").setAttribute('readonly', '');
+        $("#repetition").show();
+    }
+    else {
+        $("#names input").value = '';
+        alert('이름을 올바르게 입력해 주세요.');
+    }
 }
-export function renderScore() {
-    //여기서부터!
-    const input = document.querySelector("#names input");
-    let cars = makeCars(input.value.split(','));
+function renderCarPlayerSections(inputString) {
+    let cars = makeCars(inputString.split(','));
     $("#result").show();
     $("#result div").innerHTML = "";
     cars.forEach(car => {
-        $("#result div").insertAdjacentHTML("beforeend", `<div class="mr-2">
-        <div class="car-player">${car.name}</div>
-        <div class="d-flex justify-center mt-3">
-          <div class="relative spinner-container">
-            <span class="material spinner"></span>
-          </div>
-        </div>
-      </div>`);
+        $("#result div").insertAdjacentHTML("beforeend", makeCarPlayerTemplate(car.name));
     });
+}
+function clearInputs() {
+}
+export function renderScore() {
+    const inputString = $("#names input").value;
+    if (!checkNumberValidation($("#repetition input").value)) {
+        $("#repetition input").value = '';
+        alert('시도 횟수를 올바르게 입력해 주세요.');
+    }
+    else {
+        renderCarPlayerSections(inputString);
+    }
 }
 export function renderChampion() { }
 function hideElements() {

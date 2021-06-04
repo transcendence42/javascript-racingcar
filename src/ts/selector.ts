@@ -4,32 +4,39 @@
 type callBackType = (e: Event) => void;
 
 export default function $(selector: string) {
-    const element = document.querySelector(selector) as HTMLElement;
+  const element = document.querySelector(selector) as HTMLElement;
 
-    return {
-        show() {
-            element.style.display = "block";
-        },
-        hide() {
-            element.style.display = "none";
-        },
-        get innerHTML() {
-            return element.innerHTML;
-        },
-        get innerText() {
-            return element.innerText;
-        },
-        set innerHTML(newInnerHTML: string) {
-            element.innerHTML = newInnerHTML;
-        },
-        addEventListener(action: string, f: callBackType) {
-            element.addEventListener(action, f);
-        },
-        setAttribute(key: string, value: string) {
-            element.setAttribute(key, value);
-        },
-        insertAdjacentHTML(position: InsertPosition, html: string) {
-            element.insertAdjacentHTML(position, html);
-        }
+  return {
+    show(): void {
+      element.style.display = "block";
+    },
+    hide(): void {
+      element.style.display = "none";
+    },
+    get innerHTML(): string {
+      return element.innerHTML;
+    },
+    get innerText(): string {
+      console.log(element.innerText);
+      return element.innerText;
+    },
+    get value(): string {
+      return (<HTMLInputElement>element).value;
+    },
+    set innerHTML(newInnerHTML: string) {
+      element.innerHTML = newInnerHTML;
+    },
+    set value(str: string) {
+      (<HTMLInputElement>element).value = str;
+    },
+    addEventListener(action: string, f: callBackType) {
+      element.addEventListener(action, f);
+    },
+    setAttribute(key: string, value: string) {
+      element.setAttribute(key, value);
+    },
+    insertAdjacentHTML(position: InsertPosition, html: string) {
+      element.insertAdjacentHTML(position, html);
     }
+  };
 }

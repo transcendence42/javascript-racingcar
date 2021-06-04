@@ -13,10 +13,17 @@ export default function $(selector) {
             return element.innerHTML;
         },
         get innerText() {
+            console.log(element.innerText);
             return element.innerText;
+        },
+        get value() {
+            return element.value;
         },
         set innerHTML(newInnerHTML) {
             element.innerHTML = newInnerHTML;
+        },
+        set value(str) {
+            element.value = str;
         },
         addEventListener(action, f) {
             element.addEventListener(action, f);
