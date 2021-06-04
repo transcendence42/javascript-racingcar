@@ -3,13 +3,13 @@ const clearInput = (element: HTMLInputElement) => {
   element.focus();
 };
 
-const preventInputValue = (element: HTMLInputElement) => {
+const disableInputValue = (element: HTMLInputElement) => {
   element.disabled = true;
 }
 
-const preventButtonClick = (element: HTMLButtonElement) => {
+const disableButtonClick = (element: HTMLButtonElement) => {
   element.disabled = true;
 }
 
 
-export { clearInput, preventInputValue, preventButtonClick };
+export { clearInput, disableInputValue, disableButtonClick };
