@@ -1,3 +1,7 @@
+const $ = (selector: string): Element | null => document.querySelector(selector);
+
+const $$ = (selector: string): NodeListOf<Element> => document.querySelectorAll(selector);
+
 const clearInput = (element: HTMLInputElement) => {
   element.value = '';
   element.focus();
@@ -12,4 +16,4 @@ const disableButtonClick = (element: HTMLButtonElement) => {
 }
 
 
-export { clearInput, disableInputValue, disableButtonClick };
+export { $, $$, clearInput, disableInputValue, disableButtonClick };
