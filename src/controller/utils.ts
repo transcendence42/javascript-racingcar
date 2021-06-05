@@ -7,13 +7,30 @@ const clearInput = (element: HTMLInputElement) => {
   element.focus();
 };
 
-const disableInputValue = (element: HTMLInputElement) => {
-  element.disabled = true;
-}
+const toggleInputValueDisabled = (element: HTMLInputElement) => {
+  if (element.disabled) {
+    element.disabled = false;
+  } else {
+    element.disabled = true;
+  }
+};
 
-const disableButtonClick = (element: HTMLButtonElement) => {
-  element.disabled = true;
-}
+const toggleClickButtonDisabled = (element: HTMLButtonElement) => {
+  if (element.disabled) {
+    element.disabled = false;
+  } else {
+    element.disabled = true;
+  }
+};
 
+const removeChildNodes = (element: Element | null) => {
+  if (element) {
+    while (element.hasChildNodes()) {
+      if (element.lastChild) {
+        element.removeChild(element.lastChild);
+      }
+    }
+  }
+};
 
-export { $, $$, clearInput, disableInputValue, disableButtonClick };
+export { $, $$, clearInput, toggleInputValueDisabled, toggleClickButtonDisabled, removeChildNodes };
