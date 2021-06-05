@@ -28,10 +28,10 @@ export async function startGame(cars: Car[], num: number) {
 }
 
 export function resetGame(): void {
-    $("#result div").innerHTML = "";
-    $("#names input").value = "";
-    $("#names input").element.removeAttribute("readonly");
-    $("#repetition input").value = "";
-    $("#repetition").hide();
-    $("#champion").hide();
+  $("#result div").innerHTML = "";
+  $("#names input").value = "";
+  $("#names input").element.removeAttribute("readonly");
+  $("#repetition input").value = "";
+  $("#repetition").hide();
+  $("#champion").hide();
 }

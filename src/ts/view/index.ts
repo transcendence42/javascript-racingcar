@@ -1,6 +1,10 @@
 import $ from "../selector.js";
 import { Car, makeCars, getChampions } from "../model/car.js";
-import { makeCarPlayerTemplate, makeArrowTemplate, makeChampionText } from "./templates.js";
+import {
+  makeCarPlayerTemplate,
+  makeArrowTemplate,
+  makeChampionText
+} from "./templates.js";
 
 export function renderCarPlayerSections(inputString: string): Car[] {
   let cars: Car[] = makeCars(inputString.split(",").map(x => x.trim()));
@@ -24,14 +28,11 @@ export function deleteSpinners(): void {
 }
 
 export function renderArrow(name: string): void {
-  $(`#player-${name}`).insertAdjacentHTML(
-    "afterend",
-    makeArrowTemplate()
-  )
+  $(`#player-${name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
 }
 
 export async function renderChampion(cars: Car[]) {
-  const championMsg : string = makeChampionText(getChampions(cars))
+  const championMsg: string = makeChampionText(getChampions(cars));
   $("h2").innerHTML = championMsg;
   $("#champion").show();
 }

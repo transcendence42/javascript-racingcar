@@ -1,14 +1,17 @@
-export function makeCars(names: string[]) : Car[] {
-  let cars : Car[] = [];
-  names.forEach((name) => {
+export function makeCars(names: string[]): Car[] {
+  let cars: Car[] = [];
+  names.forEach(name => {
     cars.push(new Car(name));
-  })
+  });
   return cars;
 }
 
-export function getChampions(cars: Car[]) : string[] {
-  const maxValue = Math.max.apply(null, cars.map(x => x.score));
-  return cars.filter((x) => x.score === maxValue).map(x => x.name);
+export function getChampions(cars: Car[]): string[] {
+  const maxValue = Math.max.apply(
+    null,
+    cars.map(x => x.score)
+  );
+  return cars.filter(x => x.score === maxValue).map(x => x.name);
 }
 
 export class Car {
