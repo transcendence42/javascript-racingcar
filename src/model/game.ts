@@ -1,12 +1,14 @@
 import { Car } from './car';
 class Game {
   cars: Array<Car>;
-  winners: Array<string>;
+  finalWinners: Array<string>;
+  roundWinnersIndex: Array<number>;
   maxPosition: number;
 
   constructor(cars: Array<Car>) {
     this.cars = cars;
-    this.winners = [];
+    this.finalWinners = [];
+    this.roundWinnersIndex = [];
     this.maxPosition = 0;
   }
 
@@ -14,6 +16,7 @@ class Game {
     this.cars.forEach((car) => {
       if (Math.floor(Math.random() * 9) + 1 >= 4) {
         car.moveForward();
+        this.roundWinnersIndex.push(car.index);
         this.updateMaxPosition();
       }
     });
@@ -27,13 +30,17 @@ class Game {
     });
   };
 
+  initRoundWinnersIndex = (): void => {
+    this.roundWinnersIndex = [];
+  }
+
   getWinners = (): Array<string> => {
     this.cars.forEach((car) => {
       if (car.position === this.maxPosition) {
-        this.winners.push(car.name);
+        this.finalWinners.push(car.name);
       }
     });
-    return this.winners;
+    return this.finalWinners;
   };
 }
 
