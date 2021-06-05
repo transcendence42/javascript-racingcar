@@ -9,6 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 export function ftSleep(ms) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((r) => setTimeout(r, ms));
+        return new Promise(r => setTimeout(r, ms));
     });
 }

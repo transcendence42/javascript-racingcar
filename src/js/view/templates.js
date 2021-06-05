@@ -14,9 +14,9 @@ export function makeArrowTemplate() {
 export function makeChampionText(strs) {
     let result = `🏆 최종 우승자: `;
     strs.forEach(item => {
-        result += item + ', ';
+        result += item + ", ";
     });
     result = result.substr(0, result.length - 2);
-    result += ' 🏆';
-    return (result);
+    result += " 🏆";
+    return result;
 }

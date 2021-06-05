@@ -1,7 +1,6 @@
 import $ from "../selector.js";
 import { Car } from "../model/car.js";
 import { ftSleep } from "../utils.js";
-import { makeArrowTemplate } from "../view/templates.js";
 import { deleteSpinners, renderArrow, renderChampion } from "../view/index.js";
 
 async function runEachRound(num: number, cars: Car[]) {
@@ -14,7 +13,7 @@ async function runEachRound(num: number, cars: Car[]) {
   });
 }
 
-export async function startGame(cars: Car[], num: number) {
+export async function startGame(cars: Car[], num: number): Promise<void> {
   let dupNum = num;
 
   while (dupNum > 0) {

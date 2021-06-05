@@ -7,7 +7,7 @@ import {
 } from "./templates.js";
 
 export function renderCarPlayerSections(inputString: string): Car[] {
-  let cars: Car[] = makeCars(inputString.split(",").map(x => x.trim()));
+  const cars: Car[] = makeCars(inputString.split(",").map(x => x.trim()));
   $("#result").show();
   $("#result div").innerHTML = "";
   cars.forEach(car => {
@@ -31,7 +31,7 @@ export function renderArrow(name: string): void {
   $(`#player-${name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
 }
 
-export async function renderChampion(cars: Car[]) {
+export async function renderChampion(cars: Car[]): Promise<void> {
   const championMsg: string = makeChampionText(getChampions(cars));
   $("h2").innerHTML = championMsg;
   $("#champion").show();

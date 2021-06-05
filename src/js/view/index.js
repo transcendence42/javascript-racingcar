@@ -11,7 +11,7 @@ import $ from "../selector.js";
 import { makeCars, getChampions } from "../model/car.js";
 import { makeCarPlayerTemplate, makeArrowTemplate, makeChampionText } from "./templates.js";
 export function renderCarPlayerSections(inputString) {
-    let cars = makeCars(inputString.split(",").map(x => x.trim()));
+    const cars = makeCars(inputString.split(",").map(x => x.trim()));
     $("#result").show();
     $("#result div").innerHTML = "";
     cars.forEach(car => {

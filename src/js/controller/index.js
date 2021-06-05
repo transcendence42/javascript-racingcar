@@ -18,7 +18,7 @@ function inputRepetition() {
         alert("시도 횟수를 올바르게 입력해 주세요.");
     }
     else {
-        let cars = renderCarPlayerSections($("#names input").value);
+        const cars = renderCarPlayerSections($("#names input").value);
         startGame(cars, parseInt($("#repetition input").value));
     }
 }

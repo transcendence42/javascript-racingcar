@@ -22,7 +22,7 @@ function inputRepetition(): void {
     $("#repetition input").value = "";
     alert("시도 횟수를 올바르게 입력해 주세요.");
   } else {
-    let cars: Car[] = renderCarPlayerSections($("#names input").value);
+    const cars: Car[] = renderCarPlayerSections($("#names input").value);
     startGame(cars, parseInt($("#repetition input").value));
   }
 }
@@ -41,7 +41,7 @@ function setIds() {
   fieldsets[1].setAttribute("id", "repetition");
 }
 
-export function initController() {
+export function initController(): void {
   setIds();
   const btns = document.querySelectorAll("button");
   btns[0].addEventListener("click", inputNames);

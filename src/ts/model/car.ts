@@ -1,5 +1,5 @@
 export function makeCars(names: string[]): Car[] {
-  let cars: Car[] = [];
+  const cars: Car[] = [];
   names.forEach(name => {
     cars.push(new Car(name));
   });
@@ -23,7 +23,7 @@ export class Car {
     this._score = 0;
   }
 
-  runDice() {
+  runDice(): boolean {
     return Math.random() * 9 >= 4 ? true : false;
   }
 
@@ -31,11 +31,11 @@ export class Car {
     return this._score;
   }
 
-  get name(): string {
-    return this._name;
-  }
-
   set score(num: number) {
     this._score = num;
+  }
+
+  get name(): string {
+    return this._name;
   }
 }
