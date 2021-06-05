@@ -1,17 +1,15 @@
 import { Car } from './car';
-
 class Game {
   cars: Array<Car>;
   winners: Array<string>;
-  tryCount: number;
   maxPosition: number;
 
-  constructor(cars: Array<Car>, tryCount: number) {
+  constructor(cars: Array<Car>) {
     this.cars = cars;
     this.winners = [];
-    this.tryCount = tryCount;
     this.maxPosition = 0;
   }
+
 
   play = (): void => {
     this.cars.forEach((car) => {
