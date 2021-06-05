@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import $ from "../selector.js";
 import { ftSleep } from "../utils.js";
 import { deleteSpinners, renderArrow, renderChampion } from "../view/index.js";
 function runEachRound(num, cars) {
@@ -30,6 +31,14 @@ export function startGame(cars, num) {
         deleteSpinners();
         renderChampion(cars);
         yield ftSleep(2000);
-        alert('경기가 종료되었습니다. 우승을 축하합니다! 🎉');
+        alert("경기가 종료되었습니다. 우승을 축하합니다! 🎉");
     });
+}
+export function resetGame() {
+    $("#result div").innerHTML = "";
+    $("#names input").value = "";
+    $("#names input").element.removeAttribute("readonly");
+    $("#repetition input").value = "";
+    $("#repetition").hide();
+    $("#champion").hide();
 }

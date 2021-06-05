@@ -12,7 +12,7 @@ export function makeArrowTemplate() {
     return `<div class="forward-icon mt-2">⬇️️</div>`;
 }
 export function makeChampionText(strs) {
-    let result = `🏆 최종 우승자:`;
+    let result = `🏆 최종 우승자: `;
     strs.forEach(item => {
         result += item + ', ';
     });

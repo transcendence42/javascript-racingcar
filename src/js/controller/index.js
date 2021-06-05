@@ -1,7 +1,7 @@
 import $ from "../selector.js";
 import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
 import { renderCarPlayerSections } from "../view/index.js";
-import { startGame } from "./game.js";
+import { startGame, resetGame } from "./game.js";
 function inputNames() {
     if (checkNamesValidation($("#names input").value)) {
         $("#names input").setAttribute("readonly", "");
@@ -35,5 +35,5 @@ export function initController() {
     const btns = document.querySelectorAll("button");
     btns[0].addEventListener("click", inputNames);
     btns[1].addEventListener("click", inputRepetition);
-    // btns[2].addEventListener('click', renderChampion);
+    btns[2].addEventListener('click', resetGame);
 }
