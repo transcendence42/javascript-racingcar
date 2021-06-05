@@ -40,4 +40,15 @@ const checkCarNames = (carNameInput: HTMLInputElement, carNameArray: Array<strin
   return true;
 };
 
-export { checkCarNames };
+const checkTryCount = (tryCountInput: HTMLInputElement): boolean => {
+  if (checkEmptyInput(tryCountInput)) {
+    alert(ALERT.TRY_INPUT_EMPTY);
+    return false;
+  } else if (Number(tryCountInput.value) > 20) {
+    alert(ALERT.TRY_INPUT_TOO_BIG);
+    return false;
+  }
+  return true;
+}
+
+export { checkCarNames, checkTryCount };
