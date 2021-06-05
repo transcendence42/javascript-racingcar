@@ -1,7 +1,7 @@
-import { startGame } from './player.js';
+import { startGame } from './play.js';
 import { ID } from '../constants/index.js';
 import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv, renderInputSection } from '../view/renderer.js';
-import { setInputButtonsEventListener } from './event.js';
+import { setInputButtonsEvent } from './event.js';
 import { checkCarNames, checkTryCount } from './validtor.js';
 import { $, $$, clearInput, toggleInputValueDisabled, toggleClickButtonDisabled, removeChildNodes } from './utils.js';
 
@@ -59,7 +59,7 @@ const setupProgressSection = (carNameArray: Array<string>) => {
 const initGame = (): void => {
   removeChildNodes(document.getElementById(ID.APP_DIV));
   renderInputSection();
-  setInputButtonsEventListener();
+  setInputButtonsEvent();
 };
 
 export { getCarNames, getTryCount, initGame };

@@ -1,7 +1,7 @@
 import { ALERT } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
-import { setRetryButtonEventListener } from './event.js';
+import { setRetryButtonEvent } from './event.js';
 import { $$, makeDelay } from './utils.js';
 
 const createCarsObject = (carNameArray: Array<string>) => {
@@ -13,7 +13,7 @@ const createCarsObject = (carNameArray: Array<string>) => {
   return cars;
 };
 
-const playGameOnce = (racingGame: Game) => {
+const playOnce = (racingGame: Game) => {
   racingGame.play();
   $$('div.car-player').forEach((element, index) => {
     racingGame.cars.forEach((car) => {
@@ -31,7 +31,7 @@ const startGame = async (carNameArray: Array<string>, tryCount: number) => {
   const racingGame: Game = new Game(createCarsObject(carNameArray));
 
   for (let index = 0; index < tryCount; index += 1) {
-    await makeDelay(1000).then(() => playGameOnce(racingGame));
+    await makeDelay(1000).then(() => playOnce(racingGame));
   } // 시도 횟수만큼 플레이
   $$('div.d-flex.justify-center.mt-3').forEach((element) => {
     element.remove();
@@ -39,7 +39,7 @@ const startGame = async (carNameArray: Array<string>, tryCount: number) => {
   const racingWinners: Array<string> = racingGame.getWinners();
   renderResultSection(racingWinners.join(', ').toLowerCase());
   await makeDelay(2000).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
-  setRetryButtonEventListener();
+  setRetryButtonEvent();
 };
 
 export { startGame };

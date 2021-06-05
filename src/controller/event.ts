@@ -1,12 +1,12 @@
 import { getCarNames, getTryCount, initGame } from './linstener.js';
 
-const setInputButtonsEventListener = (): void => {
+const setInputButtonsEvent = (): void => {
   document.getElementById('car-names-submit')!.addEventListener('click', () => getCarNames());
   document.getElementById('racing-count-submit')!.addEventListener('click', () => getTryCount());
 };
 
-const setRetryButtonEventListener = (): void => {
+const setRetryButtonEvent = (): void => {
   document.getElementById('retry-button')!.addEventListener('click', () => initGame());
 };
 
-export { setInputButtonsEventListener, setRetryButtonEventListener };
+export { setInputButtonsEvent, setRetryButtonEvent };
