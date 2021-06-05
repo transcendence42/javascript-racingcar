@@ -1,4 +1,4 @@
-import { ALERT } from '../constants/alert.js';
+import { ALERT } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRetryButtonEventListener } from './event.js';
