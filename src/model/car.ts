@@ -1,10 +1,12 @@
 class Car {
   name: string;
   position: number;
+  index: number;
 
-  constructor(name: string) {
+  constructor(name: string, index: number) {
     this.name = name;
     this.position = 0;
+    this.index = index;
   }
 
   moveForward(): void {
