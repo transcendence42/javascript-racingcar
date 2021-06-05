@@ -1,16 +1,18 @@
 import { checkCarName } from './validtor.js';
 import { clearInput, disableInputValue, disableButtonClick } from './utils.js';
-import { Car } from '../model/index.js';
-import { playGame } from './player.js';
+import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv } from '../view/renderer.js';
+import { startGame } from './player.js';
+import { $, $$ } from './utils.js';
 
-const createCarsObject = (carNameArray: Array<string>) => {
-  let cars: Array<Car> = [];
-
-  carNameArray.forEach((car) => {
-    cars.push(new Car(car));
-  });
-  return cars;
-}
+const initProgressSection = (carNameArray: Array<string>) => {
+  renderProgressSection();
+  carNameArray.forEach((carName) => {
+    renderCarNameDiv($('.mt-4.d-flex') as Element, carName);
+  }); // 이름 div 생성
+  $$('div.mr-2').forEach((element) => {
+    renderSpinnerDiv(element);
+  }) // 기본 스피너 생성 파트
+};
 
 const getCarNames = (): void => {
   const carNameInput: HTMLInputElement = document.getElementById('car-names-input') as HTMLInputElement;
@@ -34,16 +36,19 @@ const getTryCount = (): void => {
     const carNameInput: HTMLInputElement = document.getElementById('car-names-input') as HTMLInputElement;
     const tryCountSubmitButton: HTMLButtonElement = document.getElementById('racing-count-submit') as HTMLButtonElement;
     const carNameArray: Array<string> = carNameInput?.value.split(',').map((x) => x.trim());
-    const cars: Array<Car> = createCarsObject(carNameArray);
 
     disableInputValue(tryCountInput);
     disableButtonClick(tryCountSubmitButton);
-    playGame(cars, carNameArray, tryCount);
+    initProgressSection(carNameArray);
+    startGame(carNameArray, tryCount);
     return;
   }
   clearInput(tryCountInput);
 };
 
+const setEventListenerRetry = (): void => {
+  document.getElementById('retry-button')!.addEventListener('ciick', () => {});
+}
 
 const setEventListener = (): void => {
   document.getElementById('car-names-submit')!.addEventListener('click', () => getCarNames());

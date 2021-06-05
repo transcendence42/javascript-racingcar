@@ -10,7 +10,6 @@ class Game {
     this.maxPosition = 0;
   }
 
-
   play = (): void => {
     this.cars.forEach((car) => {
       if (Math.floor(Math.random() * 9) + 1 >= 4) {
