@@ -1,7 +1,6 @@
 import { checkCarName } from './validtor.js';
 import { clearInput, disableInputValue, disableButtonClick } from './utils.js';
 import { Car } from '../model/index.js';
-import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv } from '../view/renderer.js';
 import { playGame } from './player.js';
 
 const createCarsObject = (carNameArray: Array<string>) => {
@@ -15,7 +14,7 @@ const createCarsObject = (carNameArray: Array<string>) => {
 
 const getCarNames = (): void => {
   const carNameInput: HTMLInputElement = document.getElementById('car-names-input') as HTMLInputElement;
-  const carNameArray: Array<string> = carNameInput?.value.split(',');
+  const carNameArray: Array<string> = carNameInput?.value.split(',').map((x) => x.trim());
 
   if (checkCarName(carNameArray)) {
     const carNameSubmitButton: HTMLButtonElement = document.getElementById('car-names-submit') as HTMLButtonElement;
@@ -34,15 +33,12 @@ const getTryCount = (): void => {
   if (tryCount > 0) {
     const carNameInput: HTMLInputElement = document.getElementById('car-names-input') as HTMLInputElement;
     const tryCountSubmitButton: HTMLButtonElement = document.getElementById('racing-count-submit') as HTMLButtonElement;
-    const carNameArray: Array<string> = carNameInput?.value.split(',');
+    const carNameArray: Array<string> = carNameInput?.value.split(',').map((x) => x.trim());
     const cars: Array<Car> = createCarsObject(carNameArray);
 
     disableInputValue(tryCountInput);
     disableButtonClick(tryCountSubmitButton);
-    renderProgressSection();
-    renderCarNameDiv(carNameArray);
-    renderSpinnerDiv(carNameArray)
-    playGame(cars, tryCount);
+    playGame(cars, carNameArray, tryCount);
     return;
   }
   clearInput(tryCountInput);
