@@ -44,6 +44,9 @@ const checkTryCount = (tryCountInput: HTMLInputElement): boolean => {
   if (checkEmptyInput(tryCountInput)) {
     alert(ALERT.TRY_INPUT_EMPTY);
     return false;
+  } else if (Number(tryCountInput.value) < 1) {
+    alert(ALERT.TRY_INPUT_UINT);
+    return false;
   } else if (Number(tryCountInput.value) > 20) {
     alert(ALERT.TRY_INPUT_TOO_BIG);
     return false;

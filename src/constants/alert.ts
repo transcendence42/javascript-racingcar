@@ -6,6 +6,7 @@ const ALERT = {
   CAR_INPUT_COUNT: '1회 이상이어야 합니다',
 
   TRY_INPUT_EMPTY: '시도 횟수를 입력하세요',
+  TRY_INPUT_UINT: '시도 횟수는 양의 정수를 입력해주세요 (20 이하 권장)',
   TRY_INPUT_TOO_BIG: '시도 횟수가 너무 많습니다 (20 이하 권장)',
 
   CONGRATULATION: '님 우승을 축하합니다 👏',
