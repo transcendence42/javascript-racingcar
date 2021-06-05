@@ -9,20 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import $ from "../selector.js";
 import { makeCars, getChampions } from "../model/car.js";
-import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
 import { makeCarPlayerTemplate, makeArrowTemplate, makeChampionText } from "./templates.js";
-import { ftSleep } from "../utils.js";
-export function renderRepetitionInput() {
-    if (checkNamesValidation($("#names input").value)) {
-        $("#names input").setAttribute("readonly", "");
-        $("#repetition").show();
-    }
-    else {
-        $("#names input").value = "";
-        alert("이름을 올바르게 입력해 주세요.");
-    }
-}
-function renderCarPlayerSections(inputString) {
+export function renderCarPlayerSections(inputString) {
     let cars = makeCars(inputString.split(",").map(x => x.trim()));
     $("#result").show();
     $("#result div").innerHTML = "";
@@ -31,18 +19,7 @@ function renderCarPlayerSections(inputString) {
     });
     return cars;
 }
-function renderEachRound(num, cars) {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield ftSleep(1000);
-        cars.map(car => {
-            if (car.runDice()) {
-                car.score += 1;
-                $(`#player-${car.name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
-            }
-        });
-    });
-}
-function deleteSpiners() {
+export function deleteSpinners() {
     var _a;
     let spinner = $(".spinner-container").element;
     while (spinner) {
@@ -50,46 +27,21 @@ function deleteSpiners() {
         spinner = $(".spinner-container").element;
     }
 }
-function renderChampion(cars) {
-    console.log("hhaahahaha");
-    $("h2").innerHTML = makeChampionText(getChampions(cars));
-    $("#champion").show();
+export function renderArrow(name) {
+    $(`#player-${name}`).insertAdjacentHTML("afterend", makeArrowTemplate());
 }
-function renderRounds(cars, num) {
+export function renderChampion(cars) {
     return __awaiter(this, void 0, void 0, function* () {
-        let dupNum = num;
-        while (dupNum > 0) {
-            yield renderEachRound(num, cars);
-            dupNum--;
-        }
-        deleteSpiners();
-        renderChampion(cars);
+        const championMsg = makeChampionText(getChampions(cars));
+        $("h2").innerHTML = championMsg;
+        $("#champion").show();
     });
-}
-export function renderScore() {
-    if (!checkNumberValidation($("#repetition input").value)) {
-        $("#repetition input").value = "";
-        alert("시도 횟수를 올바르게 입력해 주세요.");
-    }
-    else {
-        let cars = renderCarPlayerSections($("#names input").value);
-        renderRounds(cars, parseInt($("#repetition input").value));
-    }
 }
 function hideElements() {
     $("#repetition").setAttribute("style", "display: none;");
     $("#result").setAttribute("style", "display: none;");
     $("#champion").setAttribute("style", "display: none;");
 }
-function setIds() {
-    const sections = document.querySelectorAll("section");
-    const fieldsets = document.querySelectorAll("fieldset");
-    sections[1].setAttribute("id", "result");
-    sections[2].setAttribute("id", "champion");
-    fieldsets[0].setAttribute("id", "names");
-    fieldsets[1].setAttribute("id", "repetition");
-}
 export function initView() {
-    setIds();
     hideElements();
 }

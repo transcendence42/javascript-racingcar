@@ -14,7 +14,7 @@ export function makeArrowTemplate(): string {
 }
 
 export function makeChampionText(strs: string[]): string {
-  let result = `🏆 최종 우승자:`;
+  let result = `🏆 최종 우승자: `;
   strs.forEach(item => {
     result += item + ', ';
   })
