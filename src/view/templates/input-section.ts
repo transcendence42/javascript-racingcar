@@ -9,20 +9,20 @@ const inputSection = (): string => {
           예시) EAST, WEST, SOUTH, NORTH
         </p>
         <div class="d-flex">
-          <input id="car-names-input" type="text" class="w-100 mr-2" placeholder="자동차 이름" />
+          <input id="car-names-input" type="text" class="w-100 mr-2" placeholder="자동차 이름" autofocus/>
           <button id="car-names-submit" type="button" class="btn btn-cyan">확인</button>
         </div>
       </fieldset>
       <fieldset>
         <p>시도할 횟수를 입력해주세요.</p>
         <div class="d-flex">
-          <input id="racing-count-input" type="number" min="0" class="w-100 mr-2" placeholder="시도 횟수" />
-          <button id="racing-count-submit" type="button" class="btn btn-cyan">확인</button>
+          <input id="racing-count-input" type="number" min="0" class="w-100 mr-2" placeholder="시도 횟수" disabled/>
+          <button id="racing-count-submit" type="button" class="btn btn-cyan" disabled>확인</button>
         </div>
       </fieldset>
     </form>
   </section>
   `;
-}
+};
 
 export { inputSection };

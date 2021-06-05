@@ -5,15 +5,15 @@ const progressSection = (): string => {
     </div>
   </section>
   `;
-}
+};
 
 const carNameDiv = (carName: string): string => {
   return `
   <div class="mr-2">
     <div class="car-player">${carName}</div>
   </div>
-  `
-}
+  `;
+};
 
 const spinnerDiv = (): string => {
   return `
@@ -22,13 +22,13 @@ const spinnerDiv = (): string => {
       <span class="material spinner"></span>
     </div>
   </div>
-  `
-}
+  `;
+};
 
 const arrowDiv = (): string => {
   return `
   <div class="forward-icon mt-2">⬇️️</div>
-  `
-}
+  `;
+};
 
 export { progressSection, carNameDiv, spinnerDiv, arrowDiv };

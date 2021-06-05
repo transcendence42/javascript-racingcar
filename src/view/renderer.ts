@@ -1,11 +1,12 @@
+import { ID } from '../constants/index.js';
 import { inputSection, progressSection, carNameDiv, spinnerDiv, arrowDiv, resultSection } from './templates/index.js';
 
 const renderInputSection = (): void => {
-  document.getElementById('app')!.innerHTML = inputSection();
+  document.getElementById(ID.APP_DIV)!.innerHTML = inputSection();
 };
 
 const renderProgressSection = (): void => {
-  document.getElementById('app')!.insertAdjacentHTML(`beforeend`, progressSection());
+  document.getElementById(ID.APP_DIV)!.insertAdjacentHTML(`beforeend`, progressSection());
 };
 
 const renderCarNameDiv = (element: Element, carName: string): void => {
@@ -21,7 +22,7 @@ const renderArrowDiv = (element: Element): void => {
 };
 
 const renderResultSection = (winners: string): void => {
-  document.getElementById('app')!.insertAdjacentHTML(`beforeend`, resultSection(winners));
+  document.getElementById(ID.APP_DIV)!.insertAdjacentHTML(`beforeend`, resultSection(winners));
 };
 
 export {

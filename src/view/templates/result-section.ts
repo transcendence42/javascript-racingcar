@@ -9,6 +9,6 @@ const resultSection = (winners: string): string => {
     </div>
   </section>
   `;
-}
+};
 
 export { resultSection };

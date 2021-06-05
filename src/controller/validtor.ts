@@ -49,6 +49,6 @@ const checkTryCount = (tryCountInput: HTMLInputElement): boolean => {
     return false;
   }
   return true;
-}
+};
 
 export { checkCarNames, checkTryCount };

@@ -1,9 +1,9 @@
-import { setEventListener } from './controller/observer.js';
 import { renderInputSection } from './view/renderer.js';
+import { setInputButtonsEventListener } from './controller/event.js';
 
 const app = (): void => {
   renderInputSection();
-  setEventListener();
+  setInputButtonsEventListener();
 };
 
 app();

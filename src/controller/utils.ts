@@ -33,4 +33,8 @@ const removeChildNodes = (element: Element | null) => {
   }
 };
 
-export { $, $$, clearInput, toggleInputValueDisabled, toggleClickButtonDisabled, removeChildNodes };
+const makeDelay = async (ms: number) => {
+  return new Promise((r) => setTimeout(r, ms));
+};
+
+export { $, $$, clearInput, toggleInputValueDisabled, toggleClickButtonDisabled, removeChildNodes, makeDelay };

@@ -32,7 +32,7 @@ class Game {
 
   initRoundWinnersIndex = (): void => {
     this.roundWinnersIndex = [];
-  }
+  };
 
   getWinners = (): Array<string> => {
     this.cars.forEach((car) => {

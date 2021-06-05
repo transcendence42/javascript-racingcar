@@ -8,7 +8,7 @@ const ALERT = {
   TRY_INPUT_EMPTY: '시도 횟수를 입력하세요',
   TRY_INPUT_TOO_BIG: '시도 횟수가 너무 많습니다 (20 이하 권장)',
 
-  CONGRATULATION: '님 우승을 축하합니다 👏'
+  CONGRATULATION: '님 우승을 축하합니다 👏',
 };
 
 export { ALERT };
