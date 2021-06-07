@@ -1,9 +1,9 @@
 import { startGame } from './play.js';
-import { ID } from '../constants/index.js';
 import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv, renderInputSection } from '../view/renderer.js';
 import { setInputButtonsEvent } from './event.js';
 import { checkCarNames, checkTryCount } from './validtor.js';
-import { $, inputElementClear, inputElementEnable, inputElementDisable, buttonElementEnable, buttonElementDisable, removeChildNodes, } from '../utils.js';
+import { removeChildNodes } from '../view/remover.js';
+import { $, inputElementClear, inputElementEnable, inputElementDisable, buttonElementEnable, buttonElementDisable, } from '../utils.js';
 const getCarNames = () => {
     const carNameInput = $('#car-names-input');
     const carNameArray = carNameInput === null || carNameInput === void 0 ? void 0 : carNameInput.value.split(',').map((x) => x.trim());
@@ -43,8 +43,11 @@ const setupProgressSection = (carNameArray) => {
     renderSpinnerDiv();
 };
 const restartApp = () => {
-    removeChildNodes(document.getElementById(ID.APP_DIV));
+    let carNameInput;
+    removeChildNodes($('#app'));
     renderInputSection();
     setInputButtonsEvent();
+    carNameInput = $('#car-names-input');
+    carNameInput.focus();
 };
 export { getCarNames, getTryCount, restartApp };

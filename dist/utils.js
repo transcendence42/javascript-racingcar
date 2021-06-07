@@ -25,17 +25,7 @@ const buttonElementEnable = (element) => {
 const buttonElementDisable = (element) => {
     element.disabled = true;
 };
-const removeChildNodes = (element) => {
-    if (!element) {
-        return;
-    }
-    while (element.hasChildNodes()) {
-        if (element.lastChild) {
-            element.removeChild(element.lastChild);
-        }
-    }
-};
 const makeDelay = (ms) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((r) => setTimeout(r, ms));
 });
-export { $, $$, inputElementClear, inputElementEnable, inputElementDisable, buttonElementEnable, buttonElementDisable, removeChildNodes, makeDelay, };
+export { $, $$, inputElementClear, inputElementEnable, inputElementDisable, buttonElementEnable, buttonElementDisable, makeDelay, };

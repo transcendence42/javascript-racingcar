@@ -23,17 +23,6 @@ const buttonElementDisable = (element: HTMLButtonElement): void => {
   element.disabled = true;
 };
 
-const removeChildNodes = (element: Element | null): void => {
-  if (!element) {
-    return;
-  }
-  while (element.hasChildNodes()) {
-    if (element.lastChild) {
-      element.removeChild(element.lastChild);
-    }
-  }
-};
-
 const makeDelay = async (ms: number) => {
   return new Promise((r) => setTimeout(r, ms));
 };
@@ -46,6 +35,5 @@ export {
   inputElementDisable,
   buttonElementEnable,
   buttonElementDisable,
-  removeChildNodes,
   makeDelay,
 };

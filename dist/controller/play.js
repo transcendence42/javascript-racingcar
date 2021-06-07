@@ -12,6 +12,7 @@ import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
 import { $$, makeDelay } from '../utils.js';
+import { removeSpinners } from '../view/remover.js';
 const createCarsObject = (carNameArray) => {
     let cars = [];
     carNameArray.forEach((car, index) => {
@@ -34,13 +35,12 @@ const playOnce = (racingGame) => {
 };
 const startGame = (carNameArray, tryCount) => __awaiter(void 0, void 0, void 0, function* () {
     const racingGame = new Game(createCarsObject(carNameArray));
+    let racingWinners = [];
     for (let index = 0; index < tryCount; index += 1) {
         yield makeDelay(1000).then(() => playOnce(racingGame));
     } // 시도 횟수만큼 플레이
-    $$('div.d-flex.justify-center.mt-3').forEach((element) => {
-        element.remove();
-    }); // 게임 끝나면 spinner 제거
-    const racingWinners = racingGame.getWinners();
+    removeSpinners();
+    racingWinners = racingGame.getWinners();
     renderResultSection(racingWinners.join(', ').toLowerCase());
     yield makeDelay(2000).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
     setRestartButtonEvent();
