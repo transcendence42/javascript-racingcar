@@ -13,7 +13,6 @@ const renderSpinnerDiv = () => {
     $$('#progress-section > div > div').forEach((element) => {
         element.insertAdjacentHTML(`beforeend`, spinnerDiv());
     });
-    // element.insertAdjacentHTML(`beforeend`, spinnerDiv());
 };
 const renderArrowDiv = (element) => {
     element.insertAdjacentHTML(`afterend`, arrowDiv());

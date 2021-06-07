@@ -40,9 +40,6 @@ const setupProgressSection = (carNameArray) => {
     carNameArray.forEach((carName) => {
         renderCarNameDiv(carName);
     }); // 이름 div 생성
-    // $$(ID.SPINNER_DIV).forEach((element) => {
-    //   renderSpinnerDiv(element);
-    // }); // 기본 스피너 생성 파트
     renderSpinnerDiv();
 };
 const initGame = () => {

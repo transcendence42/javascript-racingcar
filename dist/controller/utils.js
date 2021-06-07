@@ -30,11 +30,12 @@ const toggleClickButtonDisabled = (element) => {
     }
 };
 const removeChildNodes = (element) => {
-    if (element) {
-        while (element.hasChildNodes()) {
-            if (element.lastChild) {
-                element.removeChild(element.lastChild);
-            }
+    if (!element) {
+        return;
+    }
+    while (element.hasChildNodes()) {
+        if (element.lastChild) {
+            element.removeChild(element.lastChild);
         }
     }
 };
