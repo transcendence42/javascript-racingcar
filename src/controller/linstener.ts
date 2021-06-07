@@ -1,5 +1,5 @@
 import { startGame } from './game.js';
-import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv, renderInputSection } from '../view/renderer.js';
+import { renderProgressSection, renderInputSection } from '../view/renderer.js';
 import { setInputButtonsEvent } from './event.js';
 import { checkCarNames, checkTryCount } from './validtor.js';
 import { removeChildNodes } from '../view/remover.js';
@@ -26,7 +26,7 @@ const getCarNames = (): void => {
     buttonElementDisable(carNameSubmitButton);
     inputElementEnable(tryCountInput);
     buttonElementEnable(tryCountSubmitButton);
-    setupProgressSection(carNameArray);
+    renderProgressSection(carNameArray);
     tryCountInput.focus();
     return;
   }
@@ -34,7 +34,7 @@ const getCarNames = (): void => {
 };
 
 const getTryCount = (): void => {
-    const tryCountInput: HTMLInputElement = $('#racing-count-input') as HTMLInputElement;
+  const tryCountInput: HTMLInputElement = $('#racing-count-input') as HTMLInputElement;
   const tryCount: number = Number(tryCountInput?.value);
 
   if (checkTryCount(tryCountInput)) {
@@ -50,13 +50,13 @@ const getTryCount = (): void => {
   inputElementClear(tryCountInput);
 };
 
-const setupProgressSection = (carNameArray: Array<string>) => {
-  renderProgressSection();
-  carNameArray.forEach((carName) => {
-    renderCarNameDiv(carName);
-  });
-  renderSpinnerDiv();
-};
+// const setupProgressSection = (carNameArray: Array<string>) => {
+//   renderProgressSection();
+//   carNameArray.forEach((carName) => {
+//     renderCarNameDiv(carName);
+//   });
+//   renderSpinnerDiv();
+// };
 
 const restartApp = (): void => {
   let carNameInput: HTMLInputElement;

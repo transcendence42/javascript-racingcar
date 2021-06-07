@@ -1,6 +1,6 @@
 import { ALERT } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
-import { renderArrowDiv, renderResultSection, renderSpinnerDiv } from '../view/renderer.js';
+import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
 import { $$, makeDelay } from '../utils.js';
 import { removeSpinners } from '../view/remover.js';
@@ -17,9 +17,7 @@ const createCarsObject = (carNameArray: Array<string>) => {
 const playOnce = (racingGame: Game) => {
   racingGame.play();
   racingGame.roundWinnersIndex.forEach((roundWinnerIndex) => {
-    $$('div.car-player').forEach((item, index) => {
-      index === roundWinnerIndex ? renderArrowDiv(item) : null;
-    });
+    renderArrowDiv(roundWinnerIndex);
   });
   racingGame.initRoundWinnersIndex();
 };

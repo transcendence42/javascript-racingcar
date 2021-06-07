@@ -5,23 +5,21 @@ const renderInputSection = (): void => {
   $('#app')!.innerHTML = inputSection();
 };
 
-const renderProgressSection = (): void => {
+const renderProgressSection = (carNameArray: Array<string>): void => {
   $('#app')!.insertAdjacentHTML('beforeend', progressSection());
-};
-
-const renderCarNameDiv = (carName: string): void => {
-  $('#progress-section > div')!.insertAdjacentHTML('beforeend', carNameDiv(carName));
-};
-
-const renderSpinnerDiv = (): void => {
+  carNameArray.forEach((carName) => {
+    $('#progress-section > div')!.insertAdjacentHTML('beforeend', carNameDiv(carName));
+  });
   $$('#progress-section > div > div')!.forEach((element) => {
     element.insertAdjacentHTML(`beforeend`, spinnerDiv());
   });
 };
 
-const renderArrowDiv = (element: Element): void => {
-  element.insertAdjacentHTML(`afterend`, arrowDiv());
-};
+const renderArrowDiv = (roundWinnerIndex: number): void => {
+  $$('div.car-player').forEach((element, index) => {
+    index === roundWinnerIndex ?  element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
+  });
+}
 
 const renderResultSection = (winners: string): void => {
   $('#app')!.insertAdjacentHTML('beforeend', resultSection(winners));
@@ -30,8 +28,6 @@ const renderResultSection = (winners: string): void => {
 export {
   renderInputSection,
   renderProgressSection,
-  renderCarNameDiv,
-  renderSpinnerDiv,
   renderArrowDiv,
   renderResultSection,
 };
