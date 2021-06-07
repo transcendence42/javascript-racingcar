@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { ALERT } from '../constants/index.js';
+import { ALERT, DELAY } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
@@ -31,12 +31,12 @@ const startGame = (carNameArray, tryCount) => __awaiter(void 0, void 0, void 0, 
     const racingGame = new Game(createCarsObject(carNameArray));
     let racingWinners = [];
     for (let index = 0; index < tryCount; index += 1) {
-        yield makeDelay(1000).then(() => playOnce(racingGame));
+        yield makeDelay(DELAY.TURN).then(() => playOnce(racingGame));
     }
     removeSpinners();
     racingWinners = racingGame.getWinners();
     renderResultSection(racingWinners.join(', ').toLowerCase());
-    yield makeDelay(2000).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
+    yield makeDelay(DELAY.END).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
     setRestartButtonEvent();
 });
 export { startGame };

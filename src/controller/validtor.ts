@@ -5,7 +5,6 @@ const checkEmptyInput = (input: HTMLInputElement) => {
 };
 
 const checkArrayHasEmptyElement = (array: Array<string>) => {
-  console.log(array);
   return array.some((x) => x === '');
 }
 

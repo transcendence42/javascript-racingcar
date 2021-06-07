@@ -1,3 +1,4 @@
+import { ID } from '../constants/index.js';
 import { startGame } from './game.js';
 import { renderProgressSection, renderInputSection } from '../view/renderer.js';
 import { setInputButtonsEvent } from './event.js';
@@ -5,12 +6,12 @@ import { checkCarNames, checkTryCount } from './validtor.js';
 import { removeChildNodes } from '../view/remover.js';
 import { $, inputElementClear, inputElementEnable, inputElementDisable, buttonElementEnable, buttonElementDisable, } from '../utils.js';
 const getCarNames = () => {
-    const carNameInput = $('#car-names-input');
+    const carNameInput = $(ID.CARNAME_INPUT);
     const carNameArray = carNameInput === null || carNameInput === void 0 ? void 0 : carNameInput.value.split(',').map((x) => x.trim());
     if (checkCarNames(carNameInput, carNameArray)) {
-        const carNameSubmitButton = $('#car-names-submit');
-        const tryCountInput = $('#racing-count-input');
-        const tryCountSubmitButton = $('#racing-count-submit');
+        const carNameSubmitButton = $(ID.CARNAME_SUBMIT);
+        const tryCountInput = $(ID.TRYCOUNT_INPUT);
+        const tryCountSubmitButton = $(ID.TRYCOUNT_SUBMIT);
         inputElementDisable(carNameInput);
         buttonElementDisable(carNameSubmitButton);
         inputElementEnable(tryCountInput);
@@ -22,12 +23,12 @@ const getCarNames = () => {
     inputElementClear(carNameInput);
 };
 const getTryCount = () => {
-    const tryCountInput = $('#racing-count-input');
+    const tryCountInput = $(ID.TRYCOUNT_INPUT);
     const tryCount = Number(tryCountInput === null || tryCountInput === void 0 ? void 0 : tryCountInput.value);
     if (checkTryCount(tryCountInput)) {
-        const carNameInput = $('#car-names-input');
+        const carNameInput = $(ID.CARNAME_INPUT);
         const carNameArray = carNameInput === null || carNameInput === void 0 ? void 0 : carNameInput.value.split(',').map((x) => x.trim());
-        const tryCountSubmitButton = $('#racing-count-submit');
+        const tryCountSubmitButton = $(ID.TRYCOUNT_SUBMIT);
         inputElementDisable(tryCountInput);
         buttonElementDisable(tryCountSubmitButton);
         startGame(carNameArray, tryCount);
@@ -35,19 +36,12 @@ const getTryCount = () => {
     }
     inputElementClear(tryCountInput);
 };
-// const setupProgressSection = (carNameArray: Array<string>) => {
-//   renderProgressSection();
-//   carNameArray.forEach((carName) => {
-//     renderCarNameDiv(carName);
-//   });
-//   renderSpinnerDiv();
-// };
 const restartApp = () => {
     let carNameInput;
-    removeChildNodes($('#app'));
+    removeChildNodes($(ID.APP_DIV));
     renderInputSection();
     setInputButtonsEvent();
-    carNameInput = $('#car-names-input');
+    carNameInput = $(ID.CARNAME_INPUT);
     carNameInput.focus();
 };
 export { getCarNames, getTryCount, restartApp };

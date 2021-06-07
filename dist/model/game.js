@@ -1,3 +1,4 @@
+import { RULE } from '../constants/index.js';
 class Game {
     constructor(cars) {
         this.cars = cars;
@@ -7,7 +8,7 @@ class Game {
     }
     play() {
         this.cars.forEach((car) => {
-            if (Math.floor(Math.random() * 9) + 1 >= 4) {
+            if (Math.floor(Math.random() * RULE.MAX_SCORE) + RULE.MIN_SCORE >= RULE.THRESHOULD_SCORE) {
                 car.moveForward();
                 this.roundWinnersIndex.push(car.index);
                 this.updateMaxPosition();

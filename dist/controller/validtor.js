@@ -3,7 +3,6 @@ const checkEmptyInput = (input) => {
     return input.value.trim() === '';
 };
 const checkArrayHasEmptyElement = (array) => {
-    console.log(array);
     return array.some((x) => x === '');
 };
 const checkArrayHasOneElement = (array) => {

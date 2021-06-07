@@ -1,4 +1,5 @@
-import { Car } from './car';
+import { Car } from './index.js';
+import { RULE } from '../constants/index.js'
 class Game {
   cars: Array<Car>;
   finalWinners: Array<string>;
@@ -14,7 +15,7 @@ class Game {
 
   play(): void {
     this.cars.forEach((car) => {
-      if (Math.floor(Math.random() * 9) + 1 >= 4) {
+      if (Math.floor(Math.random() * RULE.MAX_SCORE) + RULE.MIN_SCORE >= RULE.THRESHOULD_SCORE) {
         car.moveForward();
         this.roundWinnersIndex.push(car.index);
         this.updateMaxPosition();
