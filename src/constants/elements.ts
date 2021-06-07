@@ -1,12 +1,17 @@
 const ID = {
-  CAR_NAME_DIV: '.mt-4.d-flex',
-  SPINNER_DIV: 'div.mr-2',
+  APP_DIV: '#app',
 
-  CAR_NAME_INPUT: 'car-names-input',
-  CAR_NAME_SUBMIT: 'car-names-submit',
+  CAR_DIV_LIST: '#progress-section > div > div',
+  CARNAMES_DIV: '#progress-section > div',
+  CARNAME_DIV_LIST: 'div.car-player',
 
-  RACING_COUNT_INPUT: 'racing-count-input',
-  RACING_COUNT_SUBMIT: 'racing-count-submit',
+  CARNAME_INPUT: '#car-names-input',
+  CARNAME_SUBMIT: '#car-names-submit',
+
+  TRYCOUNT_INPUT: '#racing-count-input',
+  TRYCOUNT_SUBMIT: '#racing-count-submit',
+
+  RESTART_SUBMIT: '#restart-button',
 };
 
 export { ID };

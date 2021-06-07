@@ -1,9 +1,11 @@
+import { $ } from '../utils.js';
+import { ID } from '../constants/index.js';
 import { getCarNames, getTryCount, restartApp } from './linstener.js';
 const setInputButtonsEvent = () => {
-    document.getElementById('car-names-submit').addEventListener('click', () => getCarNames());
-    document.getElementById('racing-count-submit').addEventListener('click', () => getTryCount());
+    $(ID.CARNAME_SUBMIT).addEventListener('click', () => getCarNames());
+    $(ID.TRYCOUNT_SUBMIT).addEventListener('click', () => getTryCount());
 };
 const setRestartButtonEvent = () => {
-    document.getElementById('restart-button').addEventListener('click', () => restartApp());
+    $(ID.RESTART_SUBMIT).addEventListener('click', () => restartApp());
 };
 export { setInputButtonsEvent, setRestartButtonEvent };

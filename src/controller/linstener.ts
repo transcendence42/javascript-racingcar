@@ -1,3 +1,4 @@
+import { ID } from '../constants/index.js';
 import { startGame } from './game.js';
 import { renderProgressSection, renderInputSection } from '../view/renderer.js';
 import { setInputButtonsEvent } from './event.js';
@@ -5,7 +6,6 @@ import { checkCarNames, checkTryCount } from './validtor.js';
 import { removeChildNodes } from '../view/remover.js';
 import {
   $,
-  $$,
   inputElementClear,
   inputElementEnable,
   inputElementDisable,
@@ -14,13 +14,13 @@ import {
 } from '../utils.js';
 
 const getCarNames = (): void => {
-  const carNameInput: HTMLInputElement = $('#car-names-input') as HTMLInputElement;
+  const carNameInput: HTMLInputElement = $(ID.CARNAME_INPUT) as HTMLInputElement;
   const carNameArray: Array<string> = carNameInput?.value.split(',').map((x) => x.trim());
 
   if (checkCarNames(carNameInput, carNameArray)) {
-    const carNameSubmitButton: HTMLButtonElement = $('#car-names-submit') as HTMLButtonElement;
-    const tryCountInput: HTMLInputElement = $('#racing-count-input') as HTMLInputElement;
-    const tryCountSubmitButton: HTMLButtonElement = $('#racing-count-submit') as HTMLButtonElement;
+    const carNameSubmitButton: HTMLButtonElement = $(ID.CARNAME_SUBMIT) as HTMLButtonElement;
+    const tryCountInput: HTMLInputElement = $(ID.TRYCOUNT_INPUT) as HTMLInputElement;
+    const tryCountSubmitButton: HTMLButtonElement = $(ID.TRYCOUNT_SUBMIT) as HTMLButtonElement;
 
     inputElementDisable(carNameInput);
     buttonElementDisable(carNameSubmitButton);
@@ -34,13 +34,13 @@ const getCarNames = (): void => {
 };
 
 const getTryCount = (): void => {
-  const tryCountInput: HTMLInputElement = $('#racing-count-input') as HTMLInputElement;
+  const tryCountInput: HTMLInputElement = $(ID.TRYCOUNT_INPUT) as HTMLInputElement;
   const tryCount: number = Number(tryCountInput?.value);
 
   if (checkTryCount(tryCountInput)) {
-    const carNameInput: HTMLInputElement = $('#car-names-input') as HTMLInputElement;
+    const carNameInput: HTMLInputElement = $(ID.CARNAME_INPUT) as HTMLInputElement;
     const carNameArray: Array<string> = carNameInput?.value.split(',').map((x) => x.trim());
-    const tryCountSubmitButton: HTMLButtonElement = $('#racing-count-submit') as HTMLButtonElement;
+    const tryCountSubmitButton: HTMLButtonElement = $(ID.TRYCOUNT_SUBMIT) as HTMLButtonElement;
 
     inputElementDisable(tryCountInput);
     buttonElementDisable(tryCountSubmitButton);
@@ -50,21 +50,13 @@ const getTryCount = (): void => {
   inputElementClear(tryCountInput);
 };
 
-// const setupProgressSection = (carNameArray: Array<string>) => {
-//   renderProgressSection();
-//   carNameArray.forEach((carName) => {
-//     renderCarNameDiv(carName);
-//   });
-//   renderSpinnerDiv();
-// };
-
 const restartApp = (): void => {
   let carNameInput: HTMLInputElement;
 
-  removeChildNodes($('#app'));
+  removeChildNodes($(ID.APP_DIV));
   renderInputSection();
   setInputButtonsEvent();
-  carNameInput = $('#car-names-input') as HTMLInputElement;
+  carNameInput = $(ID.CARNAME_INPUT) as HTMLInputElement;
   carNameInput.focus();
 };
 
