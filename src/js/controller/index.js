@@ -1,4 +1,5 @@
 import $ from "../selector.js";
+import { MSG } from "../constants.js";
 import { checkNamesValidation, checkNumberValidation } from "../model/validation.js";
 import { renderCarPlayerSections } from "../view/index.js";
 import { startGame, resetGame } from "./game.js";
@@ -9,13 +10,13 @@ function inputNames() {
     }
     else {
         $("#names input").value = "";
-        alert("이름을 올바르게 입력해 주세요.");
+        alert(MSG.NAME_ERROR);
     }
 }
 function inputRepetition() {
     if (!checkNumberValidation($("#repetition input").value)) {
         $("#repetition input").value = "";
-        alert("시도 횟수를 올바르게 입력해 주세요.");
+        alert(MSG.REPETITION_ERROR);
     }
     else {
         const cars = renderCarPlayerSections($("#names input").value);

@@ -1,5 +1,6 @@
 import $ from "../selector.js";
 import { Car } from "../model/car.js";
+import { MSG } from "../constants.js"
 import { ftSleep } from "../utils.js";
 import { deleteSpinners, renderArrow, renderChampion } from "../view/index.js";
 
@@ -23,7 +24,7 @@ export async function startGame(cars: Car[], num: number): Promise<void> {
   deleteSpinners();
   renderChampion(cars);
   await ftSleep(2000);
-  alert("경기가 종료되었습니다. 우승을 축하합니다! 🎉");
+  alert(MSG.GAMEOVER_MSG);
 }
 
 export function resetGame(): void {
