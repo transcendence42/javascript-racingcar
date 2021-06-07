@@ -1,6 +1,4 @@
 const ID = {
-  APP_DIV: 'app',
-
   CAR_NAME_DIV: '.mt-4.d-flex',
   SPINNER_DIV: 'div.mr-2',
 

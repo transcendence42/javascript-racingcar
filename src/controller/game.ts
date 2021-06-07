@@ -1,6 +1,6 @@
 import { ALERT } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
-import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
+import { renderArrowDiv, renderResultSection, renderSpinnerDiv } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
 import { $$, makeDelay } from '../utils.js';
 import { removeSpinners } from '../view/remover.js';
@@ -16,13 +16,9 @@ const createCarsObject = (carNameArray: Array<string>) => {
 
 const playOnce = (racingGame: Game) => {
   racingGame.play();
-  $$('div.car-player').forEach((element, index) => {
-    racingGame.cars.forEach((car) => {
-      racingGame.roundWinnersIndex.forEach((roundWinnerIndex) => {
-        if (car.index === index && car.index === roundWinnerIndex) {
-          renderArrowDiv(element);
-        }
-      });
+  racingGame.roundWinnersIndex.forEach((roundWinnerIndex) => {
+    $$('div.car-player').forEach((item, index) => {
+      index === roundWinnerIndex ? renderArrowDiv(item) : null;
     });
   });
   racingGame.initRoundWinnersIndex();
@@ -34,7 +30,7 @@ const startGame = async (carNameArray: Array<string>, tryCount: number) => {
 
   for (let index = 0; index < tryCount; index += 1) {
     await makeDelay(1000).then(() => playOnce(racingGame));
-  } // 시도 횟수만큼 플레이
+  }
   removeSpinners();
   racingWinners = racingGame.getWinners();
   renderResultSection(racingWinners.join(', ').toLowerCase());

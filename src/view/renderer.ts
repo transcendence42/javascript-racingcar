@@ -1,4 +1,3 @@
-import { ID } from '../constants/index.js';
 import { $, $$ } from '../utils.js';
 import { inputSection, progressSection, carNameDiv, spinnerDiv, arrowDiv, resultSection } from './templates/index.js';
 

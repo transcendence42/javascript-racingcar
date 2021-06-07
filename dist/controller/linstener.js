@@ -1,4 +1,4 @@
-import { startGame } from './play.js';
+import { startGame } from './game.js';
 import { renderProgressSection, renderCarNameDiv, renderSpinnerDiv, renderInputSection } from '../view/renderer.js';
 import { setInputButtonsEvent } from './event.js';
 import { checkCarNames, checkTryCount } from './validtor.js';
