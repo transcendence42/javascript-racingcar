@@ -23,9 +23,6 @@ const createCarsObject = (carNameArray) => {
 const playOnce = (racingGame) => {
     racingGame.play();
     racingGame.roundWinnersIndex.forEach((roundWinnerIndex) => {
-        // $$('div.car-player').forEach((item, index) => {
-        //   index === roundWinnerIndex ? renderArrowDiv(item) : null;
-        // });
         renderArrowDiv(roundWinnerIndex);
     });
     racingGame.initRoundWinnersIndex();

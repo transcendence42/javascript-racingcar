@@ -4,17 +4,22 @@ const checkEmptyInput = (input: HTMLInputElement) => {
   return input.value.trim() === '';
 };
 
-const checkElementsAlone = (array: Array<string>) => {
+const checkArrayHasEmptyElement = (array: Array<string>) => {
+  console.log(array);
+  return array.some((x) => x === '');
+}
+
+const checkArrayHasOneElement = (array: Array<string>) => {
   return array.length < 2;
 };
 
-const checkElementsDouble = (array: Array<string>) => {
+const checkArrayDupElements = (array: Array<string>) => {
   return array.some((x) => {
     return array.indexOf(x) !== array.lastIndexOf(x);
   });
 };
 
-const checkElementsLength = (array: Array<string>) => {
+const checkArrayElementsLength = (array: Array<string>) => {
   for (let index = 0; index < array.length; index += 1) {
     if (array[index].length > 5) {
       return true;
@@ -25,16 +30,19 @@ const checkElementsLength = (array: Array<string>) => {
 
 const checkCarNames = (carNameInput: HTMLInputElement, carNameArray: Array<string>): boolean => {
   if (checkEmptyInput(carNameInput)) {
-    alert(ALERT.CAR_INPUT_EMPTY);
+    alert(ALERT.CARNAME_NOTHING);
     return false;
-  } else if (checkElementsAlone(carNameArray)) {
-    alert(ALERT.CAR_INPUT_ALONE);
+  } else if (checkArrayHasEmptyElement(carNameArray)) {
+    alert(ALERT.CARNAME_EMPTY);
     return false;
-  } else if (checkElementsDouble(carNameArray)) {
-    alert(ALERT.CAR_INPUT_DOUBLE);
+  } else if (checkArrayHasOneElement(carNameArray)) {
+    alert(ALERT.CARNAME_ALONE);
     return false;
-  } else if (checkElementsLength(carNameArray)) {
-    alert(ALERT.CAR_INPUT_LENGTH);
+  } else if (checkArrayDupElements(carNameArray)) {
+    alert(ALERT.CARNAME_DOUBLE);
+    return false;
+  } else if (checkArrayElementsLength(carNameArray)) {
+    alert(ALERT.CARNAME_LENGTH);
     return false;
   }
   return true;
@@ -42,13 +50,13 @@ const checkCarNames = (carNameInput: HTMLInputElement, carNameArray: Array<strin
 
 const checkTryCount = (tryCountInput: HTMLInputElement): boolean => {
   if (checkEmptyInput(tryCountInput)) {
-    alert(ALERT.TRY_INPUT_EMPTY);
+    alert(ALERT.TRYCOUNT_NOTHING);
     return false;
   } else if (Number(tryCountInput.value) < 1) {
-    alert(ALERT.TRY_INPUT_UINT);
+    alert(ALERT.TRYCOUNT_UINT);
     return false;
-  } else if (Number(tryCountInput.value) > 20) {
-    alert(ALERT.TRY_INPUT_TOO_BIG);
+  } else if (Number(tryCountInput.value) > 50) {
+    alert(ALERT.TRYCOUNT_TOO_BIG);
     return false;
   }
   return true;

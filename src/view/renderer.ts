@@ -17,17 +17,12 @@ const renderProgressSection = (carNameArray: Array<string>): void => {
 
 const renderArrowDiv = (roundWinnerIndex: number): void => {
   $$('div.car-player').forEach((element, index) => {
-    index === roundWinnerIndex ?  element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
+    index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
   });
-}
+};
 
 const renderResultSection = (winners: string): void => {
   $('#app')!.insertAdjacentHTML('beforeend', resultSection(winners));
 };
 
-export {
-  renderInputSection,
-  renderProgressSection,
-  renderArrowDiv,
-  renderResultSection,
-};
+export { renderInputSection, renderProgressSection, renderArrowDiv, renderResultSection };

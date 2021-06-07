@@ -12,9 +12,6 @@ const renderProgressSection = (carNameArray) => {
         element.insertAdjacentHTML(`beforeend`, spinnerDiv());
     });
 };
-// const renderArrowDiv = (element: Element): void => {
-//   element.insertAdjacentHTML(`afterend`, arrowDiv());
-// };
 const renderArrowDiv = (roundWinnerIndex) => {
     $$('div.car-player').forEach((element, index) => {
         index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
@@ -23,4 +20,4 @@ const renderArrowDiv = (roundWinnerIndex) => {
 const renderResultSection = (winners) => {
     $('#app').insertAdjacentHTML('beforeend', resultSection(winners));
 };
-export { renderInputSection, renderProgressSection, renderArrowDiv, renderResultSection, };
+export { renderInputSection, renderProgressSection, renderArrowDiv, renderResultSection };
