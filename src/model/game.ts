@@ -12,7 +12,7 @@ class Game {
     this.maxPosition = 0;
   }
 
-  play = (): void => {
+  play(): void {
     this.cars.forEach((car) => {
       if (Math.floor(Math.random() * 9) + 1 >= 4) {
         car.moveForward();
@@ -22,7 +22,7 @@ class Game {
     });
   };
 
-  updateMaxPosition = (): void => {
+  updateMaxPosition(): void {
     this.cars.forEach((car) => {
       if (car.position > this.maxPosition) {
         this.maxPosition = car.position;
@@ -30,11 +30,11 @@ class Game {
     });
   };
 
-  initRoundWinnersIndex = (): void => {
+  initRoundWinnersIndex(): void {
     this.roundWinnersIndex = [];
   };
 
-  getWinners = (): Array<string> => {
+  getWinners(): Array<string> {
     this.cars.forEach((car) => {
       if (car.position === this.maxPosition) {
         this.finalWinners.push(car.name);
