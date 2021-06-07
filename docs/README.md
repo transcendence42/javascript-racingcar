@@ -27,7 +27,7 @@
   - [x] 애니메이션 구현을 위해 setInterval, setTimeout, requestAnimationFrame 을 활용한다.
   - [x] spinner 마지막 레이스가 완료 됐을 때 없애기.
 - [x] 정상적으로 게임의 턴이 다 동작된 후에는 결과를 보여주고, 2초 후에 축하의 alert 메세지를 띄운다.
-- [ ] 위 기능들이 정상적으로 동작하는지 Cypress를 이용해 테스트한다.
+- [x] 위 기능들이 정상적으로 동작하는지 Cypress를 이용해 테스트한다.
 
 ### 버그 수정
 - [x] car name input 입력한 뒤에만 count 입력할 수 있게 구현하기.
