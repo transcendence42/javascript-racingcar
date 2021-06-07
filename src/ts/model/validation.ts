@@ -2,7 +2,7 @@ export function checkNamesValidation(inputString: string): boolean {
   const rawNames: string[] = inputString.split(",");
   const names: string[] = rawNames
     .map(x => x.trim())
-    .filter(x => x.length <= 5);
+    .filter(x => x.length <= 5 && x.length > 0);
   if (rawNames.length != names.length || names.length > 5) {
     return false;
   }
