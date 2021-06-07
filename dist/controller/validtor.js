@@ -24,38 +24,38 @@ const checkArrayElementsLength = (array) => {
 };
 const checkCarNames = (carNameInput, carNameArray) => {
     if (checkEmptyInput(carNameInput)) {
-        alert(ALERT.CAR_INPUT_EMPTY);
-        return false;
-    }
-    else if (checkArrayHasEmptyElement(carNameArray)) {
-        alert('빈 이름 있음');
+        alert(ALERT.CARNAME_NOTHING);
         return false;
     }
     else if (checkArrayHasOneElement(carNameArray)) {
-        alert(ALERT.CAR_INPUT_ALONE);
+        alert(ALERT.CARNAME_ALONE);
+        return false;
+    }
+    else if (checkArrayHasEmptyElement(carNameArray)) {
+        alert(ALERT.CARNAME_EMPTY);
         return false;
     }
     else if (checkArrayDupElements(carNameArray)) {
-        alert(ALERT.CAR_INPUT_DOUBLE);
+        alert(ALERT.CARNAME_DOUBLE);
         return false;
     }
     else if (checkArrayElementsLength(carNameArray)) {
-        alert(ALERT.CAR_INPUT_LENGTH);
+        alert(ALERT.CARNAME_LENGTH);
         return false;
     }
     return true;
 };
 const checkTryCount = (tryCountInput) => {
     if (checkEmptyInput(tryCountInput)) {
-        alert(ALERT.TRY_INPUT_EMPTY);
+        alert(ALERT.TRYCOUNT_NOTHING);
         return false;
     }
     else if (Number(tryCountInput.value) < 1) {
-        alert(ALERT.TRY_INPUT_UINT);
+        alert(ALERT.TRYCOUNT_UINT);
         return false;
     }
-    else if (Number(tryCountInput.value) > 20) {
-        alert(ALERT.TRY_INPUT_TOO_BIG);
+    else if (Number(tryCountInput.value) > 50) {
+        alert(ALERT.TRYCOUNT_TOO_BIG);
         return false;
     }
     return true;

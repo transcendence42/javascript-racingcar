@@ -32,11 +32,11 @@ const checkCarNames = (carNameInput: HTMLInputElement, carNameArray: Array<strin
   if (checkEmptyInput(carNameInput)) {
     alert(ALERT.CARNAME_NOTHING);
     return false;
-  } else if (checkArrayHasEmptyElement(carNameArray)) {
-    alert(ALERT.CARNAME_EMPTY);
-    return false;
   } else if (checkArrayHasOneElement(carNameArray)) {
     alert(ALERT.CARNAME_ALONE);
+    return false;
+  } else if (checkArrayHasEmptyElement(carNameArray)) {
+    alert(ALERT.CARNAME_EMPTY);
     return false;
   } else if (checkArrayDupElements(carNameArray)) {
     alert(ALERT.CARNAME_DOUBLE);

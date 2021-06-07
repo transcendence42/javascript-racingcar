@@ -1,7 +1,7 @@
 const ALERT = {
   CARNAME_NOTHING: '자동차 이름을 입력해주세요',
-  CARNAME_EMPTY: '자동차 이름은 1개의 콤마로 구분해서 입력해주세요',
   CARNAME_ALONE: '자동차 이름을 2개 이상 입력해주세요',
+  CARNAME_EMPTY: '비어 있는 자동차 이름이 있습니다',
   CARNAME_DOUBLE: '중복된 자동차 이름이 있습니다',
   CARNAME_LENGTH: '자동차 이름 글자수가 초과되었습니다 (5자 이내)',
 
