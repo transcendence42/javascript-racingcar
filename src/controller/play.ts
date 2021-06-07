@@ -1,8 +1,8 @@
 import { ALERT } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
-import { setRetryButtonEvent } from './event.js';
-import { $$, makeDelay } from './utils.js';
+import { setRestartButtonEvent } from './event.js';
+import { $$, makeDelay } from '../utils.js';
 
 const createCarsObject = (carNameArray: Array<string>) => {
   let cars: Array<Car> = [];
@@ -39,7 +39,7 @@ const startGame = async (carNameArray: Array<string>, tryCount: number) => {
   const racingWinners: Array<string> = racingGame.getWinners();
   renderResultSection(racingWinners.join(', ').toLowerCase());
   await makeDelay(2000).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
-  setRetryButtonEvent();
+  setRestartButtonEvent();
 };
 
 export { startGame };

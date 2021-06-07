@@ -4,7 +4,7 @@ const resultSection = (winners: string): string => {
     <div>
       <h2>🏆 최종 우승자: ${winners} 🏆</h2>
       <div class="d-flex justify-center">
-        <button id="retry-button" type="button" class="btn btn-cyan">다시 시작하기</button>
+        <button id="restart-button" type="button" class="btn btn-cyan">다시 시작하기</button>
       </div>
     </div>
   </section>

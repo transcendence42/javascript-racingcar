@@ -1,4 +1,4 @@
-import { $, $$ } from '../controller/utils.js';
+import { $, $$ } from '../utils.js';
 import { inputSection, progressSection, carNameDiv, spinnerDiv, arrowDiv, resultSection } from './templates/index.js';
 const renderInputSection = () => {
     $('#app').innerHTML = inputSection();
