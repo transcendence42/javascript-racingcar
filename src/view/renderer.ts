@@ -1,20 +1,23 @@
 import { ID } from '../constants/index.js';
+import { $, $$ } from '../controller/utils.js';
 import { inputSection, progressSection, carNameDiv, spinnerDiv, arrowDiv, resultSection } from './templates/index.js';
 
 const renderInputSection = (): void => {
-  document.getElementById(ID.APP_DIV)!.innerHTML = inputSection();
+  $('#app')!.innerHTML = inputSection();
 };
 
 const renderProgressSection = (): void => {
-  document.getElementById(ID.APP_DIV)!.insertAdjacentHTML(`beforeend`, progressSection());
+  $('#app')!.insertAdjacentHTML('beforeend', progressSection());
 };
 
-const renderCarNameDiv = (element: Element, carName: string): void => {
-  element.insertAdjacentHTML(`beforeend`, carNameDiv(carName));
+const renderCarNameDiv = (carName: string): void => {
+  $('#progress-section > div')!.insertAdjacentHTML('beforeend', carNameDiv(carName));
 };
 
-const renderSpinnerDiv = (element: Element): void => {
-  element.insertAdjacentHTML(`beforeend`, spinnerDiv());
+const renderSpinnerDiv = (): void => {
+  $$('#progress-section > div > div')!.forEach((element) => {
+    element.insertAdjacentHTML(`beforeend`, spinnerDiv());
+  });
 };
 
 const renderArrowDiv = (element: Element): void => {
@@ -22,7 +25,7 @@ const renderArrowDiv = (element: Element): void => {
 };
 
 const renderResultSection = (winners: string): void => {
-  document.getElementById(ID.APP_DIV)!.insertAdjacentHTML(`beforeend`, resultSection(winners));
+  $('#app')!.insertAdjacentHTML('beforeend', resultSection(winners));
 };
 
 export {

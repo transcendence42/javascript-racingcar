@@ -20,6 +20,7 @@ const getCarNames = (): void => {
     toggleClickButtonDisabled(carNameSubmitButton);
     toggleInputValueDisabled(tryCountInput);
     toggleClickButtonDisabled(tryCountSubmitButton);
+    setupProgressSection(carNameArray);
     tryCountInput.focus();
     return;
   }
@@ -39,7 +40,6 @@ const getTryCount = (): void => {
 
     toggleInputValueDisabled(tryCountInput);
     toggleClickButtonDisabled(tryCountSubmitButton);
-    setupProgressSection(carNameArray);
     startGame(carNameArray, tryCount);
     return;
   }
@@ -49,11 +49,9 @@ const getTryCount = (): void => {
 const setupProgressSection = (carNameArray: Array<string>) => {
   renderProgressSection();
   carNameArray.forEach((carName) => {
-    renderCarNameDiv($(ID.CAR_NAME_DIV) as Element, carName);
+    renderCarNameDiv(carName);
   }); // 이름 div 생성
-  $$(ID.SPINNER_DIV).forEach((element) => {
-    renderSpinnerDiv(element);
-  }); // 기본 스피너 생성 파트
+  renderSpinnerDiv();
 };
 
 const initGame = (): void => {
