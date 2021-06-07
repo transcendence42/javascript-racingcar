@@ -3,7 +3,6 @@ const ALERT = {
   CAR_INPUT_ALONE: '자동차 이름을 2개 이상 입력하세요',
   CAR_INPUT_DOUBLE: '중복된 자동차 이름이 있습니다',
   CAR_INPUT_LENGTH: '자동차 이름 글자수가 초과되었습니다 (5자 이내)',
-  CAR_INPUT_COUNT: '1회 이상이어야 합니다',
 
   TRY_INPUT_EMPTY: '시도 횟수를 입력하세요',
   TRY_INPUT_UINT: '시도 횟수는 양의 정수를 입력해주세요 (20 이하 권장)',
