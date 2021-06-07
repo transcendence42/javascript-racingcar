@@ -28,6 +28,7 @@ export async function startGame(cars: Car[], num: number): Promise<void> {
 }
 
 export function resetGame(): void {
+  $("#result").hide();
   $("#result div").innerHTML = "";
   $("#names input").value = "";
   $("#names input").element.removeAttribute("readonly");

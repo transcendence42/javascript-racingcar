@@ -36,6 +36,7 @@ export function startGame(cars, num) {
     });
 }
 export function resetGame() {
+    $("#result").hide();
     $("#result div").innerHTML = "";
     $("#names input").value = "";
     $("#names input").element.removeAttribute("readonly");
