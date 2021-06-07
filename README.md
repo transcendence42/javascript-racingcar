@@ -16,20 +16,51 @@
   <img width="400" src="https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/7c76e809d82a4a3aa0fd78a86be25427">
 </p>
 
+### 배경 지식
+- [requestAnimationFrame()에 관한 설명](https://m.blog.naver.com/psj9102/221745767536)
+- [async & await](https://joshua1988.github.io/web-development/javascript/js-async-await/)
+  - [자바스크립트의 비동기 처리와 콜백함수](https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/)
+  - [Promise](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)
+> ```
+> async function 함수명() {
+>  await 비동기_처리_메서드_명();
+> }
+> ```
+> 먼저 함수의 앞에 async 라는 예약어를 붙입니다. 그러고 나서 함수의 내부 로직 중 HTTP 통신을 하는 비동기 처리 코드 앞에 await를 붙입니다. 여기서 주의하셔야 할 점은 비동기 처리 메서드가 꼭 프로미스 객체를 반환해야 await가 의도한 대로 동작합니다.
+
+### 구현 사항
+- View
+  - [X] 시도 횟수 입력창 조회
+  - [X] 입력된 자동차 수대로 div 만들고 이름 설정하기
+  - [X] 원하는 플레이어에 화살표 추가하기
+  - [x] 스피너 끄기
+  - [x] 최종 우승자 조회
+  - [x] 다시 시작하기 버튼 조회
+
+- Controller
+  - [X] 이름 입력 버튼 이벤트(횟수 입력창 보여주기)
+  - [X] 시도 횟수 버튼 이벤트(게임시작)
+    - 자동차 경주 게임의 턴이 진행 될 때마다 1초의 텀(progressive 재생)을 두고 진행한다.
+  - [x] 다시 시작하기 이벤트
+
+- Model
+  - [X] Car
+
+
 ### 🎯 step1
-- [ ] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
-- [ ] 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
-- [ ] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
-- [ ] 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
-- [ ] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
-- [ ] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
-- [ ] 우승자가 여러명일 경우 ,를 이용하여 구분한다.
+- [x] 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+- [x] 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- [x] 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
+- [x] 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+- [x] 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
+- [x] 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
+- [x] 우승자가 여러명일 경우 ,를 이용하여 구분한다.
 
 ### 🎯🎯 step2
-- [ ] 자동차 경주 게임의 턴이 진행 될 때마다 1초의 텀(progressive 재생)을 두고 진행한다.
-    - [ ] 애니메이션 구현을 위해 setInterval, setTimeout, requestAnimationFrame 을 활용한다.
-- [ ] 정상적으로 게임의 턴이 다 동작된 후에는 결과를 보여주고, 2초 후에 축하의 alert 메세지를 띄운다.
-- [ ] 위 기능들이 정상적으로 동작하는지 Cypress를 이용해 테스트한다.
+- [x] 자동차 경주 게임의 턴이 진행 될 때마다 1초의 텀(progressive 재생)을 두고 진행한다.
+    - [x] 애니메이션 구현을 위해 setInterval, setTimeout, requestAnimationFrame 을 활용한다.
+- [x] 정상적으로 게임의 턴이 다 동작된 후에는 결과를 보여주고, 2초 후에 축하의 alert 메세지를 띄운다.
+- [] 위 기능들이 정상적으로 동작하는지 Cypress를 이용해 테스트한다.
 
 <br>
 
