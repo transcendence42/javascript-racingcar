@@ -2,8 +2,11 @@ import { ALERT, DELAY } from '../constants/index.js';
 import { Car, Game } from '../model/index.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
-import { makeDelay } from '../utils.js';
 import { removeSpinners } from '../view/remover.js';
+
+const makeDelay = async (ms: number): Promise<void> => {
+  return new Promise((r) => setTimeout(r, ms));
+};
 
 const createCarsObject = (carNameArray: Array<string>) => {
   const cars: Array<Car> = [];

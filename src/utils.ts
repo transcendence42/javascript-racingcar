@@ -23,10 +23,6 @@ const buttonElementDisable = (element: HTMLButtonElement): void => {
   element.disabled = true;
 };
 
-const makeDelay = async (ms: number): Promise<void> => {
-  return new Promise((r) => setTimeout(r, ms));
-};
-
 export {
   $,
   $$,
@@ -34,6 +30,5 @@ export {
   inputElementEnable,
   inputElementDisable,
   buttonElementEnable,
-  buttonElementDisable,
-  makeDelay,
+  buttonElementDisable
 };
