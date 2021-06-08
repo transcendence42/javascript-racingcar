@@ -1,5 +1,6 @@
 import { Car } from './index.js';
 import { RULE } from '../constants/index.js';
+
 class Game {
   cars: Array<Car>;
   finalWinners: Array<string>;

@@ -1,4 +1,4 @@
-const ID = {
+const SELECTOR = {
   APP_DIV: '#app',
 
   // input-section
@@ -20,4 +20,4 @@ const ID = {
   RESTART_SUBMIT: '#restart-button',
 };
 
-export { ID };
+export { SELECTOR };

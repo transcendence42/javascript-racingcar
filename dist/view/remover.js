@@ -1,6 +1,7 @@
 import { $$ } from '../utils.js';
+import { SELECTOR } from '../constants/selector.js';
 const removeSpinners = () => {
-    $$('div.d-flex.justify-center.mt-3').forEach((element) => {
+    $$(SELECTOR.SPINNER_DIVS).forEach((element) => {
         element.remove();
     });
 };

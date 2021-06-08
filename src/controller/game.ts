@@ -1,8 +1,10 @@
-import { ALERT, DELAY } from '../constants/index.js';
+import { ALERT, DELAY, SELECTOR } from '../constants/index.js';
+import { $, buttonElementEnable } from '../utils.js';
 import { Car, Game } from '../model/index.js';
+import { removeSpinners } from '../view/remover.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
-import { removeSpinners } from '../view/remover.js';
+import { buttonElementDisable } from '../utils.js';
 
 const makeDelay = async (ms: number): Promise<void> => {
   return new Promise((r) => setTimeout(r, ms));
@@ -36,6 +38,7 @@ const startGame = async (carNameArray: Array<string>, tryCount: number): Promise
   racingWinners = racingGame.getWinners();
   renderResultSection(racingWinners.join(', ').toLowerCase());
   await makeDelay(DELAY.END).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
+  buttonElementEnable($(SELECTOR.RESTART_SUBMIT) as HTMLButtonElement);
   setRestartButtonEvent();
 };
 

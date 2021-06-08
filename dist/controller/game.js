@@ -7,12 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { ALERT, DELAY } from '../constants/index.js';
+import { ALERT, DELAY, SELECTOR } from '../constants/index.js';
+import { $, buttonElementEnable } from '../utils.js';
 import { Car, Game } from '../model/index.js';
+import { removeSpinners } from '../view/remover.js';
 import { renderArrowDiv, renderResultSection } from '../view/renderer.js';
 import { setRestartButtonEvent } from './event.js';
-import { makeDelay } from '../utils.js';
-import { removeSpinners } from '../view/remover.js';
+const makeDelay = (ms) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Promise((r) => setTimeout(r, ms));
+});
 const createCarsObject = (carNameArray) => {
     const cars = [];
     carNameArray.forEach((car, index) => {
@@ -37,6 +40,7 @@ const startGame = (carNameArray, tryCount) => __awaiter(void 0, void 0, void 0, 
     racingWinners = racingGame.getWinners();
     renderResultSection(racingWinners.join(', ').toLowerCase());
     yield makeDelay(DELAY.END).then(() => alert(racingWinners.join(', ') + ALERT.CONGRATULATION));
+    buttonElementEnable($(SELECTOR.RESTART_SUBMIT));
     setRestartButtonEvent();
 });
 export { startGame };

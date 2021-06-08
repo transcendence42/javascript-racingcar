@@ -1,29 +1,29 @@
-import { ID } from '../constants/index.js';
 import { $, $$ } from '../utils.js';
+import { SELECTOR } from '../constants/index.js';
 import { inputSection, progressSection, carNameDiv, spinnerDiv, arrowDiv, resultSection } from './templates/index.js';
 
 const renderInputSection = (): void => {
-  ($(ID.APP_DIV) as HTMLDivElement).innerHTML = inputSection();
+  ($(SELECTOR.APP_DIV) as HTMLDivElement).innerHTML = inputSection();
 };
 
 const renderProgressSection = (carNameArray: Array<string>): void => {
-  ($(ID.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', progressSection());
+  ($(SELECTOR.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', progressSection());
   carNameArray.forEach((carName) => {
-    ($(ID.CARNAMES_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', carNameDiv(carName));
+    ($(SELECTOR.CARNAMES_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', carNameDiv(carName));
   });
-  ($$(ID.CAR_RACE_TRACK_DIVS) as NodeListOf<HTMLDivElement>).forEach((element) => {
+  ($$(SELECTOR.CAR_RACE_TRACK_DIVS) as NodeListOf<HTMLDivElement>).forEach((element) => {
     element.insertAdjacentHTML(`beforeend`, spinnerDiv());
   });
 };
 
 const renderArrowDiv = (roundWinnerIndex: number): void => {
-  ($$(ID.CARNAME_DIVS) as NodeListOf<HTMLDivElement>).forEach((element, index) => {
+  ($$(SELECTOR.CARNAME_DIVS) as NodeListOf<HTMLDivElement>).forEach((element, index) => {
     index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
   });
 };
 
 const renderResultSection = (winners: string): void => {
-  ($(ID.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', resultSection(winners));
+  ($(SELECTOR.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', resultSection(winners));
 };
 
 export { renderInputSection, renderProgressSection, renderArrowDiv, renderResultSection };

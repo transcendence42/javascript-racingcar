@@ -1,8 +1,8 @@
 import { $$ } from '../utils.js';
-import { ID } from '../constants/elements.js';
+import { SELECTOR } from '../constants/selector.js';
 
 const removeSpinners = (): void => {
-  $$(ID.SPINNER_DIVS).forEach((element) => {
+  $$(SELECTOR.SPINNER_DIVS).forEach((element) => {
     element.remove();
   });
 };
