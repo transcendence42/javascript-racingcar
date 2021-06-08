@@ -11,13 +11,13 @@ const renderProgressSection = (carNameArray: Array<string>): void => {
   carNameArray.forEach((carName) => {
     ($(ID.CARNAMES_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', carNameDiv(carName));
   });
-  ($$(ID.CAR_DIV_LIST) as NodeListOf<HTMLDivElement>).forEach((element) => {
+  ($$(ID.CAR_RACE_TRACK_DIVS) as NodeListOf<HTMLDivElement>).forEach((element) => {
     element.insertAdjacentHTML(`beforeend`, spinnerDiv());
   });
 };
 
 const renderArrowDiv = (roundWinnerIndex: number): void => {
-  ($$(ID.CARNAME_DIV_LIST) as NodeListOf<HTMLDivElement>).forEach((element, index) => {
+  ($$(ID.CARNAME_DIVS) as NodeListOf<HTMLDivElement>).forEach((element, index) => {
     index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
   });
 };

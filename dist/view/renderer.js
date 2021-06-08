@@ -9,12 +9,12 @@ const renderProgressSection = (carNameArray) => {
     carNameArray.forEach((carName) => {
         $(ID.CARNAMES_DIV).insertAdjacentHTML('beforeend', carNameDiv(carName));
     });
-    $$(ID.CAR_DIV_LIST).forEach((element) => {
+    $$(ID.CAR_RACE_TRACK_DIVS).forEach((element) => {
         element.insertAdjacentHTML(`beforeend`, spinnerDiv());
     });
 };
 const renderArrowDiv = (roundWinnerIndex) => {
-    $$(ID.CARNAME_DIV_LIST).forEach((element, index) => {
+    $$(ID.CARNAME_DIVS).forEach((element, index) => {
         index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
     });
 };

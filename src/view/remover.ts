@@ -1,7 +1,8 @@
 import { $$ } from '../utils.js';
+import { ID } from '../constants/elements.js';
 
 const removeSpinners = (): void => {
-  $$('div.d-flex.justify-center.mt-3').forEach((element) => {
+  $$(ID.SPINNER_DIVS).forEach((element) => {
     element.remove();
   });
 };
