@@ -37,11 +37,9 @@ const getTryCount = () => {
     inputElementClear(tryCountInput);
 };
 const restartApp = () => {
-    let carNameInput;
     removeChildNodes($(ID.APP_DIV));
     renderInputSection();
     setInputButtonsEvent();
-    carNameInput = $(ID.CARNAME_INPUT);
-    carNameInput.focus();
+    $(ID.CARNAME_INPUT).focus();
 };
 export { getCarNames, getTryCount, restartApp };

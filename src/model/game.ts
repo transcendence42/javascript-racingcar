@@ -1,5 +1,5 @@
 import { Car } from './index.js';
-import { RULE } from '../constants/index.js'
+import { RULE } from '../constants/index.js';
 class Game {
   cars: Array<Car>;
   finalWinners: Array<string>;
@@ -21,7 +21,7 @@ class Game {
         this.updateMaxPosition();
       }
     });
-  };
+  }
 
   updateMaxPosition(): void {
     this.cars.forEach((car) => {
@@ -29,11 +29,11 @@ class Game {
         this.maxPosition = car.position;
       }
     });
-  };
+  }
 
   initRoundWinnersIndex(): void {
     this.roundWinnersIndex = [];
-  };
+  }
 
   getWinners(): Array<string> {
     this.cars.forEach((car) => {
@@ -42,7 +42,7 @@ class Game {
       }
     });
     return this.finalWinners;
-  };
+  }
 }
 
 export { Game };

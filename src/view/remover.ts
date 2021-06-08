@@ -1,6 +1,6 @@
 import { $$ } from '../utils.js';
 
-const removeSpinners = () => {
+const removeSpinners = (): void => {
   $$('div.d-flex.justify-center.mt-3').forEach((element) => {
     element.remove();
   });

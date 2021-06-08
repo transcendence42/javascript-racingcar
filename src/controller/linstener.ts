@@ -35,7 +35,7 @@ const getCarNames = (): void => {
 
 const getTryCount = (): void => {
   const tryCountInput: HTMLInputElement = $(ID.TRYCOUNT_INPUT) as HTMLInputElement;
-  const tryCount: number = Number(tryCountInput?.value);
+  const tryCount = Number(tryCountInput?.value);
 
   if (checkTryCount(tryCountInput)) {
     const carNameInput: HTMLInputElement = $(ID.CARNAME_INPUT) as HTMLInputElement;
@@ -51,13 +51,10 @@ const getTryCount = (): void => {
 };
 
 const restartApp = (): void => {
-  let carNameInput: HTMLInputElement;
-
   removeChildNodes($(ID.APP_DIV));
   renderInputSection();
   setInputButtonsEvent();
-  carNameInput = $(ID.CARNAME_INPUT) as HTMLInputElement;
-  carNameInput.focus();
+  ($(ID.CARNAME_INPUT) as HTMLInputElement).focus();
 };
 
 export { getCarNames, getTryCount, restartApp };

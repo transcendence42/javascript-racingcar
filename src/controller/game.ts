@@ -6,7 +6,7 @@ import { makeDelay } from '../utils.js';
 import { removeSpinners } from '../view/remover.js';
 
 const createCarsObject = (carNameArray: Array<string>) => {
-  let cars: Array<Car> = [];
+  const cars: Array<Car> = [];
 
   carNameArray.forEach((car, index) => {
     cars.push(new Car(car, index));
@@ -22,7 +22,7 @@ const playOnce = (racingGame: Game) => {
   racingGame.initRoundWinnersIndex();
 };
 
-const startGame = async (carNameArray: Array<string>, tryCount: number) => {
+const startGame = async (carNameArray: Array<string>, tryCount: number): Promise<void> => {
   const racingGame: Game = new Game(createCarsObject(carNameArray));
   let racingWinners: Array<string> = [];
 

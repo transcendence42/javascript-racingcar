@@ -15,7 +15,6 @@ class Game {
             }
         });
     }
-    ;
     updateMaxPosition() {
         this.cars.forEach((car) => {
             if (car.position > this.maxPosition) {
@@ -23,11 +22,9 @@ class Game {
             }
         });
     }
-    ;
     initRoundWinnersIndex() {
         this.roundWinnersIndex = [];
     }
-    ;
     getWinners() {
         this.cars.forEach((car) => {
             if (car.position === this.maxPosition) {
@@ -36,6 +33,5 @@ class Game {
         });
         return this.finalWinners;
     }
-    ;
 }
 export { Game };

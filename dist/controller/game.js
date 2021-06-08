@@ -14,7 +14,7 @@ import { setRestartButtonEvent } from './event.js';
 import { makeDelay } from '../utils.js';
 import { removeSpinners } from '../view/remover.js';
 const createCarsObject = (carNameArray) => {
-    let cars = [];
+    const cars = [];
     carNameArray.forEach((car, index) => {
         cars.push(new Car(car, index));
     });
