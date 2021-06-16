@@ -1,4 +1,4 @@
-import { ALERT, DELAY, SELECTOR } from '../constants.js';
+import { ALERT, DELAY } from '../constants.js';
 import { $ } from '../utils.js';
 import { Game } from '../model/Game.js';
 import { enableButton } from '../view/utils.js';
@@ -25,7 +25,7 @@ const startGame = async (inputData: InputData): Promise<void> => {
   removeSpinnerDivs();
   renderResultSection(racingGame.finalWinners.join(', ').toLowerCase());
   await racingGame.makeDelay(DELAY.GAME_END).then(() => alert(racingGame.finalWinners.join(', ') + ALERT.CONGRATULATION));
-  enableButton($(SELECTOR.RESTART_SUBMIT_BUTTON) as HTMLButtonElement);
+  enableButton($('#restart-button') as HTMLButtonElement);
   addRestartButtonEvent();
 };
 

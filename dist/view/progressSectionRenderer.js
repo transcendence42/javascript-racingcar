@@ -1,5 +1,4 @@
 import { $, $$ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 const progressSection = () => {
     return `
   <section id="progress-section" class="d-flex justify-center mt-5">
@@ -30,21 +29,21 @@ const arrowDiv = () => {
   `;
 };
 const renderProgressSection = (carNameArray) => {
-    $(SELECTOR.APP_DIV).insertAdjacentHTML('beforeend', progressSection());
+    $('#app').insertAdjacentHTML('beforeend', progressSection());
     carNameArray.forEach((carName) => {
-        $(SELECTOR.CARNAMES_DIV).insertAdjacentHTML('beforeend', carNameDiv(carName));
+        $('#progress-section .mt-4').insertAdjacentHTML('beforeend', carNameDiv(carName));
     });
-    $$(SELECTOR.CAR_RACE_TRACK_DIVS).forEach((element) => {
+    $$('#progress-section .mr-2').forEach((element) => {
         element.insertAdjacentHTML(`beforeend`, spinnerDiv());
     });
 };
 const renderArrowDiv = (roundWinnerIndex) => {
-    $$(SELECTOR.CARNAME_DIVS).forEach((element, index) => {
+    $$('#progress-section .car-player').forEach((element, index) => {
         index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
     });
 };
 const removeSpinnerDivs = () => {
-    $$(SELECTOR.SPINNER_DIVS).forEach((element) => {
+    $$('#progress-section .mt-3').forEach((element) => {
         element.remove();
     });
 };

@@ -18,28 +18,6 @@ const RULE = {
   MAX_TRY_COUNT: 50,
 };
 
-const SELECTOR = {
-  APP_DIV: '#app',
-
-  // input-section
-  INPUT_SECTION: '#input-section',
-  CARNAME_INPUT: '#car-names-input',
-  CARNAME_SUBMIT_BUTTON: '#car-names-submit',
-  TRYCOUNT_INPUT: '#racing-count-input',
-  TRYCOUNT_SUBMIT_BUTTON: '#racing-count-submit',
-
-  // progress-section
-  PROGRESS_SECTION: '#progress-section',
-  CAR_RACE_TRACK_DIVS: '#progress-section .mr-2',
-  CARNAMES_DIV: '#progress-section .mt-4',
-  CARNAME_DIVS: '#progress-section .car-player',
-  SPINNER_DIVS: '#progress-section .mt-3',
-
-  // result-section
-  RESULT_SECTION: '#result-section',
-  RESTART_SUBMIT_BUTTON: '#restart-button',
-};
-
 const ALERT = {
   // for check valid car name
   CARNAME_NOTHING: '자동차 이름을 입력해주세요',
@@ -57,4 +35,4 @@ const ALERT = {
   CONGRATULATION: '님 우승을 축하합니다 👏',
 };
 
-export { DELAY, RULE, SELECTOR, ALERT }
+export { DELAY, RULE, ALERT }

@@ -1,5 +1,4 @@
 import { $, $$ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 
 const progressSection = (): string => {
   return `
@@ -35,23 +34,23 @@ const arrowDiv = (): string => {
 };
 
 const renderProgressSection = (carNameArray: Array<string>): void => {
-  ($(SELECTOR.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', progressSection());
+  ($('#app') as HTMLDivElement).insertAdjacentHTML('beforeend', progressSection());
   carNameArray.forEach((carName) => {
-    ($(SELECTOR.CARNAMES_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', carNameDiv(carName));
+    ($('#progress-section .mt-4') as HTMLDivElement).insertAdjacentHTML('beforeend', carNameDiv(carName));
   });
-  ($$(SELECTOR.CAR_RACE_TRACK_DIVS) as NodeListOf<HTMLDivElement>).forEach((element) => {
+  ($$('#progress-section .mr-2') as NodeListOf<HTMLDivElement>).forEach((element) => {
     element.insertAdjacentHTML(`beforeend`, spinnerDiv());
   });
 };
 
 const renderArrowDiv = (roundWinnerIndex: number): void => {
-  ($$(SELECTOR.CARNAME_DIVS) as NodeListOf<HTMLDivElement>).forEach((element, index) => {
+  ($$('#progress-section .car-player') as NodeListOf<HTMLDivElement>).forEach((element, index) => {
     index === roundWinnerIndex ? element.insertAdjacentHTML(`afterend`, arrowDiv()) : null;
   });
 };
 
 const removeSpinnerDivs = (): void => {
-  $$(SELECTOR.SPINNER_DIVS).forEach((element) => {
+  $$('#progress-section .mt-3').forEach((element) => {
     element.remove();
   });
 };

@@ -1,17 +1,16 @@
 import { $ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 import { removeChildNodes } from '../view/utils.js';
 import { renderInputSection } from '../view/inputSectionRenderer.js';
 
 const init = (): void => {
-  removeChildNodes($(SELECTOR.APP_DIV));
+  removeChildNodes($('#app'));
   renderInputSection();
   addRestartButtonEvent();
-  ($(SELECTOR.CARNAME_INPUT) as HTMLInputElement).focus();
+  ($('#car-names-input') as HTMLInputElement).focus();
 };
 
 const addRestartButtonEvent = (): void => {
-  $(SELECTOR.RESTART_SUBMIT_BUTTON)?.addEventListener('click', () => init());
+  $('#restart-button')?.addEventListener('click', () => init());
 };
 
 export { addRestartButtonEvent };

@@ -1,5 +1,4 @@
 import { $ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 
 const inputSection = (): string => {
   return `
@@ -29,7 +28,7 @@ const inputSection = (): string => {
 };
 
 const renderInputSection = (): void => {
-  ($(SELECTOR.APP_DIV) as HTMLDivElement).innerHTML = inputSection();
+  ($('#app') as HTMLDivElement).innerHTML = inputSection();
 };
 
 export { renderInputSection };

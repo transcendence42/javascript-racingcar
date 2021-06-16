@@ -1,5 +1,4 @@
 import { $ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 const resultSection = (winners) => {
     return `
   <section id="result-section" class="d-flex justify-center mt-5">
@@ -13,6 +12,6 @@ const resultSection = (winners) => {
   `;
 };
 const renderResultSection = (winners) => {
-    $(SELECTOR.APP_DIV).insertAdjacentHTML('beforeend', resultSection(winners));
+    $('#app').insertAdjacentHTML('beforeend', resultSection(winners));
 };
 export { renderResultSection };

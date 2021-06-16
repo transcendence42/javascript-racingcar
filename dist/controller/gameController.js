@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { ALERT, DELAY, SELECTOR } from '../constants.js';
+import { ALERT, DELAY } from '../constants.js';
 import { $ } from '../utils.js';
 import { Game } from '../model/Game.js';
 import { enableButton } from '../view/utils.js';
@@ -30,7 +30,7 @@ const startGame = (inputData) => __awaiter(void 0, void 0, void 0, function* () 
     removeSpinnerDivs();
     renderResultSection(racingGame.finalWinners.join(', ').toLowerCase());
     yield racingGame.makeDelay(DELAY.GAME_END).then(() => alert(racingGame.finalWinners.join(', ') + ALERT.CONGRATULATION));
-    enableButton($(SELECTOR.RESTART_SUBMIT_BUTTON));
+    enableButton($('#restart-button'));
     addRestartButtonEvent();
 });
 export { startGame };

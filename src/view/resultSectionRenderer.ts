@@ -1,5 +1,4 @@
 import { $ } from '../utils.js';
-import { SELECTOR } from '../constants.js';
 
 const resultSection = (winners: string): string => {
   return `
@@ -15,7 +14,7 @@ const resultSection = (winners: string): string => {
 };
 
 const renderResultSection = (winners: string): void => {
-  ($(SELECTOR.APP_DIV) as HTMLDivElement).insertAdjacentHTML('beforeend', resultSection(winners));
+  ($('#app') as HTMLDivElement).insertAdjacentHTML('beforeend', resultSection(winners));
 };
 
 export { renderResultSection };
