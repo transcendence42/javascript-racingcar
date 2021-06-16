@@ -1,20 +1,20 @@
-import { ID, ALERT, DELAY } from '../../dist/constants/index.js';
+import { SELECTOR, ALERT, DELAY } from '../../dist/constants.js';
 
 let carNamesSample = 'jwon, yeji, holee, yshin';
 let tryCountSample = 3;
 
 const carNameInputAndSubmit = (carNames) => {
   if (carNames) {
-    cy.get(ID.CARNAME_INPUT).type(carNames);
+    cy.get(SELECTOR.CARNAME_INPUT).type(carNames);
   }
-  cy.get(ID.CARNAME_SUBMIT).click();
+  cy.get(SELECTOR.CARNAME_SUBMIT).click();
 };
 
 const tryCountInputAndSubmit = (tryCount) => {
   if (tryCount) {
-    cy.get(ID.TRYCOUNT_INPUT).type(tryCount);
+    cy.get(SELECTOR.TRYCOUNT_INPUT).type(tryCount);
   }
-  cy.get(ID.TRYCOUNT_SUBMIT).click();
+  cy.get(SELECTOR.TRYCOUNT_SUBMIT).click();
 };
 
 const catchAlertMessage = (alertMessage) => {
@@ -29,9 +29,9 @@ describe('0. 초기화면 로딩 테스트', () => {
   });
 
   it('자동차 경주 게임을 실행하면, 인풋 섹션이 보이고 자동차 입력창이 활성화된다.=', () => {
-    cy.get(ID.INPUT_SECTION).should('be.visible');
-    cy.get(ID.CARNAME_INPUT).should('not.be.disabled');
-    cy.get(ID.CARNAME_SUBMIT).should('not.be.disabled');
+    cy.get(SELECTOR.INPUT_SECTION).should('be.visible');
+    cy.get(SELECTOR.CARNAME_INPUT).should('not.be.disabled');
+    cy.get(SELECTOR.CARNAME_SUBMIT).should('not.be.disabled');
   });
 });
 
@@ -67,16 +67,16 @@ describe('1. 자동차 이름 입력 테스트', () => {
 
   it('자동차 이름을 정상적으로 입력하고 확인 버튼을 클릭하면, 자동차 이름 입력칸과 클릭 버튼을 비활성화 하고 시도 횟수 입력칸과 시도 횟수 버튼을 활성화한다', () => {
     carNameInputAndSubmit(carNamesSample);
-    cy.get(ID.CARNAME_INPUT).should('be.disabled');
-    cy.get(ID.CARNAME_SUBMIT).should('be.disabled');
-    cy.get(ID.TRYCOUNT_INPUT).should('not.be.disabled');
-    cy.get(ID.TRYCOUNT_SUBMIT).should('not.be.disabled');
+    cy.get(SELECTOR.CARNAME_INPUT).should('be.disabled');
+    cy.get(SELECTOR.CARNAME_SUBMIT).should('be.disabled');
+    cy.get(SELECTOR.TRYCOUNT_INPUT).should('not.be.disabled');
+    cy.get(SELECTOR.TRYCOUNT_SUBMIT).should('not.be.disabled');
   });
 
   it('자동차 이름을 정상적으로 입력하고 확인 버튼을 클릭하면, 진행상황 섹션이 로딩된다. ', () => {
     carNameInputAndSubmit(carNamesSample);
     tryCountInputAndSubmit(tryCountSample);
-    cy.get(ID.PROGRESS_SECTION).should('be.visible');
+    cy.get(SELECTOR.PROGRESS_SECTION).should('be.visible');
   });
 });
 
@@ -131,9 +131,9 @@ describe('4. 게임 재시작 테스트', () => {
     carNameInputAndSubmit(carNamesSample);
     tryCountInputAndSubmit(tryCountSample);
     cy.wait(tryCountSample * DELAY.TURN + DELAY.END);
-    cy.get(ID.RESTART_SUBMIT).click();
-    cy.get(ID.PROGRESS_SECTION).should('not.exist');
-    cy.get(ID.RESULT_SECTION).should('not.exist');
-    cy.get(ID.CARNAME_INPUT).should('have.value', '');
+    cy.get(SELECTOR.RESTART_SUBMIT).click();
+    cy.get(SELECTOR.PROGRESS_SECTION).should('not.exist');
+    cy.get(SELECTOR.RESULT_SECTION).should('not.exist');
+    cy.get(SELECTOR.CARNAME_INPUT).should('have.value', '');
   });
 });

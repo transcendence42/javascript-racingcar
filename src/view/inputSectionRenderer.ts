@@ -1,3 +1,6 @@
+import { $ } from '../utils.js';
+import { SELECTOR } from '../constants.js';
+
 const inputSection = (): string => {
   return `
   <section id="input-section" class="d-flex justify-center mt-5">
@@ -25,4 +28,8 @@ const inputSection = (): string => {
   `;
 };
 
-export { inputSection };
+const renderInputSection = (): void => {
+  ($(SELECTOR.APP_DIV) as HTMLDivElement).innerHTML = inputSection();
+};
+
+export { renderInputSection };

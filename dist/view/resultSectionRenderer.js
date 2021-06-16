@@ -1,5 +1,7 @@
-const resultSection = (winners: string): string => {
-  return `
+import { $ } from '../utils.js';
+import { SELECTOR } from '../constants.js';
+const resultSection = (winners) => {
+    return `
   <section id="result-section" class="d-flex justify-center mt-5">
     <div>
       <h2>🏆 최종 우승자: ${winners} 🏆</h2>
@@ -10,5 +12,7 @@ const resultSection = (winners: string): string => {
   </section>
   `;
 };
-
-export { resultSection };
+const renderResultSection = (winners) => {
+    $(SELECTOR.APP_DIV).insertAdjacentHTML('beforeend', resultSection(winners));
+};
+export { renderResultSection };
