@@ -1,20 +1,20 @@
-import { SELECTOR, ALERT, DELAY } from '../../dist/constants.js';
+import { ALERT, DELAY } from '../../dist/constants.js';
 
 let carNamesSample = 'jwon, yeji, holee, yshin';
 let tryCountSample = 3;
 
 const carNameInputAndSubmit = (carNames) => {
   if (carNames) {
-    cy.get(SELECTOR.CARNAME_INPUT).type(carNames);
+    cy.get('#car-names-input').type(carNames);
   }
-  cy.get(SELECTOR.CARNAME_SUBMIT).click();
+  cy.get('#car-names-submit').click();
 };
 
 const tryCountInputAndSubmit = (tryCount) => {
   if (tryCount) {
-    cy.get(SELECTOR.TRYCOUNT_INPUT).type(tryCount);
+    cy.get('#racing-count-input').type(tryCount);
   }
-  cy.get(SELECTOR.TRYCOUNT_SUBMIT).click();
+  cy.get('#racing-count-submit').click();
 };
 
 const catchAlertMessage = (alertMessage) => {
@@ -29,9 +29,9 @@ describe('0. 초기화면 로딩 테스트', () => {
   });
 
   it('자동차 경주 게임을 실행하면, 인풋 섹션이 보이고 자동차 입력창이 활성화된다.=', () => {
-    cy.get(SELECTOR.INPUT_SECTION).should('be.visible');
-    cy.get(SELECTOR.CARNAME_INPUT).should('not.be.disabled');
-    cy.get(SELECTOR.CARNAME_SUBMIT).should('not.be.disabled');
+    cy.get('#input-section').should('be.visible');
+    cy.get('#car-names-input').should('not.be.disabled');
+    cy.get('#car-names-submit').should('not.be.disabled');
   });
 });
 
@@ -67,16 +67,16 @@ describe('1. 자동차 이름 입력 테스트', () => {
 
   it('자동차 이름을 정상적으로 입력하고 확인 버튼을 클릭하면, 자동차 이름 입력칸과 클릭 버튼을 비활성화 하고 시도 횟수 입력칸과 시도 횟수 버튼을 활성화한다', () => {
     carNameInputAndSubmit(carNamesSample);
-    cy.get(SELECTOR.CARNAME_INPUT).should('be.disabled');
-    cy.get(SELECTOR.CARNAME_SUBMIT).should('be.disabled');
-    cy.get(SELECTOR.TRYCOUNT_INPUT).should('not.be.disabled');
-    cy.get(SELECTOR.TRYCOUNT_SUBMIT).should('not.be.disabled');
+    cy.get('#car-names-input').should('be.disabled');
+    cy.get('#car-names-submit').should('be.disabled');
+    cy.get('#racing-count-input').should('not.be.disabled');
+    cy.get('#racing-count-submit').should('not.be.disabled');
   });
 
   it('자동차 이름을 정상적으로 입력하고 확인 버튼을 클릭하면, 진행상황 섹션이 로딩된다. ', () => {
     carNameInputAndSubmit(carNamesSample);
     tryCountInputAndSubmit(tryCountSample);
-    cy.get(SELECTOR.PROGRESS_SECTION).should('be.visible');
+    cy.get('#progress-section').should('be.visible');
   });
 });
 
@@ -130,10 +130,10 @@ describe('4. 게임 재시작 테스트', () => {
   it('다시 시작하기 버튼을 클릭하면, 진행 섹션과 결과 섹션이 사라지고, 자동차 이름 입력칸이 빈 상태로 게임 시작 대기상태가 된다', () => {
     carNameInputAndSubmit(carNamesSample);
     tryCountInputAndSubmit(tryCountSample);
-    cy.wait(tryCountSample * DELAY.TURN + DELAY.END);
-    cy.get(SELECTOR.RESTART_SUBMIT).click();
-    cy.get(SELECTOR.PROGRESS_SECTION).should('not.exist');
-    cy.get(SELECTOR.RESULT_SECTION).should('not.exist');
-    cy.get(SELECTOR.CARNAME_INPUT).should('have.value', '');
+    cy.wait(tryCountSample * DELAY.GAME_TURN + DELAY.GAME_END);
+    cy.get('#restart-button').click();
+    cy.get('#progress-section').should('not.exist');
+    cy.get('#result-section').should('not.exist');
+    cy.get('#car-names-input').should('have.value', '');
   });
 });
