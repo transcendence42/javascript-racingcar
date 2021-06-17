@@ -11,8 +11,8 @@ const RULE = {
     // 자동차 이름은 5자 이하만 가능
     MAX_CARNAME_LENGTH: 5,
     // 시도 횟수는 원활한 게임을 위해 자체적으로 제한
-    MIN_TRY_COUNT: 1,
-    MAX_TRY_COUNT: 50,
+    MIN_TRYCOUNT: 1,
+    MAX_TRYCOUNT: 50,
 };
 const ALERT = {
     // for check valid car name

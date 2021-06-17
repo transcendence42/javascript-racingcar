@@ -59,11 +59,11 @@ class InputData {
             alert(ALERT.TRYCOUNT_NOTHING);
             return false;
         }
-        else if (Number(tryCountInput.value) < RULE.MIN_TRY_COUNT) {
+        else if (Number(tryCountInput.value) < RULE.MIN_TRYCOUNT) {
             alert(ALERT.TRYCOUNT_UINT);
             return false;
         }
-        else if (Number(tryCountInput.value) > RULE.MAX_TRY_COUNT) {
+        else if (Number(tryCountInput.value) > RULE.MAX_TRYCOUNT) {
             alert(ALERT.TRYCOUNT_TOO_BIG);
             return false;
         }
